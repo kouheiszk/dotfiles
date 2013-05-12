@@ -1,0 +1,23 @@
+[user]
+	name = Kouhei Suzuki
+    email = kouhei.szk@gmail.com
+    
+[core]
+    excludesfile = /Users/Kouhei/.gitignore_global
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path =
+    
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	history = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	last = log -1 HEAD
+
