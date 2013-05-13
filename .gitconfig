@@ -6,8 +6,7 @@
     email = kouhei.szk@gmail.com
     
 [core]
-    editor = vim -c "set fenc=utf-8"
-    excludesfile = /Users/Kouhei/.gitignore_global
+    excludesfile = ~/.gitignore_global
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
