@@ -1,8 +1,12 @@
+[color]
+    ui = true
+
 [user]
 	name = Kouhei Suzuki
     email = kouhei.szk@gmail.com
     
 [core]
+    editor = vim -c "set fenc=utf-8"
     excludesfile = /Users/Kouhei/.gitignore_global
 
 [difftool "sourcetree"]
@@ -17,7 +21,9 @@
 	co = checkout
 	ci = commit
 	st = status
-	br = branch
+    br = branch
+    di = diff
+    wh = whatchanged
 	history = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	last = log -1 HEAD
 
