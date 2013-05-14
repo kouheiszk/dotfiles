@@ -362,20 +362,6 @@ inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
-"" Shift押しながらのカーソル操作で選択
-inoremap <S-Left> <Esc>v<Left>
-inoremap <S-Right> <Esc><Right>v<Right>
-inoremap <S-Up> <Esc>v<Up>
-inoremap <S-Down> <Esc>v<Down>
-noremap <S-Left> <Esc>v<Left>
-noremap <S-Right> <Esc>v<Right>
-noremap <S-Up> <Esc>v<Up>
-noremap <S-Down> <Esc>v<Down>
-"" ビジュアルモードでShift押しながらカーソル移動でそのまま選択
-vnoremap <S-Left>  <Left>
-vnoremap <S-Right> <Right>
-vnoremap <S-Up>    <Up>
-vnoremap <S-Down>  <Down>
 "" コピペ
 xnoremap <C-c> y`>
 xnoremap <C-x> x
