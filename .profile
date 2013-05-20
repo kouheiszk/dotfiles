@@ -23,3 +23,5 @@ alias lld='ls -l | grep /'
 alias llaf='ls -al | grep -v /'
 alias llad='ls -al | grep /'
 
+# gosh alias
+alias gosh="rlwrap -b '(){}[],#\";| ' gosh"

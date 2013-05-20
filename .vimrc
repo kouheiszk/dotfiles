@@ -39,6 +39,8 @@ set showmatch
 set nowrap
 "" Backspaceで消せるようにする
 set backspace=indent,eol,start
+"" カーソルを行頭、行末で止まらないようにする
+set whichwrap=b,s,h,l,<,>,[,]
 "" 改行コードの自動認識
 set fileformats=unix,dos,mac
 "" 文字コード指定
@@ -90,8 +92,17 @@ NeoBundle 'Shougo/neobundle.vim'
 "" Vim Shell
 "" --------------------------------------------------
 
-"" 情弱なので僕にはまだ早い
 NeoBundle 'Shougo/vimshell'
+"" vimshellをCtrl-dで終了できるようにする
+autocmd FileType vimshell imap 
+    \ <buffer><silent><expr><C-d>
+    \ vimshell#get_cur_text()=='' ? "\<Esc>\<Plug>(vimshell_exit)" : "\<Del>"
+
+nnoremap <silent> ,ss :VimShell<CR>
+autocmd FileType scheme nnoremap <silent> ,sg :VimShellInteractive gosh<CR><Esc><C-w>l
+autocmd FileType scheme nnoremap <silent> <F5> <S-v>:VimShellSendString<CR>
+autocmd FileType scheme inoremap <silent> <F5> <Esc><S-v>:VimShellSendString<CR>`>i
+autocmd FileType scheme vnoremap <silent> <F5> :VimShellSendString<CR>
 
 "" --------------------------------------------------
 "" Unite Vim
@@ -111,10 +122,22 @@ let g:solarized_termcolors=16
 colorscheme solarized
 
 "" --------------------------------------------------
+"" 非同期実行のために
+"" --------------------------------------------------
+
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+
+"" --------------------------------------------------
 "" Neo Complete Cache (自動補完)
 "" --------------------------------------------------
 
-NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neocomplcache'
 
 "" 補完ウィンドウの設定
@@ -233,12 +256,6 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'nakatakeshi/jump2pm.vim'
 
 "" --------------------------------------------------
-"" Buffer Explorer
-"" --------------------------------------------------
-
-NeoBundle 'fholgado/minibufexpl.vim'
-
-"" --------------------------------------------------
 "" Power Line
 "" --------------------------------------------------
 
@@ -276,6 +293,26 @@ NeoBundle 'vim-scripts/yanktmp'
 "" --------------------------------------------------
 
 NeoBundle 'vim-scripts/YankRing'
+
+"" --------------------------------------------------
+"" Scheme用
+"" --------------------------------------------------
+
+""NeoBundle 'slimv.vim'
+"" 春山さんのschemeの設定を使う
+NeoBundle 'haruyama/scheme.vim'
+autocmd FileType scheme :let is_gauche=1
+autocmd FileType scheme setlocal complete-=k
+autocmd FileType scheme setlocal complete+=k~/.gosh_completions
+
+"" --------------------------------------------------
+"" gosh REPL
+"" --------------------------------------------------
+
+""NeoBundle 'aharisu/vim_goshrepl'
+""let g:neocomplcache_keyword_patterns['gosh-repl']="[[:alpha:]+*/@$_=.!?-][[:alnum:]+*/@$_:=.!?-]*"
+""let g:gosh_buffer_direction='v'
+""autocmd FileType scheme vmap <F5> <Plug>(gosh_repl_send_block)
 
 "" --------------------------------------------------
 "" シンタックスハイライト
@@ -356,6 +393,10 @@ inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
+nnoremap <C-h> <Left>
+nnoremap <C-j> <Down>
+nnoremap <C-k> <Up>
+nnoremap <C-l> <Right>
 "" コピペ
 xnoremap <C-c> y`>
 xnoremap <C-x> x
@@ -368,4 +409,8 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
+"" Normalモードに移行
+inoremap <silent> <C-w> <Esc>
+vnoremap <silent> <C-w> <Esc>
+
 
