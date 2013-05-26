@@ -36,7 +36,7 @@ set noswapfile
 "" 対応する括弧の表示
 set showmatch
 "" 折り返さない
-set nowrap
+""set nowrap
 "" Backspaceで消せるようにする
 set backspace=indent,eol,start
 "" カーソルを行頭、行末で止まらないようにする

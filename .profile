@@ -25,3 +25,7 @@ alias llad='ls -al | grep /'
 
 # gosh alias
 alias gosh="rlwrap -b '(){}[],#\";| ' gosh"
+
+# preview
+alias show="open -a Preview"
+alias finda="open ."
