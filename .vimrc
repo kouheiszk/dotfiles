@@ -15,7 +15,7 @@ retab
 set incsearch
 set hlsearch
 "" 検索のループをさせない
-""set nowrapscan
+set nowrapscan
 "" 検索後Esc連打でハイライトを消す
 set hlsearch
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
