@@ -151,6 +151,7 @@ let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_enable_camel_case_completion = 1
 "" シンタックスをキャッシュするときの最小文字長
 let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 "" 手動補完を実行できる最小文字数
 let g:neocomplcache_manual_completion_start_length = 0
 "" 自動的に保管ウィンドを開かない
@@ -162,6 +163,15 @@ if !exists('g:neocomplcache_keyword_patterns')
 let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+let g:neocomplcache_ctags_arguments_list = {
+  \ 'perl' : '-R -h ".pm"'
+  \ }
+let g:neocomplcache_snippets_dir = "~/.vim/snippets"
+let g:neocomplcache_dictionary_filetype_lists = {
+  \ 'default' : '',
+  \ 'perl'    : $HOME . '/.vim/dict/perl.dict'
+  \ }"
+
 "" スニペットを展開する。スニペットが関係しないところでは行末まで削除
 inoremap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
 snoremap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
@@ -255,6 +265,17 @@ NeoBundle 'kien/ctrlp.vim'
 
 NeoBundle 'nakatakeshi/jump2pm.vim'
 
+"" split window vertically and jump to pm fine.
+autocmd FileType perl noremap fg :call Jump2pm('vne')<ENTER>
+"" jump to pm file in current window
+autocmd FileType perl noremap ff :call Jump2pm('e')<ENTER>
+"" split window horizontal, and ...
+autocmd FileType perl noremap fd :call Jump2pm('sp')<ENTER>
+"" open tab, and ...
+autocmd FileType perl noremap fd :call Jump2pm('tabe')<ENTER>
+"" for visual mode, use Jump2pmV()
+autocmd FileType perl vnoremap fg :call Jump2pmV('vne')<ENTER>
+
 "" --------------------------------------------------
 "" Power Line
 "" --------------------------------------------------
@@ -331,10 +352,12 @@ let g:syntastic_loc_list_height=6 " エラー表示ウィンドウの高さ
 set statusline+=%#warningmsg#     " エラーメッセージの書式
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_javascript_checker = 'jshint' " jshintを使う
+"" JavaScriptでjshintを使う
+let g:syntastic_javascript_checker = 'jshint'
+
 let g:syntastic_mode_map = {
 \ 'mode': 'active',
-\ 'active_filetypes': ['javascript'],
+\ 'active_filetypes': ['javascript', 'perl'],
 \ 'passive_filetypes': []
 \ }
 "" エラー表示マークを変更
