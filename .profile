@@ -29,3 +29,8 @@ alias gosh="rlwrap -b '(){}[],#\";| ' gosh"
 # preview
 alias show="open -a Preview"
 alias finda="open ."
+
+# android
+[ -d /Applications/android-sdk/tools ] && export PATH=$PATH:/Applications/android-sdk/tools
+[ -d /Applications/android-sdk/platform-tools ] && export PATH=$PATH:/Applications/android-sdk/platform-tools
+

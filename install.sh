@@ -16,6 +16,7 @@ fi
 ln -s .bash_profile $HOME
 ln -s .bashrc $HOME
 ln -s .eclipse/formatter $HOME/.eclipse
+ln -s .eclipse/keymap $HOME/.eclipse
 ln -s .gitconfig $HOME
 ln -s .gitignore_global $HOME
 ln -s .gosh_completions $HOME
