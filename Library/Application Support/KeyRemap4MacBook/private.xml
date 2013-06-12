@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<root>
+    <item>
+        <name>Leave Insert Mode with EISUU on Terminal</name>
+        <appendix>Escape to EISUU+Escape</appendix>
+        <appendix>Control+C to EISUU+Control+C</appendix>
+        <appendix>Control+[ to EISUU+Control+[</appendix>
+        <identifier>private.app_terminal_esc_with_eisuu</identifier>
+        <only>TERMINAL, VI</only>
+        <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::JIS_EISUU</autogen>
+        <autogen>--KeyToKey-- KeyCode::C, VK_CONTROL, KeyCode::C, VK_CONTROL, KeyCode::JIS_EISUU</autogen>
+        <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::JIS_EISUU</autogen>
+    </item>
+</root>
