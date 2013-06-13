@@ -432,8 +432,7 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
-"" Normalモードに移行
-inoremap <silent> <C-w> <Esc>
-vnoremap <silent> <C-w> <Esc>
-
+"" C-[でNormalモードに移行
+inoremap <silent> <C-[> <Esc>
+vnoremap <silent> <C-[> <Esc>
 
