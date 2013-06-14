@@ -396,15 +396,6 @@ let g:ctrlp_custom_ignore = {
 "" map!/noremap!      -       @       @        -
 "" --------------------------------------------------
 
-"" 練習用に矢印キーを無効化する
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
 "" Ctrl-a Ctrl-eで移動できるようにする
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
@@ -424,7 +415,6 @@ nnoremap <C-l> <Right>
 xnoremap <C-c> y`>
 xnoremap <C-x> x
 inoremap <C-v> <Esc>P
-nnoremap <C-v> <Esc>P
 "" 検索結果に移動したとき、その位置を画面の中央に
 nnoremap n nzz
 nnoremap N Nzz
