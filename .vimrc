@@ -26,7 +26,7 @@ set expandtab
 "" カーソル行をハイライト
 ""set cursorline
 "" タブ系の設定
-""set showtabline=2
+set showtabline=1
 "" 行番号表示
 set number
 "" バックアップとか自分でしろ
@@ -36,7 +36,7 @@ set noswapfile
 "" 対応する括弧の表示
 set showmatch
 "" 折り返さない
-""set nowrap
+set nowrap
 "" Backspaceで消せるようにする
 set backspace=indent,eol,start
 "" カーソルを行頭、行末で止まらないようにする

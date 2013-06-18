@@ -7,7 +7,7 @@ SPROMPT="%Bcorrect: %R -> %r [nyae]? %b"
 [ -f ~/.profile ] && source ~/.profile
 
 # .local_profileを読み込む
-[-f ~/.local_profile ] && source ~/.local_profile
+[ -f ~/.local_profile ] && source ~/.local_profile
 
 # ~/.zshrc_gitを読み込む
 [ -f ~/.zshrc_git ] && source ~/.zshrc_git
