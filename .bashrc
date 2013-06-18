@@ -4,7 +4,7 @@ export CLICOLOR='Yes'
 export LSCOLORS='GxBxCxfxcxdxdxhbadbxbx'
 
 # promptを変更
-export PS1="\033[1m[\u@\h \W]\$ \033[0m"
+export PS1="\033[1;37m[\u@\h \W]\$ \033[0m"
 
 # .profileを読み込む
 [ -f ~/.profile ] && source ~/.profile
@@ -33,7 +33,7 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 
 if [ -f $HOME/tmp/git/contrib/completion/git-completion.bash ]; then
 	source $HOME/tmp/git/contrib/completion/git-completion.bash
-	export PS1='[\u@\h \W\[\033[31m\]$(__git_ps1)\[\033[00m\]]\$ '
+	export PS1='\[\033[1;37m\][\u@\h \W\[\033[31m\]$(__git_ps1)\[\033[1;37m\]]\$ \[\033[0m\]'
 fi
 
 # CPANMのインストール先
