@@ -44,3 +44,6 @@ alias finda="open ."
 [ -d /Applications/android-sdk/tools ] && export PATH=$PATH:/Applications/android-sdk/tools
 [ -d /Applications/android-sdk/platform-tools ] && export PATH=$PATH:/Applications/android-sdk/platform-tools
 
+# tmuxの開始
+tmux
+
