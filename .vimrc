@@ -89,6 +89,29 @@ endif
 NeoBundle 'Shougo/neobundle.vim'
 
 "" --------------------------------------------------
+"" 非同期実行のために
+"" --------------------------------------------------
+
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+
+"" --------------------------------------------------
+"" カラースキーマ
+"" --------------------------------------------------
+
+NeoBundle 'altercation/vim-colors-solarized'
+syntax enable
+set background=dark
+let g:solarized_termcolors=16
+colorscheme solarized
+
+"" --------------------------------------------------
 "" Vim Shell
 "" --------------------------------------------------
 
@@ -110,29 +133,6 @@ autocmd FileType scheme vnoremap <silent> <F5> :VimShellSendString<CR>
 
 "" 情弱なので僕にはまだ早い
 NeoBundle 'Shougo/unite.vim'
-
-"" --------------------------------------------------
-"" カラースキーマ
-"" --------------------------------------------------
-
-NeoBundle 'altercation/vim-colors-solarized'
-syntax enable
-set background=dark
-let g:solarized_termcolors=16
-colorscheme solarized
-
-"" --------------------------------------------------
-"" 非同期実行のために
-"" --------------------------------------------------
-
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
 
 "" --------------------------------------------------
 "" Neo Complete Cache (自動補完)
@@ -306,14 +306,14 @@ nmap k <Plug>(accelerated_jk_gk)
 "" --------------------------------------------------
 "" vim間のyankバッファの共有
 "" --------------------------------------------------
-
-NeoBundle 'vim-scripts/yanktmp'
+""
+""NeoBundle 'vim-scripts/yanktmp'
 
 "" --------------------------------------------------
 "" yank ring
 "" --------------------------------------------------
-
-NeoBundle 'vim-scripts/YankRing'
+""
+""NeoBundle 'vim-scripts/YankRing'
 
 "" --------------------------------------------------
 "" Scheme用
@@ -338,40 +338,40 @@ autocmd FileType scheme setlocal complete+=k~/.gosh_completions
 "" --------------------------------------------------
 "" シンタックスハイライト
 "" --------------------------------------------------
-
-filetype plugin indent on
-filetype indent on
-syntax on
-
-NeoBundle 'scrooloose/syntastic'
-
-let g:syntastic_check_on_open=0   " ファイルを開いたときはチェックしない
-let g:syntastic_check_on_save=1   " 保存時にはチェック
-let g:syntastic_auto_loc_list=1   " エラーがあったら自動でロケーションリストを開く
-let g:syntastic_loc_list_height=6 " エラー表示ウィンドウの高さ
-set statusline+=%#warningmsg#     " エラーメッセージの書式
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-"" JavaScriptでjshintを使う
-let g:syntastic_javascript_checker = 'jshint'
-
-let g:syntastic_mode_map = {
-\ 'mode': 'active',
-\ 'active_filetypes': ['javascript', 'perl'],
-\ 'passive_filetypes': []
-\ }
-"" エラー表示マークを変更
-let g:syntastic_enable_signs=1
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
+""
+""filetype plugin indent on
+""filetype indent on
+""syntax on
+""
+""NeoBundle 'scrooloose/syntastic'
+""
+""let g:syntastic_check_on_open=0   " ファイルを開いたときはチェックしない
+""let g:syntastic_check_on_save=1   " 保存時にはチェック
+""let g:syntastic_auto_loc_list=1   " エラーがあったら自動でロケーションリストを開く
+""let g:syntastic_loc_list_height=6 " エラー表示ウィンドウの高さ
+""set statusline+=%#warningmsg#     " エラーメッセージの書式
+""set statusline+=%{SyntasticStatuslineFlag()}
+""set statusline+=%*
+"""" JavaScriptでjshintを使う
+""let g:syntastic_javascript_checker = 'jshint'
+""
+""let g:syntastic_mode_map = {
+""\ 'mode': 'active',
+""\ 'active_filetypes': ['javascript', 'perl'],
+""\ 'passive_filetypes': []
+""\ }
+"""" エラー表示マークを変更
+""let g:syntastic_enable_signs=1
+""let g:syntastic_error_symbol='✗'
+""let g:syntastic_warning_symbol='⚠'
 
 "" --------------------------------------------------
 "" アウトライン
 "" --------------------------------------------------
-
-NeoBundle 'h1mesuke/unite-outline'
+""
+""NeoBundle 'h1mesuke/unite-outline'
 ""nnoremap <C-o> :<C-u>Unite outline<CR>
-nnoremap <C-o> :<C-u>Unite -no-quit -vertical -winwidth=30 -toggle outline<CR>
+""nnoremap <C-o> :<C-u>Unite -no-quit -vertical -winwidth=30 -toggle outline<CR>
 
 "" --------------------------------------------------
 "" Ctrl-p

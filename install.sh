@@ -1,15 +1,31 @@
 #!/bin/sh
 
 SHELL_DIR=$(cd $(dirname $0); pwd)
+MODULE_DIR="$SHELL_DIR/.module"
 
 VIM_DIR="$HOME/.vim"
 ECLIPSE_DIR="$HOME/.eclipse"
 
-if [ ! -d "$VIM_DIR" ]; then
-    mkdir -p "$HOME/.vim/bundle"
-    git clone https://github.com/Shougo/neobundle.vim "$HOME/.vim/bundle/neobundle.vim"
-    git clone https://github.com/Shougo/vimproc "$HOME/.vim/bundle/vimproc"
-fi
+# vim-neobundleを使うために
+[ ! -d "$VIM_DIR" ] && mkdir -p "$VIM_DIR"
+[ ! -d "$VIM_DIR/bundle/neobundle.vim" ] && git clone https://github.com/Shougo/neobundle.vim "$VIM_DIR/bundle/neobundle.vim"
+[ ! -d "$VIM_DIR/bundle/vimproc" ] && git clone https://github.com/Shougo/vimproc "$VIM_DIR/bundle/vimproc" 
+cd "$VIM_DIR/bundle/neobundle.vim"
+git fetch && git pull origin master
+cd "$VIM_DIR/bundle/vimproc"
+git fetch && git pull origin master
+case "${OSTYPE}" in
+    darwin*)
+        [ -f "make_mac.mak" ] && make -f make_mac.mak
+        ;;
+    linux*)
+        [ -f "make_unix.mak" ] && make -f make_unix.mak
+        ;;
+esac
+
+# vim-solarized-colorをインストール
+[ ! -d "$VIM_DIR/colors" ] && mkdir -p "$VIM_DIR/colors"
+ln -s "$MODULE_DIR/solarized/vim-colors-solarized/colors/solarized.vim" "$VIM_DIR/colors"
 
 if [ ! -d "$ECLIPSE_DIR" ]; then
     mkdir -p "$ECLIPSE_DIR"
