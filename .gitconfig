@@ -1,29 +1,35 @@
 [color]
     ui = true
 
+;; 上書きする場合は~/.gitconfig_localに記述する
 [user]
-	name = Kouhei Suzuki
+    name = Kouhei Suzuki
     email = kouhei.szk@gmail.com
     
 [core]
     excludesfile = ~/.gitignore_global
-	editor = vim
+    editor = vim
 
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path = 
     
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
 
 [alias]
-	co = checkout
-	ci = commit
-	st = status
+    co = checkout
+    ci = commit
+    st = status
     br = branch
     di = diff
+    ft = fetch
     wh = whatchanged
-	history = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-	last = log -1 HEAD
+    stat = log --stat --summary
+    history = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    last = log -1 HEAD
+
+[include]
+    path = ~/.gitconfig_local
 

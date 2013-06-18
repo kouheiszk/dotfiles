@@ -425,4 +425,5 @@ nnoremap g# g#zz
 "" C-[でNormalモードに移行
 inoremap <silent> <C-[> <Esc>
 vnoremap <silent> <C-[> <Esc>
+noremap ; :
 

@@ -1,6 +1,6 @@
 # PATH
 # export PATH=/usr/local/sbin:$PATH
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/.local/bin
 
 # alias
 alias javac='javac -J-Dfile.encoding=UTF-8'
@@ -11,7 +11,16 @@ alias mv='mv -i'
 alias du='du -h'
 alias df='df -h'
 alias vi='vim'
-alias ls='ls -GFh'
+
+case "${OSTYPE}" in
+    darwin*)
+        alias ls='ls -GFh'
+        ;;
+    linux*)
+        alias ls='ls -Fh --color'
+        ;;
+esac
+
 alias la='ls -a'
 alias ll='ls -l'
 alias lsf='ls | grep -v /'

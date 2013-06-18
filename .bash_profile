@@ -1,4 +1,3 @@
-if [ -f ~/.bashrc ]; then
-    source ~/.bashrc
-fi
+# .bashrcを読み込む
+[ -f ~/.bashrc ] && source ~/.bashrc
 
