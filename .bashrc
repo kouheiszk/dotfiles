@@ -27,13 +27,12 @@ HISTIGNORE="ls:cd"
 export HISTTIMEFORMAT="%y/%m/%d %H:%M:%S: "
 
 # GIT SETTINGS
-export GIT_PS1_SHOWUPSTREAM=1
-export GIT_PS1_SHOWSTASHSTATE=1
-export GIT_PS1_SHOWDIRTYSTATE=1
-
 if [ -f $HOME/tmp/git/contrib/completion/git-completion.bash ]; then
     source $HOME/tmp/git/contrib/completion/git-completion.bash
-    export PS1='\[\033[1;37m\][\u@\h \w\[\033[31m\]$(__git_ps1)\[\033[1;37m\]]\$ \[\033[0m\]'
+    export GIT_PS1_SHOWUPSTREAM=1
+    export GIT_PS1_SHOWSTASHSTATE=1
+    export GIT_PS1_SHOWDIRTYSTATE=1
+    export PS1='\[\033[1;37m\][\u@\h \w\[\033[31m\]$(__git_ps1 "|%s")\[\033[1;37m\]]\$ \[\033[0m\]'
 fi
 
 # CPANMのインストール先
