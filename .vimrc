@@ -15,7 +15,7 @@ retab
 set incsearch
 set hlsearch
 "" 検索のループをさせない
-set nowrapscan
+"set nowrapscan
 "" 検索後Esc連打でハイライトを消す
 set hlsearch
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
@@ -36,7 +36,7 @@ set noswapfile
 "" 対応する括弧の表示
 set showmatch
 "" 折り返さない
-set nowrap
+"set nowrap
 "" Backspaceで消せるようにする
 set backspace=indent,eol,start
 "" カーソルを行頭、行末で止まらないようにする
@@ -292,8 +292,8 @@ NeoBundle 'tpope/vim-fugitive'
 "" --------------------------------------------------
 "" カッコを自動で閉じる
 "" --------------------------------------------------
-
-NeoBundle 'yuroyoro/vim-autoclose'
+""
+""NeoBundle 'yuroyoro/vim-autoclose'
 
 "" --------------------------------------------------
 "" jとkの移動が加速
