@@ -9,6 +9,7 @@
 [core]
     excludesfile = ~/.gitignore_global
     editor = vim
+    pager = nkf -w | LESSCHARSET=utf-8 less
 
 [difftool "sourcetree"]
     cmd = opendiff \"$LOCAL\" \"$REMOTE\"
@@ -29,6 +30,7 @@
     stat = log --stat --summary
     history = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     last = log -1 HEAD
+    logf = log --follow -p
 
 [include]
     path = ~/.gitconfig_local

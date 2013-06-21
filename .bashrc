@@ -47,7 +47,11 @@ if [ $MODULE_DIR != "" ] && [ -f $MODULE_DIR/git/contrib/completion/git-completi
     export GIT_PS1_SHOWUPSTREAM=1
     export GIT_PS1_SHOWSTASHSTATE=1
     export GIT_PS1_SHOWDIRTYSTATE=1
-    export PS1='\[\033[1;37m\][\u@\h \w\[\033[31m\]$(__git_ps1 " | %s")\[\033[1;37m\]]\$ \[\033[0m\]'
+    git_branch() {
+        GIT_PS1_STRING=$(__git_ps1 " | %s")
+        echo "${GIT_PS1_STRING}"
+    }
+    export PS1='\[\033[1;37m\][\u@\h \w$(git_branch)\[\033[1;37m\]]\$ \[\033[0m\]'
 fi
 
 # CPANMのインストール先

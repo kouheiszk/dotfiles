@@ -29,6 +29,7 @@ set expandtab
 set showtabline=1
 "" 行番号表示
 set number
+set numberwidth=5
 "" バックアップとか自分でしろ
 set nobackup
 "" スワップファイル要らない
@@ -76,6 +77,8 @@ augroup END
 "" カーソルの形状
 ""let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 ""let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+"" Tabでコンプリート
+set wildmode=list:longest,list:full
 
 "" --------------------------------------------------
 "" Neo Bundle
