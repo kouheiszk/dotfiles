@@ -1,3 +1,6 @@
 [submodule ".module/solarized"]
 	path = .module/solarized
 	url = git://github.com/altercation/solarized.git
+[submodule ".module/git"]
+	path = .module/git
+	url = https://github.com/git/git

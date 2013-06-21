@@ -12,7 +12,7 @@ alias du='du -h'
 alias df='df -h'
 alias vi='vim'
 
-case "${OSTYPE}" in
+case "$OSTYPE" in
     darwin*)
         alias ls='ls -GFh'
         ;;

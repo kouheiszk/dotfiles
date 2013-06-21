@@ -8,6 +8,7 @@
 .project
 .settings
 project.properties
+*/.classpath
 
 # idea
 .idea
