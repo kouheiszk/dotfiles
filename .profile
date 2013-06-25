@@ -37,8 +37,16 @@ alias ant='ant -logger org.apache.tools.ant.listener.AnsiColorLogger'
 alias gosh="rlwrap -b '(){}[],#\";| ' gosh"
 
 # preview
-alias show="open -a Preview"
-alias finda="open ."
+alias show='open -a Preview'
+alias finda='open .'
+
+# Git ルートディレクトリ移動
+function git-root() {
+    if git rev-parse --is-inside-work-tree 2>&1 > /dev/null; then
+        cd `git rev-parse --show-toplevel`
+    fi
+}
+alias gr='git-root'
 
 # android
 [ -d /Applications/android-sdk/tools ] && export PATH=$PATH:/Applications/android-sdk/tools
@@ -47,6 +55,6 @@ alias finda="open ."
 # tmuxの開始
 if which tmux 2>&1 >/dev/null; then
     #if not inside a tmux session, and if no session is started, start a new session
-    test -z "$TMUX" && (tmux attach -d || tmux new-session)
+    [ -z "$TMUX" ] && (tmux attach -d || tmux new-session)
 fi
 
