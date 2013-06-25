@@ -59,8 +59,6 @@ set nocompatible
 "" ビープ音すべてを無効にする
 set visualbell t_vb=
 set noerrorbells "エラーメッセージの表示時にビープを鳴らさない
-"" ファイルタイプの判別はしない
-filetype off
 "" 最後に編集した行へ飛ぶ
 augroup vimrcEx
 au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
@@ -79,6 +77,8 @@ augroup END
 ""let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 "" Tabでコンプリート
 set wildmode=list:longest,list:full
+"" ファイルタイプの判別する
+filetype plugin indent on
 
 "" --------------------------------------------------
 "" Neo Bundle
@@ -88,6 +88,8 @@ if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim
     call neobundle#rc(expand('~/.vim/bundle/'))
 endif
+
+NeoBundle 'Shougo/vimproc'
 
 "" --------------------------------------------------
 "" カラースキーマ
@@ -373,6 +375,13 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 "" --------------------------------------------------
+"" scss
+"" --------------------------------------------------
+
+NeoBundle 'cakebaker/scss-syntax.vim'
+autocmd FileType less,sass,scss setlocal sw=2 sts=2 ts=2 et
+
+"" --------------------------------------------------
 "" キーマップ
 "" --------------------------------------------------
 "" コマンド       ノーマル  挿入  コマンド ビジュアル
@@ -415,3 +424,8 @@ inoremap <silent> <C-[> <Esc>
 vnoremap <silent> <C-[> <Esc>
 noremap ; :
 
+"" --------------------------------------------------
+"" Instration check
+"" --------------------------------------------------
+
+NeoBundleCheck

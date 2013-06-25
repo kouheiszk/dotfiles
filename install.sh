@@ -52,5 +52,7 @@ if [ -d "$KEYREMAP4MAC_DIR" ]; then
     ln -s "$SHELL_DIR/Library/Application Support/KeyRemap4MacBook/private.xml" "$KEYREMAP4MAC_DIR"
 fi
 
-vim -u "$HOME/.vimrc" +BundleInstall +qa
+vim -u "$HOME/.vimrc" +NeoBundleInstall +qa
+vim -u "$HOME/.vimrc" +NeoBundleUpdate +qa
+vim -u "$HOME/.vimrc" +NeoBundleCheck +qa
 echo 'Done...'
