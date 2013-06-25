@@ -85,24 +85,9 @@ set wildmode=list:longest,list:full
 "" --------------------------------------------------
 
 if has('vim_starting')
-set runtimepath+=~/.vim/bundle/neobundle.vim
-call neobundle#rc(expand('~/.vim/bundle/'))
+    set runtimepath+=~/.vim/bundle/neobundle.vim
+    call neobundle#rc(expand('~/.vim/bundle/'))
 endif
-
-NeoBundle 'Shougo/neobundle.vim'
-
-"" --------------------------------------------------
-"" 非同期実行のために
-"" --------------------------------------------------
-
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
 
 "" --------------------------------------------------
 "" カラースキーマ
