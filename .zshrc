@@ -25,16 +25,16 @@ setopt mark_dirs
 setopt noautoremoveslash
  
 # {a-c} を a b c に展開する機能を使えるようにする
-etopt brace_ccl
+setopt brace_ccl
  
 # =command を command のパス名に展開する
-etopt equals
+setopt equals
  
 # ファイル名の展開で辞書順ではなく数値的にソート
-etopt numeric_glob_sort
+setopt numeric_glob_sort
  
 # --prefix=/usr などの = 以降も補完
-etopt magic_equal_subst
+setopt magic_equal_subst
  
 # OSX濁点半濁点
 setopt combining_chars
