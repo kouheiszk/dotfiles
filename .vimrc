@@ -61,7 +61,7 @@ set visualbell t_vb=
 set noerrorbells "エラーメッセージの表示時にビープを鳴らさない
 "" 最後に編集した行へ飛ぶ
 augroup vimrcEx
-au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
+    autocmd BufRead * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 augroup END
 "" 不可視文字を表示
 set list
@@ -79,15 +79,18 @@ augroup END
 set wildmode=list:longest,list:full
 "" ファイルタイプの判別する
 filetype plugin indent on
+filetype indent on
+syntax on
 
 "" --------------------------------------------------
 "" Neo Bundle
 "" --------------------------------------------------
 
 if has('vim_starting')
-    set runtimepath+=~/.vim/bundle/neobundle.vim
-    call neobundle#rc(expand('~/.vim/bundle/'))
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
+
+call neobundle#rc(expand('~/.vim/bundle/'))
 
 NeoBundle 'Shougo/vimproc'
 
@@ -107,11 +110,11 @@ colorscheme solarized
 
 NeoBundle 'Shougo/vimshell'
 "" vimshellをCtrl-dで終了できるようにする
-autocmd FileType vimshell imap 
+autocmd FileType vimshell inoremap 
     \ <buffer><silent><expr><C-d>
     \ vimshell#get_cur_text()=='' ? "\<Esc>\<Plug>(vimshell_exit)" : "\<Del>"
 
-nnoremap <silent> ,ss :VimShell<CR>
+noremap <silent> ,ss :VimShell<CR>
 autocmd FileType scheme nnoremap <silent> ,sg :VimShellInteractive gosh<CR><Esc><C-w>l
 autocmd FileType scheme nnoremap <silent> <F5> <S-v>:VimShellSendString<CR>
 autocmd FileType scheme inoremap <silent> <F5> <Esc><S-v>:VimShellSendString<CR>`>i
@@ -120,7 +123,7 @@ autocmd FileType scheme vnoremap <silent> <F5> :VimShellSendString<CR>
 "" --------------------------------------------------
 "" Unite Vim
 "" --------------------------------------------------
-
+ 
 "" 情弱なので僕にはまだ早い
 NeoBundle 'Shougo/unite.vim'
 
@@ -146,8 +149,8 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 let g:neocomplcache_manual_completion_start_length = 0
 "" 自動的に保管ウィンドを開かない
 let g:neocomplcache_disable_auto_complete = 1
-"" 自動選択しない
-let g:neocomplcache_enable_auto_select = 0
+"" 自動選択する
+let g:neocomplcache_enable_auto_select = 1
 "" キーワード
 if !exists('g:neocomplcache_keyword_patterns')
 let g:neocomplcache_keyword_patterns = {}
@@ -160,7 +163,7 @@ let g:neocomplcache_snippets_dir = "~/.vim/snippets"
 let g:neocomplcache_dictionary_filetype_lists = {
   \ 'default' : '',
   \ 'perl'    : $HOME . '/.vim/dict/perl.dict'
-  \ }"
+  \ }" 
 
 "" スニペットを展開する。スニペットが関係しないところでは行末まで削除
 inoremap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
@@ -226,6 +229,7 @@ NeoBundle 'Shougo/neosnippet'
 ""endfunction
 ""
 ""let s:my_action = { 'is_selectable' : 1 }
+
 ""function! s:my_action.func(candidates)
 ""wincmd p
 ""exec 'split '. a:candidates[0].action__path
@@ -234,6 +238,7 @@ NeoBundle 'Shougo/neosnippet'
 ""
 ""let s:my_action = { 'is_selectable' : 1 }
 ""function! s:my_action.func(candidates)
+
 ""wincmd p
 ""exec 'vsplit '. a:candidates[0].action__path
 ""endfunction
@@ -248,12 +253,25 @@ NeoBundle 'Shougo/neosnippet'
 "" --------------------------------------------------
 
 NeoBundle 'kien/ctrlp.vim'
+"" let g:ctrlp_map = '<c-f>'
+let g:ctrlp_cmd = 'CtrlP'
+"" let g:ctrlp_use_migemo = 1 " 日本語ファイルにマッチしたくなったときは、migemoを入れる
+let g:ctrlp_clear_cache_on_exit = 0 " 終了時キャッシュをクリアしない
+let g:ctrlp_mruf_max = 500 " MRUの最大記録数
+let g:ctrlp_max_depth = 40
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+  \ }
 
 "" --------------------------------------------------
 "" Jump to pm
 "" --------------------------------------------------
 
-NeoBundle 'nakatakeshi/jump2pm.vim'
+NeoBundle 'nakatakeshi/jump2pm.vim', {'autoload': {'filetypes':'perl'}}
 
 "" split window vertically and jump to pm fine.
 autocmd FileType perl noremap fg :call Jump2pm('vne')<ENTER>
@@ -311,7 +329,7 @@ nmap k <Plug>(accelerated_jk_gk)
 
 ""NeoBundle 'slimv.vim'
 "" 春山さんのschemeの設定を使う
-NeoBundle 'haruyama/scheme.vim'
+NeoBundle 'haruyama/scheme.vim', {'autoload': {'filetypes':'scheme'}}
 autocmd FileType scheme :let is_gauche=1
 autocmd FileType scheme setlocal complete-=k
 autocmd FileType scheme setlocal complete+=k~/.gosh_completions
@@ -328,58 +346,68 @@ autocmd FileType scheme setlocal complete+=k~/.gosh_completions
 "" --------------------------------------------------
 "" シンタックスハイライト
 "" --------------------------------------------------
-""
-""filetype plugin indent on
-""filetype indent on
-""syntax on
-""
-""NeoBundle 'scrooloose/syntastic'
-""
-""let g:syntastic_check_on_open=0   " ファイルを開いたときはチェックしない
-""let g:syntastic_check_on_save=1   " 保存時にはチェック
-""let g:syntastic_auto_loc_list=1   " エラーがあったら自動でロケーションリストを開く
-""let g:syntastic_loc_list_height=6 " エラー表示ウィンドウの高さ
-""set statusline+=%#warningmsg#     " エラーメッセージの書式
-""set statusline+=%{SyntasticStatuslineFlag()}
-""set statusline+=%*
-"""" JavaScriptでjshintを使う
-""let g:syntastic_javascript_checker = 'jshint'
-""
-""let g:syntastic_mode_map = {
-""\ 'mode': 'active',
-""\ 'active_filetypes': ['javascript', 'perl'],
-""\ 'passive_filetypes': []
-""\ }
-"""" エラー表示マークを変更
-""let g:syntastic_enable_signs=1
-""let g:syntastic_error_symbol='✗'
-""let g:syntastic_warning_symbol='⚠'
+
+
+NeoBundle 'scrooloose/syntastic'
+
+let g:syntastic_check_on_open=0   " ファイルを開いたときはチェックしない
+let g:syntastic_check_on_save=1   " 保存時にはチェック
+let g:syntastic_auto_loc_list=1   " エラーがあったら自動でロケーションリストを開く
+let g:syntastic_loc_list_height=6 " エラー表示ウィンドウの高さ
+set statusline+=%#warningmsg#     " エラーメッセージの書式
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_mode_map = {
+            \ 'mode': 'active',
+            \ 'active_filetypes': ['javascript', 'perl'],
+            \ 'passive_filetypes': []
+            \ }
+
+"" エラー表示マークを変更
+let g:syntastic_enable_signs=1
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
 
 "" --------------------------------------------------
 "" アウトライン
 "" --------------------------------------------------
-""
-""NeoBundle 'h1mesuke/unite-outline'
-""nnoremap <C-o> :<C-u>Unite outline<CR>
-""nnoremap <C-o> :<C-u>Unite -no-quit -vertical -winwidth=30 -toggle outline<CR>
+
+NeoBundle 'h1mesuke/unite-outline'
+nnoremap <C-o> :<C-u>Unite outline<CR>
+nnoremap <C-o> :<C-u>Unite -no-quit -vertical -winwidth=30 -toggle outline<CR>
 
 "" --------------------------------------------------
-"" Ctrl-p
+"" ag
 "" --------------------------------------------------
 
-NeoBundle 'kien/ctrlp.vim'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ }
+NeoBundle 'rking/ag.vim'
 
 "" --------------------------------------------------
-"" scss
+"" HTML関係
 "" --------------------------------------------------
 
-NeoBundle 'cakebaker/scss-syntax.vim'
+NeoBundle 'othree/html5.vim', {'autoload': {'filetypes':'html'}}
+autocmd BufNewFile,BufRead *.tmpl,*.ctp set filetype=html
+
+"" --------------------------------------------------
+"" CSS関係
+"" --------------------------------------------------
+
+NeoBundle 'hail2u/vim-css3-syntax', {'autoload': {'filetypes':'css'}}
+NeoBundle 'skammer/vim-css-color', {'autoload': {'filetypes':'css'}}
+autocmd FileType css setlocal sw=2 sts=2 ts=2 et
+
+NeoBundle 'cakebaker/scss-syntax.vim', {'autoload': {'filetypes':['less', 'sass', 'scss']}}
 autocmd FileType less,sass,scss setlocal sw=2 sts=2 ts=2 et
+
+"" --------------------------------------------------
+"" JavaScript関係
+"" --------------------------------------------------
+
+NeoBundle 'jelera/vim-javascript-syntax', {'autoload': {'filetypes':'javascript'}}
+NeoBundle 'teramako/jscomplete-vim', {'autoload': {'filetypes':'javascript'}}
+let g:jscomplete_use = ['dom', 'moz', 'es5th']
+NeoBundle 'wookiehangover/jshint.vim', {'autoload': {'filetypes':'javascript'}}
 
 "" --------------------------------------------------
 "" キーマップ
@@ -394,9 +422,12 @@ autocmd FileType less,sass,scss setlocal sw=2 sts=2 ts=2 et
 "" --------------------------------------------------
 
 "" Ctrl-a Ctrl-eで移動できるようにする
-inoremap <C-a> <Home>
+function MoveCursorToHome()
+    exec col(".") != 1 ? "normal 0" : "normal ^"
+endfunction
+inoremap <silent> <C-a> <Esc>:call MoveCursorToHome()<CR>i
 inoremap <C-e> <End>
-noremap <C-a> <Home>
+noremap <silent> <C-a> :call MoveCursorToHome()<CR>
 noremap <C-e> <End>
 "" InsertモードでCtrlで移動可能に
 inoremap <C-d> <Del>
@@ -408,10 +439,8 @@ nnoremap <C-h> <Left>
 nnoremap <C-j> <Down>
 nnoremap <C-k> <Up>
 nnoremap <C-l> <Right>
-"" コピペ
-xnoremap <C-c> y`>
-xnoremap <C-x> x
-inoremap <C-v> <Esc>P
+"" コピー
+xnoremap y y`>
 "" 検索結果に移動したとき、その位置を画面の中央に
 nnoremap n nzz
 nnoremap N Nzz

@@ -9,19 +9,11 @@ ECLIPSE_DIR="$HOME/.eclipse"
 # vim-neobundleを使うために
 [ ! -d "$VIM_DIR" ] && mkdir -p "$VIM_DIR"
 [ ! -d "$VIM_DIR/bundle/neobundle.vim" ] && git clone https://github.com/Shougo/neobundle.vim "$VIM_DIR/bundle/neobundle.vim"
-[ ! -d "$VIM_DIR/bundle/vimproc" ] && git clone https://github.com/Shougo/vimproc "$VIM_DIR/bundle/vimproc" 
-cd "$VIM_DIR/bundle/neobundle.vim"
-git fetch && git pull origin master
-cd "$VIM_DIR/bundle/vimproc"
-git fetch && git pull origin master
-case "${OSTYPE}" in
-    darwin*)
-        [ -f "make_mac.mak" ] && make -f make_mac.mak
-        ;;
-    linux*)
-        [ -f "make_unix.mak" ] && make -f make_unix.mak
-        ;;
-esac
+cd "$VIM_DIR/bundle/neobundle.vim" && git fetch && git pull origin master
+
+# vimprocはNeoBundleで管理する
+# [ ! -d "$VIM_DIR/bundle/vimproc" ] && git clone https://github.com/Shougo/vimproc "$VIM_DIR/bundle/vimproc" 
+# cd "$VIM_DIR/bundle/vimproc" && git fetch && git pull origin master
 
 # vim-solarized-colorをインストール
 [ ! -d "$VIM_DIR/colors" ] && mkdir -p "$VIM_DIR/colors"
@@ -44,15 +36,34 @@ ln -s "$SHELL_DIR/.vimrc" "$HOME"
 ln -s "$SHELL_DIR/.zshrc" "$HOME"
 ln -s "$SHELL_DIR/.zshrc_git" "$HOME"
 
+# Keyremapのxml配置
 KEYREMAP4MAC_DIR="$HOME/Library/Application Support/KeyRemap4MacBook"
-
 if [ -d "$KEYREMAP4MAC_DIR" ]; then
     [ -f "$KEYREMAP4MAC_DIR/private.xml" ] && mv "$KEYREMAP4MAC_DIR/private.xml" "$KEYREMAP4MAC_DIR/private.xml.bk"
             
     ln -s "$SHELL_DIR/Library/Application Support/KeyRemap4MacBook/private.xml" "$KEYREMAP4MAC_DIR"
 fi
 
-vim -u "$HOME/.vimrc" +NeoBundleInstall +qa
-vim -u "$HOME/.vimrc" +NeoBundleUpdate +qa
-vim -u "$HOME/.vimrc" +NeoBundleCheck +qa
+# NeoBundleをインストール
+vim -u "$SHELL_DIR/.vimrc" +NeoBundleInstall +qa
+vim -u "$SHELL_DIR/.vimrc" +NeoBundleUpdate +qa
+
+# vimprocをコンパイル
+if [ -d "$VIM_DIR/bundle/vimproc" ]; then
+    cd "$VIM_DIR/bundle/vimproc"
+    case "${OSTYPE}" in
+        darwin*)
+            [ -f "make_mac.mak" ] && make -f make_mac.mak
+            ;;
+        linux*)
+            [ -f "make_unix.mak" ] && make -f make_unix.mak
+            ;;
+    esac
+fi
+
+# nodeモジュール
+[ ! -d "$HOME/.node" ] && mkdir -p "$HOME/.node"
+cd "$HOME/.node" && [ ! -d "$HOME/.node/jshint" ] && npm install jshint
+
+
 echo 'Done...'
