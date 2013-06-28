@@ -347,26 +347,13 @@ autocmd FileType scheme setlocal complete+=k~/.gosh_completions
 "" シンタックスハイライト
 "" --------------------------------------------------
 
-
 NeoBundle 'scrooloose/syntastic'
-
-let g:syntastic_check_on_open=0   " ファイルを開いたときはチェックしない
-let g:syntastic_check_on_save=1   " 保存時にはチェック
-let g:syntastic_auto_loc_list=1   " エラーがあったら自動でロケーションリストを開く
-let g:syntastic_loc_list_height=6 " エラー表示ウィンドウの高さ
-set statusline+=%#warningmsg#     " エラーメッセージの書式
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_mode_map = {
-            \ 'mode': 'active',
-            \ 'active_filetypes': ['javascript', 'perl'],
-            \ 'passive_filetypes': []
-            \ }
-
 "" エラー表示マークを変更
 let g:syntastic_enable_signs=1
 let g:syntastic_error_symbol='✗'
+let g:syntastic_style_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
+let g:syntastic_style_warning_symbol='⚠'
 
 "" --------------------------------------------------
 "" アウトライン
@@ -404,10 +391,8 @@ autocmd FileType less,sass,scss setlocal sw=2 sts=2 ts=2 et
 "" JavaScript関係
 "" --------------------------------------------------
 
-NeoBundle 'jelera/vim-javascript-syntax', {'autoload': {'filetypes':'javascript'}}
-NeoBundle 'teramako/jscomplete-vim', {'autoload': {'filetypes':'javascript'}}
+NeoBundle 'teramako/jscomplete-vim', {'autoload': {'filetypes':'js'}}
 let g:jscomplete_use = ['dom', 'moz', 'es5th']
-NeoBundle 'wookiehangover/jshint.vim', {'autoload': {'filetypes':'javascript'}}
 
 "" --------------------------------------------------
 "" キーマップ
@@ -430,6 +415,10 @@ inoremap <C-e> <End>
 noremap <silent> <C-a> :call MoveCursorToHome()<CR>
 noremap <C-e> <End>
 "" InsertモードでCtrlで移動可能に
+inoremap <Up> <Up>
+inoremap <Down> <Down>
+inoremap <Left> <Left>
+inoremap <Right> <Right>
 inoremap <C-d> <Del>
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
