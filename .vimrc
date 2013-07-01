@@ -2,85 +2,66 @@
 "" 一般設定
 "" --------------------------------------------------
 
-"" ターミナルのタイトルを変更する
+set nocompatible
 set title
-"" インデント方式
 set autoindent
-set tabstop=4
-set expandtab
-set shiftwidth=4
+set ruler cursorline showcmd showmode incsearch ignorecase smartcase expandtab number modeline shiftround infercase hidden
+set tabstop=4 softtabstop=4 bs=2 shiftwidth=4
 set smarttab
 retab
-"" インクリメンタル検索
-set incsearch
-set hlsearch
-"" 検索のループをさせない
-"set nowrapscan
-"" 検索後Esc連打でハイライトを消す
 set hlsearch
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
-"" Tabによるインデント回避
-set expandtab
-"" カーソルのある行番号の表示
-""set ruler
-"" カーソル行をハイライト
-""set cursorline
-"" タブ系の設定
 set showtabline=1
-"" 行番号表示
-set number
 set numberwidth=5
-"" バックアップとか自分でしろ
-set nobackup
-"" スワップファイル要らない
+set backup
+set history=100
 set noswapfile
-"" 対応する括弧の表示
 set showmatch
-"" 折り返さない
-"set nowrap
-"" Backspaceで消せるようにする
 set backspace=indent,eol,start
-"" カーソルを行頭、行末で止まらないようにする
 set whichwrap=b,s,h,l,<,>,[,]
-"" 改行コードの自動認識
 set fileformats=unix,dos,mac
-"" 文字コード指定
 set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,eucjp-ms,sjis
-"" ターミナルでマウスを使用できるようにする
 set mouse=a
 set ttymouse=xterm
-"" 256色ターミナル
 set t_Co=256
-"" ステータス行の表示
 set laststatus=2
-"" vi互換しない
-set nocompatible
-"" ビープ音すべてを無効にする
 set visualbell t_vb=
 set noerrorbells "エラーメッセージの表示時にビープを鳴らさない
-"" 最後に編集した行へ飛ぶ
+set list
+set listchars=tab:»-,eol:↲,extends:»,precedes:«,nbsp:%
+set wildmode=list:longest
+set textwidth=0
+if executable("ag")
+    set grepprg=ag\ -a
+endif
+set clipboard& clipboard+=autoselect
+set clipboard& clipboard+=unnamed
+if has('unnamedplus')
+    set clipboard& clipboard+=unnamedplus
+else
+    set clipboard& clipboard+=unnamed
+endif
+set completeopt& completeopt+=longest
+
 augroup vimrcEx
     autocmd BufRead * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 augroup END
-"" 不可視文字を表示
-set list
-set listchars=tab:»-,eol:↲,extends:»,precedes:«,nbsp:%
-"" 全角スペースを表示
 augroup highlightIdegraphicSpace
-autocmd!
-autocmd Colorscheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
-autocmd VimEnter,WinEnter * match IdeographicSpace /　/
+    autocmd!
+    autocmd Colorscheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
+    autocmd VimEnter,WinEnter * match IdeographicSpace /　/
 augroup END
-"" カーソルの形状
-""let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-""let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-"" Tabでコンプリート
-set wildmode=list:longest,list:full
-"" ファイルタイプの判別する
+
 filetype plugin indent on
 filetype indent on
 syntax on
+
+"" --------------------------------------------------
+"" Netrw
+"" --------------------------------------------------
+
+let g:netrw_liststyle=1
 
 "" --------------------------------------------------
 "" Neo Bundle
@@ -133,8 +114,6 @@ NeoBundle 'Shougo/unite.vim'
 
 NeoBundle 'Shougo/neocomplcache'
 
-"" 補完ウィンドウの設定
-set completeopt+=longest
 "" 起動時に有効化
 let g:neocomplcache_enable_at_startup = 1
 "" 大文字が入力されるまで大文字小文字の区別を無視する
@@ -271,7 +250,7 @@ let g:ctrlp_custom_ignore = {
 "" Jump to pm
 "" --------------------------------------------------
 
-NeoBundle 'nakatakeshi/jump2pm.vim', {'autoload': {'filetypes':'perl'}}
+NeoBundle 'nakatakeshi/jump2pm.vim', {'autoload': {'filetypes':['perl']}}
 
 "" split window vertically and jump to pm fine.
 autocmd FileType perl noremap fg :call Jump2pm('vne')<ENTER>
@@ -329,7 +308,7 @@ nmap k <Plug>(accelerated_jk_gk)
 
 ""NeoBundle 'slimv.vim'
 "" 春山さんのschemeの設定を使う
-NeoBundle 'haruyama/scheme.vim', {'autoload': {'filetypes':'scheme'}}
+NeoBundle 'haruyama/scheme.vim', {'autoload': {'filetypes':['scheme']}}
 autocmd FileType scheme :let is_gauche=1
 autocmd FileType scheme setlocal complete-=k
 autocmd FileType scheme setlocal complete+=k~/.gosh_completions
@@ -373,15 +352,15 @@ NeoBundle 'rking/ag.vim'
 "" HTML関係
 "" --------------------------------------------------
 
-NeoBundle 'othree/html5.vim', {'autoload': {'filetypes':'html'}}
+NeoBundle 'othree/html5.vim', {'autoload': {'filetypes':['html']}}
 autocmd BufNewFile,BufRead *.tmpl,*.ctp set filetype=html
 
 "" --------------------------------------------------
 "" CSS関係
 "" --------------------------------------------------
 
-NeoBundle 'hail2u/vim-css3-syntax', {'autoload': {'filetypes':'css'}}
-NeoBundle 'skammer/vim-css-color', {'autoload': {'filetypes':'css'}}
+NeoBundle 'hail2u/vim-css3-syntax', {'autoload': {'filetypes':['css']}}
+NeoBundle 'skammer/vim-css-color', {'autoload': {'filetypes':['css']}}
 autocmd FileType css setlocal sw=2 sts=2 ts=2 et
 
 NeoBundle 'cakebaker/scss-syntax.vim', {'autoload': {'filetypes':['less', 'sass', 'scss']}}
@@ -391,8 +370,7 @@ autocmd FileType less,sass,scss setlocal sw=2 sts=2 ts=2 et
 "" JavaScript関係
 "" --------------------------------------------------
 
-NeoBundle 'teramako/jscomplete-vim', {'autoload': {'filetypes':'js'}}
-let g:jscomplete_use = ['dom', 'moz', 'es5th']
+NeoBundle 'jelera/vim-javascript-syntax', {'autoload': {'filetypes':['javascript']}}
 
 "" --------------------------------------------------
 "" キーマップ
