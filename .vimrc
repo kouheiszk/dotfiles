@@ -408,7 +408,11 @@ let g:jscomplete_use = ['dom', 'moz', 'es5th']
 
 "" Ctrl-a Ctrl-eで移動できるようにする
 function MoveCursorToHome()
-    exec col(".") != 1 ? "normal 0" : "normal ^"
+    let c = col(".")
+    exec "normal ^"
+    if col(".") == c
+        exec "normal 0"
+    endif
 endfunction
 inoremap <silent> <C-a> <Esc>:call MoveCursorToHome()<CR>i
 inoremap <C-e> <End>
