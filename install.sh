@@ -23,18 +23,15 @@ if [ ! -d "$ECLIPSE_DIR" ]; then
     mkdir -p "$ECLIPSE_DIR"
 fi
 
-ln -s "$SHELL_DIR/.bash_profile" "$HOME"
-ln -s "$SHELL_DIR/.bashrc" "$HOME"
-ln -s "$SHELL_DIR/.eclipse/formatter" "$ECLIPSE_DIR"
-ln -s "$SHELL_DIR/.eclipse/keymap" "$ECLIPSE_DIR"
-ln -s "$SHELL_DIR/.gitconfig" "$HOME"
-ln -s "$SHELL_DIR/.gitignore_global" "$HOME"
-ln -s "$SHELL_DIR/.gosh_completions" "$HOME"
-ln -s "$SHELL_DIR/.profile" "$HOME"
-ln -s "$SHELL_DIR/.tmux.conf" "$HOME"
-ln -s "$SHELL_DIR/.vimrc" "$HOME"
-ln -s "$SHELL_DIR/.zshrc" "$HOME"
-ln -s "$SHELL_DIR/.zshrc_git" "$HOME"
+DOT_FILES=( .bash_profile .bashrc .gitconfig .gitignore_global .gosh_completions .profile .tmux.conf .vimrc .zshrc .zshrc_git .eclipse/formatter .eclipse/keymap )
+for file in ${DOT_FILES[@]}
+do
+    if [ -f "$HOME/$file" ]; then
+        [ -L "$HOME/$file" ] && continue
+        mv "$HOME/$file" "$HOME/${file}.bk"
+    fi
+    ln -s "$SHELL_DIR/$file" "$HOME/$file"
+done
 
 # Keyremapのxml配置
 KEYREMAP4MAC_DIR="$HOME/Library/Application Support/KeyRemap4MacBook"
@@ -45,6 +42,7 @@ if [ -d "$KEYREMAP4MAC_DIR" ]; then
 fi
 
 # NeoBundleをインストール
+vim -u "$SHELL_DIR/.vimrc" +NeoBundleClean +qa
 vim -u "$SHELL_DIR/.vimrc" +NeoBundleInstall +qa
 vim -u "$SHELL_DIR/.vimrc" +NeoBundleUpdate +qa
 

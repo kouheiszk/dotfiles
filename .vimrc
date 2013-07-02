@@ -385,7 +385,7 @@ NeoBundle 'jelera/vim-javascript-syntax', {'autoload': {'filetypes':['javascript
 "" --------------------------------------------------
 
 "" Ctrl-a Ctrl-eで移動できるようにする
-function MoveCursorToHome()
+function! MoveCursorToHome()
     let c = col(".")
     exec "normal ^"
     if col(".") == c
@@ -396,6 +396,8 @@ inoremap <silent> <C-a> <Esc>:call MoveCursorToHome()<CR>i
 inoremap <C-e> <End>
 noremap <silent> <C-a> :call MoveCursorToHome()<CR>
 noremap <C-e> <End>
+xnoremap <silent> <C-a> :call MoveCursorToHome()<CR>
+xnoremap <C-e> <End>
 "" InsertモードでCtrlで移動可能に
 inoremap <Up> <Up>
 inoremap <Down> <Down>
