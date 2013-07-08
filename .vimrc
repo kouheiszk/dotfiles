@@ -237,7 +237,7 @@ let g:ctrlp_cmd = 'CtrlP'
 "" let g:ctrlp_use_migemo = 1 " 日本語ファイルにマッチしたくなったときは、migemoを入れる
 let g:ctrlp_clear_cache_on_exit = 0 " 終了時キャッシュをクリアしない
 let g:ctrlp_mruf_max = 500 " MRUの最大記録数
-let g:ctrlp_max_depth = 40
+let g:ctrlp_max_depth = 20
 let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = {
@@ -250,7 +250,7 @@ let g:ctrlp_custom_ignore = {
 "" Jump to pm
 "" --------------------------------------------------
 
-NeoBundle 'nakatakeshi/jump2pm.vim', {'autoload': {'filetypes':['perl']}}
+NeoBundle 'nakatakeshi/jump2pm.vim', {'autoload': {'filetypes':['perl', 'yaml']}}
 
 "" split window vertically and jump to pm fine.
 autocmd FileType perl noremap fg :call Jump2pm('vne')<ENTER>
