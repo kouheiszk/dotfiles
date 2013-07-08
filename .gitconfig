@@ -28,9 +28,11 @@
     ft = fetch
     wh = whatchanged
     stat = log --stat --summary
-    history = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-    last = log -1 HEAD
-    logf = log --follow -p
+    ht = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    hf = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --follow -p
+    lt = log -1 HEAD
+    ld = log -u -1
+    lf = log --follow -p
 
 [include]
     path = ~/.gitconfig_local
