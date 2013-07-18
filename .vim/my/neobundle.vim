@@ -20,5 +20,10 @@ NeoBundle 'Shougo/vimproc', {
     \},
 \ }
 NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neosnippet'
+
+NeoBundle 'honza/vim-snippets'
 
 NeoBundleCheck
