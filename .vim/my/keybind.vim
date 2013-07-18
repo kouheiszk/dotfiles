@@ -18,12 +18,13 @@ function! MoveCursorToHome()
         exec "normal 0"
     endif
 endfunction
-inoremap <silent> <C-a> <Esc>:call MoveCursorToHome()<CR>i
+inoremap <silent> <C-a> <C-o>:call MoveCursorToHome()<CR>
 inoremap <C-e> <End>
 noremap <silent> <C-a> :call MoveCursorToHome()<CR>
 noremap <C-e> <End>
 xnoremap <silent> <C-a> :call MoveCursorToHome()<CR>
 xnoremap <C-e> <End>
+
 "" InsertモードでCtrlで移動可能に
 inoremap <C-d> <Del>
 inoremap <C-h> <Left>
@@ -34,8 +35,20 @@ nnoremap <C-h> <Left>
 nnoremap <C-j> <Down>
 nnoremap <C-k> <Up>
 nnoremap <C-l> <Right>
+
+"" InserモードでS-Cursorで移動できるようにする
+
+"" インデント
+nnoremap <Tab> >>
+nnoremap <S-Tab> <<
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+vnoremap < <gv
+vnoremap > >gv
+
 "" コピー
 xnoremap y y`>
+
 "" 検索結果に移動したとき、その位置を画面の中央に
 nnoremap n nzz
 nnoremap N Nzz
@@ -43,7 +56,10 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
+
 "" normalモードで、;でコマンドモードに入る
 noremap ; :
+
 "" Escでサーチのハイライトを解除する
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
+
