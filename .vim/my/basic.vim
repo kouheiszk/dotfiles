@@ -52,6 +52,7 @@ set shiftround    " Round indent when < or > is used
 set bs=2                       " 挿入モード以外でもbackspaceで削除できる
 set backspace=indent,eol,start " go to previous line with backspace
 set textwidth=0                " don't insert break automatically
+set whichwrap=b,s,<,>,[,]
 
 ""set foldmethod=marker " Use '{{{' and '}}}' for marker
 ""set foldmethod=indent

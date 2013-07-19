@@ -7,10 +7,8 @@ if has('vim_starting')
 endif
 
 NeoBundle 'Shougo/neobundle.vim'
-
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'Lokaltog/vim-powerline'
-
 NeoBundle 'Shougo/vimproc', {
     \'build' : {
         \   'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
@@ -21,9 +19,16 @@ NeoBundle 'Shougo/vimproc', {
 \ }
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'eagletmt/unite-haddock'
+NeoBundle 'kmnk/vim-unite-giti.git'
+NeoBundle 'tacroe/unite-mark'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
-
 NeoBundle 'honza/vim-snippets'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 't9md/vim-textmanip'
+NeoBundle 'YankRing.vim'
 
 NeoBundleCheck
+filetype plugin indent on

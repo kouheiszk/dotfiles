@@ -10,6 +10,8 @@
 "" map!/noremap!      -       @       @        -
 "" --------------------------------------------------
 
+let mapleader=" "
+
 "" Ctrl-a Ctrl-eで移動できるようにする
 function! MoveCursorToHome()
     let c = col(".")

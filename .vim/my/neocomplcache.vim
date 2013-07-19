@@ -1,15 +1,15 @@
-let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
-let g:neocomplcache_enable_smart_case = 1 " 大文字が入力されるまで大文字小文字の区別を無視する
-let g:neocomplcache_enable_auto_select = 1 " 自動選択する
-let g:neocomplcache_enable_underbar_completion = 0 
-let g:neocomplcache_enable_camel_case_completion = 0
-let g:neocomplcache_enable_wildcard = 0
-let g:neocomplcache_enable_fuzzy_completion = 1 " phでpublic_htmlを補完
+let g:neocomplcache_enable_at_startup             = 1 " 起動時に有効化
+let g:neocomplcache_enable_smart_case             = 1 " 大文字が入力されるまで大文字小文字の区別を無視する
+let g:neocomplcache_enable_auto_select            = 1 " 自動選択する
+let g:neocomplcache_enable_underbar_completion    = 0
+let g:neocomplcache_enable_camel_case_completion  = 0
+let g:neocomplcache_enable_wildcard               = 0
+let g:neocomplcache_enable_fuzzy_completion       = 1 " phでpublic_htmlを補完
 let g:neocomplcache_fuzzy_completion_start_length = 3
-let g:neocomplcache_enable_auto_delimiter = 1
-let g:neocomplcache_max_list = 100
+let g:neocomplcache_enable_auto_delimiter         = 1
+let g:neocomplcache_max_list                      = 100
 
-let g:neocomplcache_snippets_dir = $HOME . '/.vim/snippets'
+let g:neocomplcache_snippets_dir = $home . '/.vim/snippets'
 
 let g:neocomplcache_source_disable = {
     \ 'tags_complete' : 1,
