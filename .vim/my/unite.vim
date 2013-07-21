@@ -1,16 +1,16 @@
 let g:unite_enable_start_insert      = 1
-let g:unite_split_rule               = "botright"
 let g:unite_winheight                = "10"
-let g:unite_source_grep_default_opts = '-iRHn --color  = none'
+let g:unite_source_grep_default_opts = '-iRHn --color=none'
 let g:unite_source_session_options   = &sessionoptions
 
 " unite mapping
 nnoremap <Leader>u: :Unite 
-nnoremap <silent> <Leader>ub :<C-u>Unite buffer<CR> " バッファ一覧
-nnoremap <silent> <Leader>uf :<C-u>UniteWithBufferDir -buffer-name=files file file/new<CR> " ファイル一覧
-nnoremap <silent> <Leader>ur :<C-u>Unite -buffer-name=register register<CR> " レジスタ一覧
-nnoremap <silent> <Leader>us :<C-u>Unite file_mru<CR> " 最近使用したファイル一覧
-nnoremap <silent> <Leader>ua :<C-u>Unite buffer file_mru bookmark tab<CR> " 全部乗せ
+nnoremap <silent> <Leader>ub :<C-u>Unite buffer<CR> 
+nnoremap <silent> <Leader>uf :<C-u>UniteWithBufferDir -buffer-name=files file file/new<CR>
+nnoremap <silent> <Leader>ur :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> <Leader>us :<C-u>Unite file_mru<CR>
+nnoremap <silent> <Leader>ua :<C-u>Unite buffer file_mru bookmark tab<CR>
+nnoremap <silent> <Leader>uy :<C-u>Unite history/yank<CR> 
 nnoremap <silent> <Leader>uo :<C-u>Unite outline<CR>
 nnoremap <silent> <Leader>um :<C-u>Unite mark<CR>
 nnoremap <silent> <Leader>uc :<C-u>Unite command<CR>

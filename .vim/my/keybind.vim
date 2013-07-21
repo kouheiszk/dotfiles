@@ -12,6 +12,15 @@
 
 let mapleader=" "
 
+"" Leaderのショートカット
+nnoremap <SID>(toggle-paste)          :<C-u>set paste!<CR>
+nnoremap <SID>(toggle-number)         :<C-u>set number!<CR>
+nnoremap <SID>(toggle-relativenumber) :<C-u>set relativenumber!<CR>
+
+nnoremap <Leader>1 <SID>(toggle-number)
+nnoremap <Leader>2 <SID>(toggle-relativenumber)
+nnoremap <Leader>3 <SID>(toggle-paste)
+
 "" Ctrl-a Ctrl-eで移動できるようにする
 function! MoveCursorToHome()
     let c = col(".")

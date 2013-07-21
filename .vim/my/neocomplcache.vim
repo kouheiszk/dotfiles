@@ -1,3 +1,7 @@
+"" --------------------------------------------------
+"" Neocomplcache
+"" --------------------------------------------------
+
 let g:neocomplcache_enable_at_startup             = 1 " 起動時に有効化
 let g:neocomplcache_enable_smart_case             = 1 " 大文字が入力されるまで大文字小文字の区別を無視する
 let g:neocomplcache_enable_auto_select            = 1 " 自動選択する

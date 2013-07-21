@@ -86,8 +86,6 @@ set shortmess+=I
 "" tabline
 set showtabline=1
 
-
-
 set completeopt& completeopt+=longest
 set matchpairs& matchpairs+=<:>
 set nrformats-=octal

@@ -6,6 +6,11 @@ MODULE_DIR="$SHELL_DIR/.module"
 VIM_DIR="$HOME/.vim"
 ECLIPSE_DIR="$HOME/.eclipse"
 
+if [ -f "$VIM_DIR" ]; then
+    [ ! -L "$VIM_DIR" ] && mv "$VIM_DIR" "$VIM_DIR.bk"
+fi
+[ ! -L "$VIM_DIR" ] && ln -s "$SHELL_DIR/.vim" "$VIM_DIR"
+
 # vim-neobundleを使うために
 [ ! -d "$VIM_DIR" ] && mkdir -p "$VIM_DIR"
 [ ! -d "$VIM_DIR/bundle/neobundle.vim" ] && git clone https://github.com/Shougo/neobundle.vim "$VIM_DIR/bundle/neobundle.vim"
@@ -65,3 +70,4 @@ cd "$HOME/.node" && [ ! -d "$HOME/.node/jshint" ] && npm install jshint
 
 
 echo 'Done...'
+

@@ -21,7 +21,7 @@ NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'eagletmt/unite-haddock'
-NeoBundle 'kmnk/vim-unite-giti.git'
+NeoBundle 'kmnk/vim-unite-giti'
 NeoBundle 'tacroe/unite-mark'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
@@ -29,6 +29,61 @@ NeoBundle 'honza/vim-snippets'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 't9md/vim-textmanip'
 NeoBundle 'YankRing.vim'
+NeoBundle 'kana/vim-smartinput'
+NeoBundle 'tpope/vim-endwise'
+NeoBundle 'haruyama/vim-matchopen'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'dannyob/quickfixstatus'
+NeoBundle 'sjl/gundo.vim'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'surround.vim'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'thinca/vim-qfreplace'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'thinca/vim-template'
+
+NeoBundleLazy 'html5.vim', {
+      \ "autoload": {
+      \   "filetypes": ["html"],
+      \ }}
+NeoBundleLazy 'Simple-Javascript-Indenter', {
+      \ "autoload": {
+      \   "filetypes": ["javascript"],
+      \ }}
+NeoBundleLazy 'jelera/vim-javascript-syntax', {
+      \ "autoload": {
+      \   "filetypes": ["javascript"],
+      \ }}
+NeoBundleLazy 'pangloss/vim-javascript', {
+      \ "autoload": {
+      \   "filetypes": ["javascript"],
+      \ }}
+NeoBundleLazy 'nono/jquery.vim', {
+      \ "autoload": {
+      \   "filetypes": ["javascript"],
+      \ }}
+NeoBundleLazy 'mklabs/grunt.vim', {
+      \ "autoload": {
+      \   "filetypes": ["javascript"],
+      \ }}
+NeoBundleLazy 'nakatakeshi/jump2pm.vim.git', {
+      \ "autoload": {
+      \   "filetypes": ["perl"],
+      \ }}
+NeoBundleLazy 'vim-perl/vim-perl', {
+      \ "autoload": {
+      \   "filetypes": ["perl"],
+      \ }}
+NeoBundleLazy 'haruyama/scheme.vim', {
+      \ "autoload": {
+      \   "filetypes": ["scheme"],
+      \ }}
+NeoBundleLazy "vim-pandoc/vim-pandoc", {
+      \ "autoload": {
+      \   "filetypes": ["text", "pandoc", "markdown", "rst", "textile"],
+      \ }}
 
 NeoBundleCheck
 filetype plugin indent on

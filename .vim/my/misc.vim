@@ -34,4 +34,66 @@ augroup END
 let g:template_vim_template_dir = $HOME . '/.vim/template'
 let g:template_vim_template_dirs = [$HOME . '/.vim/template']
 
+"" --------------------------------------------------
+"" smartinput - autocomp parenthesis, braces and more
+"" --------------------------------------------------
+
+call smartinput#define_rule({ 'at': '\[\_s*\%#\_s*\]', 'char': '<Enter>', 'input': '<Enter><C-o>O' })
+call smartinput#define_rule({ 'at': '{\_s*\%#\_s*}'  , 'char': '<Enter>', 'input': '<Enter><C-o>O' })
+call smartinput#define_rule({ 'at': '(\_s*\%#\_s*)'  , 'char': '<Enter>', 'input': '<Enter><C-o>O' })
+
+"" --------------------------------------------------
+"" endwise
+"" --------------------------------------------------
+
+"" http://cohama.hateblo.jp/entry/20121017/1350482411
+let g:endwise_no_mappings = 1
+augroup my_endwise_with_smartinput
+  autocmd!
+  autocmd FileType lua,ruby,sh,zsh,vb,vbnet,aspvbs,vim imap <buffer> <CR> <CR><Plug>DiscretionaryEnd
+augroup END
+
+"" --------------------------------------------------
+"" syntasitc
+"" --------------------------------------------------
+
+let g:syntastic_mode_map = { 'mode': 'active',
+            \ 'active_filetypes' : [],
+            \ 'passive_filetypes': ['java'] }
+let g:syntastic_error_symbol='E>' " ✗
+let g:syntastic_warning_symbol='W>' " ⚠
+let g:syntastic_echo_current_error=0 " too heavy, use below one
+
+"" --------------------------------------------------
+"" gundo
+"" --------------------------------------------------
+
+let g:gundo_right = 1
+let g:gundo_close_on_revert = 1
+
+nnoremap <Leader>G :GundoToggle<CR>
+
+"" --------------------------------------------------
+"" indent guide
+"" --------------------------------------------------
+
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
+
+"" --------------------------------------------------
+"" ctrl-p
+"" --------------------------------------------------
+
+let g:ctrlp_map = '<Leader><C-p>'
+let g:ctrlp_max_files = 0
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files --exclude-standard'] " speedup
+nnoremap <Leader><C-q> :CtrlPQuickfix<CR>
+nnoremap <Leader><C-m> :CtrlPMRU<CR>
+nnoremap <Leader><C-c> :CtrlPChangeAll<CR>
+nnoremap <Leader><C-l> :CtrlPLine<CR>
+nnoremap <Leader><C-t> :CtrlPTag<CR>
+
+
+
+
 

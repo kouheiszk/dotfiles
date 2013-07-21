@@ -1,2 +1,4 @@
 .vim/bundle/*
 .eclipse
+.vim/history/*
+.vim/undo/*
