@@ -2,6 +2,7 @@ noremap <silent> <Leader>t=  :Tabular /=/<CR>
 noremap <silent> <Leader>th  :Tabular /=>/<CR>
 noremap <silent> <Leader>t#  :Tabular /#/<CR>
 noremap <silent> <Leader>t\| :Tabular /\|/<CR>
+noremap <silent> <Leader>tc  :Tabular /\/\//<CR>
 " JavaScript-style
 noremap <silent> <Leader>t:  :Tabular /:/<CR>
 " YAML-style

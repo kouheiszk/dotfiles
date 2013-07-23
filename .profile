@@ -1,6 +1,7 @@
 # PATH
 # export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/.local/bin
+export NODE_PATH=$HOME/.node/bin
 
 # alias
 alias javac='javac -J-Dfile.encoding=UTF-8'

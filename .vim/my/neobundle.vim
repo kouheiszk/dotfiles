@@ -52,22 +52,6 @@ NeoBundleLazy 'Simple-Javascript-Indenter', {
       \ "autoload": {
       \   "filetypes": ["javascript"],
       \ }}
-NeoBundleLazy 'jelera/vim-javascript-syntax', {
-      \ "autoload": {
-      \   "filetypes": ["javascript"],
-      \ }}
-NeoBundleLazy 'pangloss/vim-javascript', {
-      \ "autoload": {
-      \   "filetypes": ["javascript"],
-      \ }}
-NeoBundleLazy 'nono/jquery.vim', {
-      \ "autoload": {
-      \   "filetypes": ["javascript"],
-      \ }}
-NeoBundleLazy 'mklabs/grunt.vim', {
-      \ "autoload": {
-      \   "filetypes": ["javascript"],
-      \ }}
 NeoBundleLazy 'nakatakeshi/jump2pm.vim.git', {
       \ "autoload": {
       \   "filetypes": ["perl"],

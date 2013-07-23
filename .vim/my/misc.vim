@@ -13,9 +13,9 @@ let g:yankring_history_dir  = $HOME . '/.vim/history'
 let g:yankring_manual_clipboard_check = 1
 
 function! RTrim()
-    let s:cursor = getpos('.')
-    %s/\s\+$//e
-    call setpos('.', s:cursor)
+  let s:cursor = getpos('.')
+  %s/\s\+$//e
+  call setpos('.', s:cursor)
 endfunction
 
 command! Rtrim :call RTrim()
@@ -58,11 +58,17 @@ augroup END
 "" --------------------------------------------------
 
 let g:syntastic_mode_map = { 'mode': 'active',
-            \ 'active_filetypes' : [],
-            \ 'passive_filetypes': ['java'] }
+      \ 'active_filetypes' : [],
+      \ 'passive_filetypes': ['java'] 
+      \ }
 let g:syntastic_error_symbol='E>' " ✗
 let g:syntastic_warning_symbol='W>' " ⚠
 let g:syntastic_echo_current_error=0 " too heavy, use below one
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_jump=1
+let g:syntastic_auto_loc_list=2
+nnoremap <leader>sign :sign<CR>
+nnoremap <leader>erros :Errors<CR>
 
 "" --------------------------------------------------
 "" gundo
@@ -70,7 +76,6 @@ let g:syntastic_echo_current_error=0 " too heavy, use below one
 
 let g:gundo_right = 1
 let g:gundo_close_on_revert = 1
-
 nnoremap <Leader>G :GundoToggle<CR>
 
 "" --------------------------------------------------
