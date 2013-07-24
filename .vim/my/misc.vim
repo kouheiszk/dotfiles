@@ -57,18 +57,20 @@ augroup END
 "" syntasitc
 "" --------------------------------------------------
 
-let g:syntastic_mode_map = { 'mode': 'active',
+let g:syntastic_mode_maps = { 'mode': 'active',
       \ 'active_filetypes' : [],
       \ 'passive_filetypes': ['java'] 
       \ }
-let g:syntastic_error_symbol='E>' " ✗
+let g:syntastic_error_symbol='E>' " 
 let g:syntastic_warning_symbol='W>' " ⚠
 let g:syntastic_echo_current_error=0 " too heavy, use below one
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
 let g:syntastic_auto_loc_list=2
-nnoremap <leader>sign :sign<CR>
-nnoremap <leader>erros :Errors<CR>
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
 "" --------------------------------------------------
 "" gundo
@@ -98,7 +100,12 @@ nnoremap <Leader><C-c> :CtrlPChangeAll<CR>
 nnoremap <Leader><C-l> :CtrlPLine<CR>
 nnoremap <Leader><C-t> :CtrlPTag<CR>
 
+"" --------------------------------------------------
+"" Quick Highlight
+"" --------------------------------------------------
 
-
-
+nmap <Leader>h <Plug>(quickhl-toggle)
+xmap <Leader>h <Plug>(quickhl-toggle)
+nmap <Leader>H <Plug>(quickhl-reset)
+xmap <Leader>H <Plug>(quickhl-reset)
 

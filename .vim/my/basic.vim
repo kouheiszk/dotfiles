@@ -83,13 +83,10 @@ set wildmenu                 " Enhanced completion
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so,*.swp,*.swo " Don't use matched files for completion
 set shortmess+=I
 
-"" tabline
-set showtabline=1
-
 set completeopt& completeopt+=longest
 set matchpairs& matchpairs+=<:>
 set nrformats-=octal
-set list listchars=tab:»-,eol:↲,extends:»,precedes:«,nbsp:%
+"" set list listchars=tab:»-,eol:↲,extends:»,precedes:«,nbsp:%
 
 "" --------------------------------------------------
 "" Language, Encoding

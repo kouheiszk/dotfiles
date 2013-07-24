@@ -43,12 +43,21 @@ NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-qfreplace'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-template'
+NeoBundle 't9md/vim-quickhl'
 
 NeoBundleLazy 'html5.vim', {
       \ "autoload": {
       \   "filetypes": ["html"],
       \ }}
 NeoBundleLazy 'Simple-Javascript-Indenter', {
+      \ "autoload": {
+      \   "filetypes": ["javascript"],
+      \ }}
+NeoBundle 'walm/jshint.vim', {
+      \ "autoload": {
+      \   "filetypes": ["javascript"],
+      \ }}
+NeoBundle 'jelera/vim-javascript-syntax', {
       \ "autoload": {
       \   "filetypes": ["javascript"],
       \ }}
@@ -59,6 +68,14 @@ NeoBundleLazy 'nakatakeshi/jump2pm.vim.git', {
 NeoBundleLazy 'vim-perl/vim-perl', {
       \ "autoload": {
       \   "filetypes": ["perl"],
+      \ }}
+NeoBundle 'shawncplus/php.vim', {
+      \ "autoload": {
+      \   "filetypes": ["php"],
+      \ }}
+NeoBundle 'arnaud-lb/vim-php-namespace', {
+      \ "autoload": {
+      \   "filetypes": ["php"],
       \ }}
 NeoBundleLazy 'haruyama/scheme.vim', {
       \ "autoload": {

@@ -1,6 +1,9 @@
+"" --------------------------------------------------
 "" 選択したテキストの移動
-vnoremap <C-j> <Plug>(Textmanip.move_selection_down)
-vnoremap <C-k> <Plug>(Textmanip.move_selection_up)
-vnoremap <C-h> <Plug>(Textmanip.move_selection_left)
-vnoremap <C-l> <Plug>(Textmanip.move_selection_right)
+"" --------------------------------------------------
+
+vmap <C-j> :<C-u>call textmanip#move('down')<CR>
+vmap <C-k> :<C-u>call textmanip#move('up')<CR>
+vmap <C-h> :<C-u>call textmanip#move('left')<CR>
+vmap <C-l> :<C-u>call textmanip#move('right')<CR>
 

@@ -4,6 +4,7 @@ autocmd!
 source $HOME/.vim/my/neobundle.vim
 source $HOME/.vim/my/basic.vim
 source $HOME/.vim/my/misc.vim
+source $HOME/.vim/my/tabline.vim
 source $HOME/.vim/my/template.vim
 source $HOME/.vim/my/tabular.vim
 source $HOME/.vim/my/textmanip.vim
