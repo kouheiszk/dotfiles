@@ -3,11 +3,10 @@ noremap <silent> <Leader>th  :Tabular /=>/<CR>
 noremap <silent> <Leader>t#  :Tabular /#/<CR>
 noremap <silent> <Leader>t\| :Tabular /\|/<CR>
 noremap <silent> <Leader>tc  :Tabular /\/\//<CR>
-" JavaScript-style
 noremap <silent> <Leader>t:  :Tabular /:/<CR>
+noremap <silent> <Leader>t,  :Tabular /,/<CR>
 " YAML-style
-noremap <silent> <Leader>t;  :Tabular/:\zs/<CR>
-noremap <silent> <Leader>t,  :Tabular/,\zs/<CR>
+noremap <silent> <Leader>ty  :Tabular /:\zs/<CR>
 
 vnoremap <silent> <Leader>t<Space> :Tabular multiple_spaces<CR>
 autocmd VimEnter * :AddTabularPipeline! multiple_spaces / \{2,}/

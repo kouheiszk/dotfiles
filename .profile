@@ -48,9 +48,6 @@ function git-root() {
 }
 alias gr='git-root'
 
-# node
-alias jshint='node ~/.node/node_modules/jshint/bin/jshint'
-
 # android
 [ -d /Applications/android-sdk/tools ] && export PATH=$PATH:/Applications/android-sdk/tools
 [ -d /Applications/android-sdk/platform-tools ] && export PATH=$PATH:/Applications/android-sdk/platform-tools

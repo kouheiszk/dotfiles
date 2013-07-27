@@ -38,7 +38,6 @@ let g:template_vim_template_dirs = [$HOME . '/.vim/template']
 "" smartinput - autocomp parenthesis, braces and more
 "" --------------------------------------------------
 
-call smartinput#define_rule({ 'at': '\[\_s*\%#\_s*\]', 'char': '<Enter>', 'input': '<Enter><C-o>O' })
 call smartinput#define_rule({ 'at': '{\_s*\%#\_s*}'  , 'char': '<Enter>', 'input': '<Enter><C-o>O' })
 call smartinput#define_rule({ 'at': '(\_s*\%#\_s*)'  , 'char': '<Enter>', 'input': '<Enter><C-o>O' })
 
@@ -50,27 +49,8 @@ call smartinput#define_rule({ 'at': '(\_s*\%#\_s*)'  , 'char': '<Enter>', 'input
 let g:endwise_no_mappings = 1
 augroup my_endwise_with_smartinput
   autocmd!
-  autocmd FileType lua,ruby,sh,zsh,vb,vbnet,aspvbs,vim imap <buffer> <CR> <CR><Plug>DiscretionaryEnd
+  autocmd FileType ruby,sh,zsh,vim imap <buffer> <CR> <CR><Plug>DiscretionaryEnd
 augroup END
-
-"" --------------------------------------------------
-"" syntasitc
-"" --------------------------------------------------
-
-let g:syntastic_mode_maps = { 'mode': 'active',
-      \ 'active_filetypes' : [],
-      \ 'passive_filetypes': ['java'] 
-      \ }
-let g:syntastic_error_symbol='E>' " 
-let g:syntastic_warning_symbol='W>' " ⚠
-let g:syntastic_echo_current_error=0 " too heavy, use below one
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_jump=1
-let g:syntastic_auto_loc_list=2
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 
 "" --------------------------------------------------
 "" gundo
@@ -91,9 +71,13 @@ let g:indent_guides_guide_size = 1
 "" ctrl-p
 "" --------------------------------------------------
 
-let g:ctrlp_map = '<Leader><C-p>'
-let g:ctrlp_max_files = 0
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files --exclude-standard'] " speedup
+let g:ctrlp_map            = '<Leader><C-p>'
+let g:ctrlp_by_filename    = 1
+let g:ctrlp_jump_to_buffer = 2
+let g:ctrlp_open_new_file  = 1
+let g:ctrlp_max_files      = 0
+let g:ctrlp_mruf_max       = 1000
+let g:ctrlp_user_command   = ['.git', 'cd %s && git ls-files --exclude-standard'] " speedup
 nnoremap <Leader><C-q> :CtrlPQuickfix<CR>
 nnoremap <Leader><C-m> :CtrlPMRU<CR>
 nnoremap <Leader><C-c> :CtrlPChangeAll<CR>

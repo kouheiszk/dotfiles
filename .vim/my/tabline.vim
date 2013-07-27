@@ -15,6 +15,9 @@ function! s:my_tabline()
     let no = i  " display 0-origin tabpagenr.
     let mod = getbufvar(bufnr, '&modified') ? '* ' : ' '
     let title = fnamemodify(bufname(bufnr), ':t')
+    if !len(title)
+      let title = 'undefined'
+    endif
     let s .= '%'.i.'T' 
     let s .= '%#' . (i == tabpagenr() ? 'TabLineSel' : 'TabLine') . '#'
     let s .= ' ' . no . ':' . title

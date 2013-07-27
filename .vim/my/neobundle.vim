@@ -7,8 +7,7 @@ if has('vim_starting')
 endif
 
 NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'Lokaltog/powerline', {'rtp' : 'powerline/bindings/vim'}
 NeoBundle 'Shougo/vimproc', {
     \'build' : {
         \   'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
@@ -17,7 +16,9 @@ NeoBundle 'Shougo/vimproc', {
         \   'unix' : 'make -f make_unix.mak',
     \},
 \ }
+
 NeoBundle 'Shougo/vimshell'
+NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'eagletmt/unite-haddock'
@@ -48,6 +49,10 @@ NeoBundle 't9md/vim-quickhl'
 NeoBundleLazy 'html5.vim', {
       \ "autoload": {
       \   "filetypes": ["html"],
+      \ }}
+NeoBundleLazy 'cakebaker/scss-syntax.vim', {
+      \ "autoload": {
+      \   "filetypes": ["scss"],
       \ }}
 NeoBundleLazy 'Simple-Javascript-Indenter', {
       \ "autoload": {
@@ -80,6 +85,10 @@ NeoBundle 'arnaud-lb/vim-php-namespace', {
 NeoBundleLazy 'haruyama/scheme.vim', {
       \ "autoload": {
       \   "filetypes": ["scheme"],
+      \ }}
+NeoBundleLazy 'violetyk/cake.vim', {
+      \ "autoload": {
+      \   "filetypes": ["php"],
       \ }}
 NeoBundleLazy "vim-pandoc/vim-pandoc", {
       \ "autoload": {

@@ -73,7 +73,7 @@ set smartcase         " Do not ignorecase if keyword contains uppercase
 "" status line and line number
 set number            " Show number of line on left
 set numberwidth=5
-set showcmd           " Show what keys input for command, but too slow on terminal
+set noshowcmd         " Always display the statusline in all windows
 set laststatus=2      " Always show statusline
 
 "" command line
@@ -121,4 +121,12 @@ colorscheme solarized
 "" --------------------------------------------------
 
 let g:Powerline_symbols = 'fancy'
+if !has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
+endif
 

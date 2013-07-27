@@ -16,17 +16,16 @@ let mapleader=" "
 nnoremap <SID>(toggle-paste)          :<C-u>set paste!<CR>
 nnoremap <SID>(toggle-number)         :<C-u>set number!<CR>
 nnoremap <SID>(toggle-relativenumber) :<C-u>set relativenumber!<CR>
-
-nnoremap <Leader>1 <SID>(toggle-number)
-nnoremap <Leader>2 <SID>(toggle-relativenumber)
-nnoremap <Leader>3 <SID>(toggle-paste)
+nmap <silent> <Leader>1 <SID>(toggle-number)
+nmap <silent> <Leader>2 <SID>(toggle-relativenumber)
+nmap <silent> <Leader>3 <SID>(toggle-paste)
 
 "" Ctrl-a Ctrl-eで移動できるようにする
 function! MoveCursorToHome()
     let c = col(".")
-    exec "normal ^"
+    exec "normal! ^"
     if col(".") == c
-        exec "normal 0"
+        exec "normal! 0"
     endif
 endfunction
 inoremap <silent> <C-a> <C-o>:call MoveCursorToHome()<CR>
