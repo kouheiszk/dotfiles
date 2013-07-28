@@ -71,5 +71,12 @@ nnoremap g# g#zz
 noremap ; :
 
 "" Escでサーチのハイライトを解除する
-nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
+noremap <Esc><Esc> :<C-u>set nohlsearch<CR>
+
+"" ビジュアルモードで選択した範囲を検索
+vnoremap z/ <ESC>/\%V
+vnoremap z? <ESC>?\%V
+
+"" 検索時に/をエスケープ
+cnoremap <expr>/ getcmdtype() == '/' ? '\/' : '/'
 

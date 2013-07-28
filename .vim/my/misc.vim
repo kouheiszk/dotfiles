@@ -71,18 +71,20 @@ let g:indent_guides_guide_size = 1
 "" ctrl-p
 "" --------------------------------------------------
 
-let g:ctrlp_map            = '<Leader><C-p>'
-let g:ctrlp_by_filename    = 1
-let g:ctrlp_jump_to_buffer = 2
-let g:ctrlp_open_new_file  = 1
-let g:ctrlp_max_files      = 0
-let g:ctrlp_mruf_max       = 1000
-let g:ctrlp_user_command   = ['.git', 'cd %s && git ls-files --exclude-standard'] " speedup
-nnoremap <Leader><C-q> :CtrlPQuickfix<CR>
-nnoremap <Leader><C-m> :CtrlPMRU<CR>
-nnoremap <Leader><C-c> :CtrlPChangeAll<CR>
-nnoremap <Leader><C-l> :CtrlPLine<CR>
-nnoremap <Leader><C-t> :CtrlPTag<CR>
+let g:ctrlp_map                 = '<Leader><C-p>'
+let g:ctrlp_by_filename         = 1
+let g:ctrlp_jump_to_buffer      = 2
+let g:ctrlp_open_new_file       = 't' " open in a new tab
+let g:ctrlp_open_multiple_files = 't'
+let g:ctrlp_max_files           = 0
+let g:ctrlp_mruf_max            = 1000
+let g:ctrlp_user_command        = ['.git', 'cd %s && git ls-files --exclude-standard'] " speedup
+let g:ctrlp_prompt_mappings     = { 
+      \ 'AcceptSelection("e")': ['<c-cr>', '<2-LeftMouse>'],
+      \ 'AcceptSelection("h")': ['<c-s>'],
+      \ 'AcceptSelection("t")': ['<c-t>', '<cr>'],
+      \ 'AcceptSelection("v")': ['<c-v>', '<RightMouse>'],
+      \ }
 
 "" --------------------------------------------------
 "" Quick Highlight
