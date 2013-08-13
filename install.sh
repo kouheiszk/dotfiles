@@ -28,7 +28,7 @@ if [ ! -d "$ECLIPSE_DIR" ]; then
     mkdir -p "$ECLIPSE_DIR"
 fi
 
-DOT_FILES=( .bash_profile .bashrc .gitconfig .gitignore_global .gosh_completions .profile .tmux.conf .vimrc .zshrc .zshrc_git .jshintrc .eclipse/formatter .eclipse/keymap )
+DOT_FILES=( .bash_profile .bashrc .gitconfig .gitignore_global .gosh_completions .profile .tmux.conf .vimrc .zshrc .zsh.d .jshintrc .eclipse/formatter .eclipse/keymap )
 for file in ${DOT_FILES[@]}
 do
     if [ -f "$HOME/$file" ]; then
@@ -63,10 +63,6 @@ if [ -d "$VIM_DIR/bundle/vimproc" ]; then
             ;;
     esac
 fi
-
-# nodeモジュール
-[ ! -d "$HOME/.node" ] && mkdir -p "$HOME/.node"
-cd "$HOME/.node" && [ ! -d "$HOME/.node/node_modules/jshint" ] && npm install jshint
 
 echo 'Done...'
 
