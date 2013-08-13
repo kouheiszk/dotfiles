@@ -20,7 +20,7 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'Shougo/unite-outline'
 NeoBundle 'eagletmt/unite-haddock'
 NeoBundle 'kmnk/vim-unite-giti'
 NeoBundle 'tacroe/unite-mark'
@@ -45,6 +45,7 @@ NeoBundle 'thinca/vim-qfreplace'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-template'
 NeoBundle 't9md/vim-quickhl'
+NeoBundle 'vim-jp/vital.vim'
 
 NeoBundleLazy 'html5.vim', {
       \ "autoload": {

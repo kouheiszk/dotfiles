@@ -78,7 +78,7 @@ let g:ctrlp_open_new_file       = 't' " open in a new tab
 let g:ctrlp_open_multiple_files = 't'
 let g:ctrlp_max_files           = 0
 let g:ctrlp_mruf_max            = 1000
-let g:ctrlp_user_command        = ['.git', 'cd %s && git ls-files --exclude-standard'] " speedup
+let g:ctrlp_user_command        = ['.git', 'cd %s && git ls-files --cached --others --exclude-standard'] " speedup
 let g:ctrlp_prompt_mappings     = { 
       \ 'AcceptSelection("e")': ['<c-cr>', '<2-LeftMouse>'],
       \ 'AcceptSelection("h")': ['<c-s>'],
@@ -94,4 +94,11 @@ nmap <Leader>h <Plug>(quickhl-toggle)
 xmap <Leader>h <Plug>(quickhl-toggle)
 nmap <Leader>H <Plug>(quickhl-reset)
 xmap <Leader>H <Plug>(quickhl-reset)
+
+"" --------------------------------------------------
+"" ag
+"" --------------------------------------------------
+
+let &grepprg='ag -a '
+
 

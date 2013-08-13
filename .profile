@@ -32,6 +32,7 @@ alias lld='ls -l | grep /'
 alias llaf='ls -al | grep -v /'
 alias llad='ls -al | grep /'
 alias ant='ant -logger org.apache.tools.ant.listener.AnsiColorLogger'
+alias ag='ag -aQ --search-binary'
 
 # gosh alias
 alias gosh="rlwrap -b '(){}[],#\";| ' gosh"
