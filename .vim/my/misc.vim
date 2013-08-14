@@ -101,4 +101,11 @@ xmap <Leader>H <Plug>(quickhl-reset)
 
 let &grepprg='ag -a '
 
+"" --------------------------------------------------
+"" vital.vim
+"" --------------------------------------------------
+
+let g:V = vital#of('vital')
+call extend(s:, g:V, 'keep')
+call g:V.load('Data.List').load('Data.String')
 
