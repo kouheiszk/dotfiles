@@ -9,13 +9,12 @@ endif
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Lokaltog/powerline', {'rtp' : 'powerline/bindings/vim'}
 NeoBundle 'Shougo/vimproc', {
-    \'build' : {
-        \   'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
-        \   'cygwin' : 'make -f make_cygwin.mak',
-        \   'mac' : 'make -f make_mac.mak',
-        \   'unix' : 'make -f make_unix.mak',
-    \},
-\ }
+      \ 'build' : {
+      \   'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
+      \   'cygwin' : 'make -f make_cygwin.mak',
+      \   'mac' : 'make -f make_mac.mak',
+      \   'unix' : 'make -f make_unix.mak',
+      \ }}
 
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'altercation/vim-colors-solarized'
@@ -24,7 +23,17 @@ NeoBundle 'Shougo/unite-outline'
 NeoBundle 'eagletmt/unite-haddock'
 NeoBundle 'kmnk/vim-unite-giti'
 NeoBundle 'tacroe/unite-mark'
-NeoBundle 'Shougo/neocomplcache'
+if has('lua')
+  NeoBundleLazy 'Shougo/neocomplete.vim', {
+        \ 'autoload': {
+        \   'insert': 1,
+        \ }}
+else
+  NeoBundleLazy 'Shougo/neocomplcache', {
+        \ 'autoload': {
+        \   'insert': 1,
+        \ }}
+endif
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'godlygeek/tabular'

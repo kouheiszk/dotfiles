@@ -4,6 +4,7 @@ autocmd!
 source $HOME/.vim/my/neobundle.vim
 source $HOME/.vim/my/basic.vim
 source $HOME/.vim/my/utilities.vim
+source $HOME/.vim/my/neocomplcache.vim
 source $HOME/.vim/my/misc.vim
 source $HOME/.vim/my/tabline.vim
 source $HOME/.vim/my/template.vim
@@ -17,3 +18,4 @@ source $HOME/.vim/my/keybind.vim
 if filereadable(expand('~/.vimrc.local'))
     source $HOME/.vimrc.local
 end
+

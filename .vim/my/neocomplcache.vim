@@ -2,9 +2,9 @@
 "" Neocomplcache
 "" --------------------------------------------------
 
+"" http://vim-users.jp/2010/10/hack177/
 let g:neocomplcache_enable_at_startup             = 1 " 起動時に有効化
 let g:neocomplcache_enable_smart_case             = 1 " 大文字が入力されるまで大文字小文字の区別を無視する
-let g:neocomplcache_enable_auto_select            = 1 " 自動選択する
 let g:neocomplcache_enable_underbar_completion    = 0
 let g:neocomplcache_enable_camel_case_completion  = 0
 let g:neocomplcache_enable_wildcard               = 0
@@ -19,8 +19,9 @@ let g:neocomplcache_source_disable = {
     \ 'tags_complete' : 1,
 \ }
 let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'default'    : '',
-    \ 'perl'       : $HOME . '/.vim/dict/perl.dict'
+    \ 'default' : '',
+    \ 'perl'    : $HOME . '/.vim/dict/perl.dict',
+    \ 'scheme'  : $HOME . '/.gosh_completions'
 \ }
 
 let g:neocomplcache_min_syntax_length = 3 " シンタックスをキャッシュするときの最小文字長
