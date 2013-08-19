@@ -24,7 +24,7 @@
     ci = commit
     st = status
     br = branch
-    di = diff
+    di = diff --color --color-words
     ft = fetch
     wh = whatchanged
     stat = log --stat --summary

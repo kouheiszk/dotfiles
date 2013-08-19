@@ -46,6 +46,7 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-template'
 NeoBundle 't9md/vim-quickhl'
 NeoBundle 'vim-jp/vital.vim'
+NeoBundle 'rhysd/accelerated-jk'
 
 NeoBundleLazy 'html5.vim', {
       \ "autoload": {

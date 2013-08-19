@@ -13,8 +13,20 @@ let g:syntastic_perl_lib_path = './lib'
 
 nnoremap <buffer> <silent> ,f :!perldoc -f <cword><Enter>
 
-"setl path+=lib
-"setl isfname-=-
-noremap gf :call Jump2pm('sp')<ENTER>
+"" --------------------------------------------------
+"" Jump2pmの設定
+"" --------------------------------------------------
+
+"" split window vertically and jump to pm fine.
+noremap <silent> fg :call Jump2pm('tabe')<ENTER>
+"" jump to pm file in current window
+noremap <silent> ff :call Jump2pm('e')<ENTER>
+"" split window horizontal, and ...
+noremap <silent> fd :call Jump2pm('sp')<ENTER>
+"" open tab, and ...
+noremap <silent> fd :call Jump2pm('tabe')<ENTER>
+"" for visual mode, use Jump2pmV()
+vnoremap <silent> fg :call Jump2pmV('tabe')<ENTER>
+
 let &cpo = s:save_cpo
 unlet s:save_cpo
