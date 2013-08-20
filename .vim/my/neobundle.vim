@@ -69,10 +69,6 @@ NeoBundleLazy 'Simple-Javascript-Indenter', {
       \ "autoload": {
       \   "filetypes": ["javascript"],
       \ }}
-NeoBundle 'walm/jshint.vim', {
-      \ "autoload": {
-      \   "filetypes": ["javascript"],
-      \ }}
 NeoBundle 'jelera/vim-javascript-syntax', {
       \ "autoload": {
       \   "filetypes": ["javascript"],

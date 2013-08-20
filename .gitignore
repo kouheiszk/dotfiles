@@ -2,3 +2,4 @@
 .eclipse
 .vim/history/*
 .vim/undo/*
+.vim/.netrwhist
