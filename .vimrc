@@ -4,7 +4,11 @@ autocmd!
 source $HOME/.vim/my/neobundle.vim
 source $HOME/.vim/my/basic.vim
 source $HOME/.vim/my/utilities.vim
-source $HOME/.vim/my/neocomplcache.vim
+if has('lua')
+  source $HOME/.vim/my/neocomplete.vim
+else
+  source $HOME/.vim/my/neocomplcache.vim
+endif
 source $HOME/.vim/my/misc.vim
 source $HOME/.vim/my/tabline.vim
 source $HOME/.vim/my/template.vim

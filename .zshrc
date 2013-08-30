@@ -1,5 +1,5 @@
 # ~/.zsh.d/zshrc を読み込む
-[ -f ~/.zsh.d/zshrc ] && source ~/.zsh.d/zshrc
+# [ -f ~/.zsh.d/zshrc ] && source ~/.zsh.d/zshrc
 
 # ~/.profile を読み込む
 [ -f ~/.profile ] && source ~/.profile

@@ -116,3 +116,27 @@ let g:V = vital#of('vital')
 call extend(s:, g:V, 'keep')
 call g:V.load('Data.List').load('Data.String')
 
+
+"" --------------------------------------------------
+"" quickrun
+"" --------------------------------------------------
+
+set splitbelow splitright
+"" quickrunの出力結果にAnsiEscを実行して色付けする
+autocmd FileType quickrun AnsiEsc
+"" quickrunの実行モジュールをvimprocに設定する
+let g:quickrun_config = {}
+let g:quickrun_config._ = {'runner' : 'vimproc'}"
+let g:quickrun_config = {
+  \ '_': {
+  \   'runner': 'vimproc',
+  \   'runner/vimproc/updatetime' : 30,
+  \   'outputter/buffer/split' : ':botright 10sp',
+  \   'hook/time/enable': '1',
+  \ }}
+
+
+
+
+
+

@@ -35,11 +35,9 @@ HISTFILE="$HOME/.zhistory"
 
 function history-all { history -E 1 }
 
-
-if type ruby > /dev/null 2>&1; then
-        _cache_hosts=(`ruby -ne 'if /^Host\s+(.+)$/; print $1.strip, "\n"; end' ~/.ssh/config`)
-fi
-
+#if type ruby > /dev/null 2>&1; then
+#    _cache_hosts=(`ruby -ne 'if /^Host\s+(.+)$/; print $1.strip, "\n"; end' ~/.ssh/config`)
+#fi
 
 fpath=($HOME/.zsh.d/packages/zsh-completions/src $fpath)
 autoload -U compinit

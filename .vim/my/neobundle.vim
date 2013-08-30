@@ -53,6 +53,7 @@ NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-qfreplace'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-template'
+NeoBundle 'vim-scripts/AnsiEsc.vim'
 NeoBundle 't9md/vim-quickhl'
 NeoBundle 'vim-jp/vital.vim'
 NeoBundle 'rhysd/accelerated-jk'
@@ -89,13 +90,22 @@ NeoBundle 'arnaud-lb/vim-php-namespace', {
       \ "autoload": {
       \   "filetypes": ["php"],
       \ }}
+NeoBundleLazy 'violetyk/cake.vim', {
+      \ "autoload": {
+      \   "filetypes": ["php"],
+      \ }}
 NeoBundleLazy 'haruyama/scheme.vim', {
       \ "autoload": {
       \   "filetypes": ["scheme"],
       \ }}
-NeoBundleLazy 'violetyk/cake.vim', {
-      \ "autoload": {
-      \   "filetypes": ["php"],
+NeoBundleLazy 'vim-scripts/ruby-matchit', {
+      \ 'autoload' : {
+      \   'filetypes': 'ruby',
+      \ }}
+NeoBundleLazy 'edsono/vim-matchit', {
+      \ 'autoload' : {
+      \   'filetypes': 'ruby',
+      \   'mappings' : ['nx', '%']
       \ }}
 NeoBundleLazy "vim-pandoc/vim-pandoc", {
       \ "autoload": {
