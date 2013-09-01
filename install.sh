@@ -66,7 +66,6 @@ if [ -d "$VIM_DIR/bundle/vimproc" ]; then
 fi
 
 # nodeモジュール
-[ ! -d "$HOME/.node" ] && mkdir -p "$HOME/.node"
-cd "$HOME/.node" && [ ! -d "$HOME/.node/jshint" ] && npm install -g jshint
+npm install -g jshint
 
 echo 'Done...'
