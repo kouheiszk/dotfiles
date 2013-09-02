@@ -49,8 +49,6 @@ nnoremap <C-l> <Right>
 "" InserモードでS-Cursorで移動できるようにする
 
 "" インデント
-nnoremap <Tab> >>
-nnoremap <S-Tab> <<
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 vnoremap < <gv

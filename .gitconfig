@@ -25,6 +25,7 @@
     st = status
     br = branch
     di = diff --color --color-words
+    dp = diff --color --patience
     ft = fetch
     wh = whatchanged
     stat = log --stat --summary
