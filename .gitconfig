@@ -34,6 +34,7 @@
     lt = log -1 HEAD
     ld = log -u -1
     lf = log --follow -p
+    cifu = commit --fixup=HEAD
 
 [include]
     path = ~/.gitconfig_local

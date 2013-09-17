@@ -13,9 +13,10 @@
     "debug"     : true,  // debugger を許可
 
     "globals": {
-        "_"      : false,
-        "$"      : false,
-        "$j"     : false,
-        "jQuery" : false
+        "_"         : false,
+        "$"         : false,
+        "$j"        : false,
+        "jQuery"    : false,
+        "Namespace" : false
     }
 }

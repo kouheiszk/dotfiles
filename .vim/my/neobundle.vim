@@ -57,6 +57,7 @@ NeoBundle 'vim-scripts/AnsiEsc.vim'
 NeoBundle 't9md/vim-quickhl'
 NeoBundle 'vim-jp/vital.vim'
 NeoBundle 'rhysd/accelerated-jk'
+NeoBundle 'rking/ag.vim'
 
 NeoBundleLazy 'html5.vim', {
       \ "autoload": {

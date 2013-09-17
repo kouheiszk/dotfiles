@@ -120,7 +120,7 @@ colorscheme solarized
 "" Power Line
 "" --------------------------------------------------
 
-let g:Powerline_symbols = 'fancy'
+"" let g:Powerline_symbols = 'fancy'
 if !has('gui_running')
     set ttimeoutlen=10
     augroup FastEscape

@@ -78,3 +78,5 @@ vnoremap z? <ESC>?\%V
 "" 検索時に/をエスケープ
 cnoremap <expr>/ getcmdtype() == '/' ? '\/' : '/'
 
+"" window操作
+nmap <silent> <C-w>a <C-w>_<C-w>|

@@ -22,9 +22,9 @@ noremap <silent> fg :call Jump2pm('tabe')<ENTER>
 "" jump to pm file in current window
 noremap <silent> ff :call Jump2pm('e')<ENTER>
 "" split window horizontal, and ...
-noremap <silent> fd :call Jump2pm('sp')<ENTER>
+noremap <silent> fh :call Jump2pm('sp')<ENTER>
 "" open tab, and ...
-noremap <silent> fd :call Jump2pm('tabe')<ENTER>
+noremap <silent> fv :call Jump2pm('vsp')<ENTER>
 "" for visual mode, use Jump2pmV()
 vnoremap <silent> fg :call Jump2pmV('tabe')<ENTER>
 

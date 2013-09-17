@@ -1,5 +1,5 @@
 " Markdown
-augroup ftdetect_markdown
+augroup ftdetect_scss
   autocmd!
   autocmd BufNewFile,BufRead *.{scss} set filetype=scss
 augroup END
