@@ -19,7 +19,7 @@ source $HOME/.vim/my/unite.vim
 source $HOME/.vim/my/vimshell.vim
 source $HOME/.vim/my/keybind.vim
 
-if filereadable(expand('~/.vimrc.local'))
-    source $HOME/.vimrc.local
+if filereadable(expand('~/.vim_local/.vimrc'))
+  source $HOME/.vim_local/.vimrc
 end
 
