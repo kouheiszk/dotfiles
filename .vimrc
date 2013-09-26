@@ -19,7 +19,8 @@ source $HOME/.vim/my/unite.vim
 source $HOME/.vim/my/vimshell.vim
 source $HOME/.vim/my/keybind.vim
 
-if filereadable(expand('~/.vim_local/.vimrc'))
-  source $HOME/.vim_local/.vimrc
+if filereadable(expand('~/.local_vim/.vimrc'))
+  set rtp+=~/.local_vim
+  source $HOME/.local_vim/.vimrc
 end
 
