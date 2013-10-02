@@ -60,44 +60,54 @@ NeoBundle 'rhysd/accelerated-jk'
 NeoBundle 'rking/ag.vim'
 
 NeoBundleLazy 'html5.vim', {
-      \ "autoload": {
-      \   "filetypes": ["html"],
+      \ 'autoload': {
+      \   'filetypes': ['html'],
       \ }}
 NeoBundleLazy 'cakebaker/scss-syntax.vim', {
-      \ "autoload": {
-      \   "filetypes": ["scss"],
+      \ 'autoload': {
+      \   'filetypes': ['scss'],
       \ }}
 NeoBundleLazy 'Simple-Javascript-Indenter', {
-      \ "autoload": {
-      \   "filetypes": ["javascript"],
+      \ 'autoload': {
+      \   'filetypes': ['javascript'],
       \ }}
 NeoBundle 'jelera/vim-javascript-syntax', {
-      \ "autoload": {
-      \   "filetypes": ["javascript"],
+      \ 'autoload': {
+      \   'filetypes': ['javascript'],
+      \ }}
+NeoBundleLazy 'marijnh/tern_for_vim', {
+      \ 'autoload': {
+      \   'filetypes': ['javascript'],
+      \ },
+      \ 'build' : {
+      \   'windows' : 'npm install',
+      \   'cygwin' : 'npm install',
+      \   'mac' : 'npm install',
+      \   'unix' : 'npm install',
       \ }}
 NeoBundleLazy 'nakatakeshi/jump2pm.vim.git', {
-      \ "autoload": {
-      \   "filetypes": ["perl"],
+      \ 'autoload': {
+      \   'filetypes': ['perl'],
       \ }}
 NeoBundleLazy 'vim-perl/vim-perl', {
-      \ "autoload": {
-      \   "filetypes": ["perl"],
+      \ 'autoload': {
+      \   'filetypes': ['perl'],
       \ }}
 NeoBundle 'shawncplus/php.vim', {
-      \ "autoload": {
-      \   "filetypes": ["php"],
+      \ 'autoload': {
+      \   'filetypes': ['php'],
       \ }}
 NeoBundle 'arnaud-lb/vim-php-namespace', {
-      \ "autoload": {
-      \   "filetypes": ["php"],
+      \ 'autoload': {
+      \   'filetypes': ['php'],
       \ }}
 NeoBundleLazy 'violetyk/cake.vim', {
-      \ "autoload": {
-      \   "filetypes": ["php"],
+      \ 'autoload': {
+      \   'filetypes': ['php'],
       \ }}
 NeoBundleLazy 'haruyama/scheme.vim', {
-      \ "autoload": {
-      \   "filetypes": ["scheme"],
+      \ 'autoload': {
+      \   'filetypes': ['scheme'],
       \ }}
 NeoBundleLazy 'vim-scripts/ruby-matchit', {
       \ 'autoload' : {
@@ -108,9 +118,9 @@ NeoBundleLazy 'edsono/vim-matchit', {
       \   'filetypes': 'ruby',
       \   'mappings' : ['nx', '%']
       \ }}
-NeoBundleLazy "vim-pandoc/vim-pandoc", {
-      \ "autoload": {
-      \   "filetypes": ["text", "pandoc", "markdown", "rst", "textile"],
+NeoBundleLazy 'vim-pandoc/vim-pandoc', {
+      \ 'autoload': {
+      \   'filetypes': ['text', 'pandoc', 'markdown', 'rst', 'textile'],
       \ }}
 
 NeoBundleCheck

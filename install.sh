@@ -5,7 +5,7 @@ MODULE_DIR="$SHELL_DIR/.module"
 
 VIM_DIR="$HOME/.vim"
 ECLIPSE_DIR="$HOME/.eclipse"
-
+if (( 0 )); then
 # vim-neobundleを使うために
 [ ! -d "$VIM_DIR" ] && mkdir -p "$VIM_DIR"
 [ ! -d "$VIM_DIR/bundle/neobundle.vim" ] && git clone https://github.com/Shougo/neobundle.vim "$VIM_DIR/bundle/neobundle.vim"
@@ -24,7 +24,7 @@ if [ ! -d "$ECLIPSE_DIR" ]; then
     mkdir -p "$ECLIPSE_DIR"
 fi
 
-DOT_FILES=( .bash_profile .bashrc .gitconfig .gitignore_global .gosh_completions .profile .tmux.conf .vimrc .zshrc .zsh.d .jshintrc .eclipse/formatter .eclipse/keymap )
+DOT_FILES=( .bash_profile .bashrc .gitconfig .gitignore_global .gosh_completions .profile .tmux.conf .vimrc .zshrc .zsh.d .jshintrc .eclipse/formatter .eclipse/keymap .tern-project )
 for file in ${DOT_FILES[@]}
 do
     if [ -d "$HOME/$file" ]; then
@@ -64,8 +64,15 @@ if [ -d "$VIM_DIR/bundle/vimproc" ]; then
             ;;
     esac
 fi
+fi
+# tern_namespace_js_plugin
+TERN_DIR="$VIM_DIR/bundle/tern_for_vim/node_modules/tern"
+if [ -d $TERN_DIR ]; then
+    cp "$MODULE_DIR/tern_namespace_js_plugin/namespace.js" "$TERN_DIR/plugin/namespace.js"
+    [ ! -f "$TERN_PLUGIN_DIR/defs/jquery.json.orig" ] && /bin/sed -i.orig -e "s/\"$\": \"jQuery\"/\"$\": \"jQuery\",\n  \"\$j\": \"jQuery\"/g" "$TERN_DIR/defs/jquery.json"
+fi
 
 # nodeモジュール
-npm install -g jshint
+npm install jshint
 
 echo 'Done...'

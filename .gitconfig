@@ -37,5 +37,5 @@
     cifu = commit --fixup=HEAD
 
 [include]
-    path = ~/.gitconfig_local
+    path = ~/.local_gitconfig
 

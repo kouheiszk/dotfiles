@@ -11,6 +11,9 @@
 project.properties
 *.classpath
 
+# projects
+.tern-project
+
 # idea
 .idea
 *.iml
