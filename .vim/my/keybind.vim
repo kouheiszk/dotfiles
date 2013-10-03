@@ -46,6 +46,11 @@ nnoremap <C-j> <Down>
 nnoremap <C-k> <Up>
 nnoremap <C-l> <Right>
 
+"" .vimrcを瞬時に開く
+nnoremap <silent> <Space><Space>. :e $MYVIMRC<CR>
+"" vimrcの設定を反映
+nnoremap <silent> <Space><Space>.. :<C-u>source $MYVIMRC<CR>
+
 "" InserモードでS-Cursorで移動できるようにする
 
 "" インデント

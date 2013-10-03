@@ -93,6 +93,10 @@ NeoBundleLazy 'vim-perl/vim-perl', {
       \ 'autoload': {
       \   'filetypes': ['perl'],
       \ }}
+""NeoBundleLazy 'c9s/perlomni.vim', {
+""      \ 'autoload' : {
+""      \   'filetypes' : ['perl'],
+""      \ }}
 NeoBundle 'shawncplus/php.vim', {
       \ 'autoload': {
       \   'filetypes': ['php'],
