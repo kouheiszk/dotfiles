@@ -17,3 +17,6 @@ project.properties
 # idea
 .idea
 *.iml
+
+# xcode
+xcshareddata

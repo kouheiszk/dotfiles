@@ -1,7 +1,7 @@
 # PATH
 # export PATH=/usr/local/sbin:$PATH
 export DEFAULT_PATH=$PATH
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/.local/bin:$DEFAULT_PATH
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/.local/bin:/usr/local/opt/ruby/bin:$DEFAULT_PATH
 
 # alias
 alias javac='javac -J-Dfile.encoding=UTF-8'
