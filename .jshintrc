@@ -7,7 +7,7 @@
     // グローバル変数へのアクセスの管理
     "undef"     : true, // グローバル変数へのアクセスを禁止
     "browser"   : true,  // ブラウザ用のやつは許可
-    "camelcase" : true, // キャメルケース
+    "camelcase" : false, // キャメルケース
     "eqeqeq"    : true, // ==、!=の使用禁止
     "devel"     : true,  // console、alertを許可
     "debug"     : true,  // debugger を許可

@@ -3,7 +3,7 @@ MODULE_DIR=""
 if [ -L $SELF ]; then
     case "$OSTYPE" in
         darwin*)
-            REAL_SELF="$HOME/`readlink $SELF`"
+            REAL_SELF="`readlink $SELF`"
         ;;
         linux*)
             REAL_SELF=`readlink $SELF`
