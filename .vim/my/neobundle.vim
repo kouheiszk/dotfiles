@@ -34,6 +34,7 @@ else
         \   'insert': 1,
         \ }}
 endif
+NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'godlygeek/tabular'
