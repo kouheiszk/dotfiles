@@ -22,11 +22,11 @@ nmap <silent> <Leader>3 <SID>(toggle-paste)
 
 "" Ctrl-a Ctrl-eで移動できるようにする
 function! MoveCursorToHome()
-    let c = col(".")
-    exec "normal! ^"
-    if col(".") == c
-        exec "normal! 0"
-    endif
+  let c = col(".")
+  exec "normal! ^"
+  if col(".") == c
+    exec "normal! 0"
+  endif
 endfunction
 inoremap <silent> <C-a> <C-o>:call MoveCursorToHome()<CR>
 inoremap <C-e> <End>
@@ -51,8 +51,6 @@ nnoremap <silent> <Space><Space>. :e $MYVIMRC<CR>
 "" vimrcの設定を反映
 nnoremap <silent> <Space><Space>.. :<C-u>source $MYVIMRC<CR>
 
-"" InserモードでS-Cursorで移動できるようにする
-
 "" インデント
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
@@ -74,7 +72,15 @@ nnoremap g# g#zz
 noremap ; :
 
 "" Escでサーチのハイライトを解除する
-noremap <Esc><Esc> :<C-u>set nohlsearch<CR>
+function! ToggleHighlighting()
+  if &hlsearch
+    set nohlsearch
+  else
+    set hlsearch
+  endif
+endfunction
+
+nmap <silent> <Esc><Esc> :call ToggleHighlighting()<CR>
 
 "" ビジュアルモードで選択した範囲を検索
 vnoremap z/ <ESC>/\%V
@@ -85,3 +91,34 @@ cnoremap <expr>/ getcmdtype() == '/' ? '\/' : '/'
 
 "" window操作
 nmap <silent> <C-w>a <C-w>_<C-w>|
+
+"" C-wでトグル
+function! GetBufferList()
+  redir =>buflist
+  silent! ls
+  redir END
+  return buflist
+endfunction
+
+function! ToggleList(bufname, pfx)
+  let buflist = GetBufferList()
+  for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
+    if bufwinnr(bufnum) != -1
+      exec(a:pfx.'close')
+      return
+    endif
+  endfor
+  if a:pfx == 'l' && len(getloclist(0)) == 0
+      echohl ErrorMsg
+      echo "Location List is Empty."
+      return
+  endif
+  let winnr = winnr()
+  exec(a:pfx.'open')
+  if winnr() != winnr
+    wincmd p
+  endif
+endfunction
+
+nmap <silent> <leader>l :call ToggleList("Location List", 'l')<CR>
+nmap <silent> <leader>c :call ToggleList("Quickfix List", 'c')<CR>
