@@ -3,9 +3,9 @@
 SHELL_DIR=$(cd $(dirname $0); pwd)
 MODULE_DIR="$SHELL_DIR/.module"
 
-VIM_DIR="$HOME/.vim"
+VIM_DIR="$SHELL_DIR/.vim"
 ECLIPSE_DIR="$HOME/.eclipse"
-if (( 0 )); then
+
 # vim-neobundleを使うために
 [ ! -d "$VIM_DIR" ] && mkdir -p "$VIM_DIR"
 [ ! -d "$VIM_DIR/bundle/neobundle.vim" ] && git clone https://github.com/Shougo/neobundle.vim "$VIM_DIR/bundle/neobundle.vim"
@@ -64,7 +64,7 @@ if [ -d "$VIM_DIR/bundle/vimproc" ]; then
             ;;
     esac
 fi
-fi
+
 # tern_namespace_js_plugin
 TERN_DIR="$VIM_DIR/bundle/tern_for_vim/node_modules/tern"
 if [ -d $TERN_DIR ]; then

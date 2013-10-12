@@ -3,3 +3,4 @@
 .vim/history/*
 .vim/undo/*
 .vim/.netrwhist
+.vim/colors/*
