@@ -12,7 +12,7 @@ endif
 source $HOME/.vim/my/misc.vim
 source $HOME/.vim/my/tabline.vim
 source $HOME/.vim/my/template.vim
-source $HOME/.vim/my/tabular.vim
+source $HOME/.vim/my/align.vim
 source $HOME/.vim/my/textmanip.vim
 source $HOME/.vim/my/syntastic.vim
 source $HOME/.vim/my/unite.vim
