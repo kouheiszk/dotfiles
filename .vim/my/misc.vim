@@ -12,6 +12,8 @@ set omnifunc=syntaxcomplete#Complete
 let g:yankring_history_dir  = $HOME . '/.vim/history'
 let g:yankring_manual_clipboard_check = 1
 
+"" trimming
+
 function! RTrim()
   let s:cursor = getpos('.')
   %s/\s\+$//e
@@ -19,6 +21,8 @@ function! RTrim()
 endfunction
 
 command! Rtrim :call RTrim()
+
+"" auto-mkdir
 
 augroup vimrc-auto-mkdir
   autocmd!
@@ -90,10 +94,8 @@ let g:ctrlp_prompt_mappings     = {
 "" Quick Highlight
 "" --------------------------------------------------
 
-nmap <Leader>h <Plug>(quickhl-toggle)
-xmap <Leader>h <Plug>(quickhl-toggle)
-nmap <Leader>H <Plug>(quickhl-reset)
-xmap <Leader>H <Plug>(quickhl-reset)
+nnoremap <Leader>h <Plug>(quickhl-toggle)
+nnoremap <Leader>H <Plug>(quickhl-reset)
 
 "" --------------------------------------------------
 "" ag

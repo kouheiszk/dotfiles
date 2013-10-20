@@ -12,6 +12,7 @@ alias mv='mv -i'
 alias du='du -h'
 alias df='df -h'
 alias vi='vim'
+alias v='vim'
 
 case "$OSTYPE" in
     darwin*)
