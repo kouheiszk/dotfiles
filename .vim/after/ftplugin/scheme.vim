@@ -5,6 +5,8 @@ let b:did_after_ftplugin_scheme = 1
 let s:save_cpo = &cpo
 set cpo&vim
 
+setl ts=2 sw=2 sts=2 expandtab
+
 augroup after_ftplugin_scheme
   autocmd!
   autocmd FileType scheme :let is_gauche=1
