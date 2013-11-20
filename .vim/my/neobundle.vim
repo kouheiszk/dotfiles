@@ -73,7 +73,7 @@ NeoBundleLazy 'cakebaker/scss-syntax.vim', {
       \ 'autoload': {
       \   'filetypes': ['scss'],
       \ }}
-NeoBundleLazy 'Simple-Javascript-Indenter', {
+NeoBundleLazy 'jiangmiao/simple-javascript-indenter', {
       \ 'autoload': {
       \   'filetypes': ['javascript'],
       \ }}
