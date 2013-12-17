@@ -1,7 +1,7 @@
 # PATH
 # export PATH=/usr/local/sbin:$PATH
 export DEFAULT_PATH=$PATH
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/.local/bin:/usr/local/opt/ruby/bin:$DEFAULT_PATH
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/.local/bin:/usr/local/opt/ruby/bin:$HOME/perl5/bin:$DEFAULT_PATH
 
 # alias
 alias javac='javac -J-Dfile.encoding=UTF-8'
@@ -61,6 +61,8 @@ alias gr='git-root'
 #    #if not inside a tmux session, and if no session is started, start a new session
 #    [ -z "$TMUX" ] && (tmux attach -d || tmux new-session)
 #fi
+
+# ssh-agent
 
 if [ -z "$TMUX" ]; then
     # we're not in a tmux session
