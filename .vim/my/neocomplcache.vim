@@ -27,6 +27,17 @@ let g:neocomplcache_dictionary_filetype_lists = {
 let g:neocomplcache_min_syntax_length = 3 " シンタックスをキャッシュするときの最小文字長
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
+"" テキストモードのファイルタイプを設定
+let g:neocomplete#text_mode_filetypes = {
+      \ 'gitcommit': 1,
+      \ 'vim': 1,
+      \ 'text': 1, 
+      \ 'javascript': 1, 
+      \ 'markdown': 1, 
+      \ 'perl': 1, 
+      \ 'html': 1,
+      \ }
+
 let g:neocomplcache_manual_completion_start_length = 0 " 手動補完を実行できる最小文字数
 
 if !exists('g:neocomplcache_keyword_patterns')

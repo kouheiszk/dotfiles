@@ -20,15 +20,25 @@ let g:neocomplete#snippets_dir = $home . '/.vim/snippets'
 
 let g:neocomplete#source_disable = {
     \ 'tags_complete' : 1,
-\ }
+    \ }
 let g:neocomplete#dictionary_filetype_lists = {
     \ 'default' : '',
     \ 'perl'    : $HOME . '/.vim/dict/perl.dict',
     \ 'scheme'  : $HOME . '/.gosh_completions'
-\ }
+    \ }
 
 let g:neocomplete#min_syntax_length = 3 " シンタックスをキャッシュするときの最小文字長
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+"" テキストモードのファイルタイプを設定
+let g:neocomplete#text_mode_filetypes = {
+      \ 'gitcommit': 1,
+      \ 'text': 1, 
+      \ 'javascript': 1, 
+      \ 'markdown': 1, 
+      \ 'perl': 1, 
+      \ 'html': 1,
+      \ }
 
 let g:neocomplete#manual_completion_start_length = 0 " 手動補完を実行できる最小文字数
 
