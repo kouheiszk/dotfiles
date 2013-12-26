@@ -86,7 +86,7 @@ set shortmess+=I
 set completeopt& completeopt+=longest
 set matchpairs& matchpairs+=<:>
 set nrformats-=octal
-"" set list listchars=tab:»-,eol:↲,extends:»,precedes:«,nbsp:%
+set list listchars=tab:»-,eol:$,extends:»,precedes:«,nbsp:%
 
 "" --------------------------------------------------
 "" Language, Encoding
@@ -101,20 +101,6 @@ endtry
 set encoding=utf-8
 set fileencodings=utf-8,euc-jp,cp932,iso-2022-jp,sjis
 set fileformats=unix,dos,mac
-
-"" --------------------------------------------------
-"" カラースキーマ
-"" --------------------------------------------------
-
-syntax enable
-syntax on
-set background=dark
-let g:solarized_termcolors=16
-let g:solarized_termtrans=1
-let g:solarized_bold=1
-let g:solarized_underline=1
-let g:solarized_italic=1
-colorscheme solarized
 
 "" --------------------------------------------------
 "" Power Line

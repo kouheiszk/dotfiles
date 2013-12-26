@@ -3,6 +3,7 @@ autocmd!
 
 source $HOME/.vim/my/neobundle.vim
 source $HOME/.vim/my/basic.vim
+source $HOME/.vim/my/colorscheme.vim
 source $HOME/.vim/my/utilities.vim
 if has('lua')
   source $HOME/.vim/my/neocomplete.vim
