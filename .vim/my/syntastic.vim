@@ -8,7 +8,7 @@ let g:syntastic_mode_maps = { 'mode': 'active',
       \ }
 
 let g:syntastic_error_symbol             = 'E>'
-let g:syntastic_warning_symbol           = '⚠'
+let g:syntastic_warning_symbol           = 'W>'
 let g:syntastic_echo_current_error       = 1
 let g:syntastic_enable_signs             = 1
 let g:syntastic_auto_jump                = 1
