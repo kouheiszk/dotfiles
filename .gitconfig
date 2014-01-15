@@ -1,39 +1,44 @@
-[color]
-    ui = true
-
 ;; 上書きする場合は~/.gitconfig_localに記述する
 [user]
     name = Kouhei Suzuki
     email = kouhei.szk@gmail.com
-    
+
 [core]
     excludesfile = ~/.gitignore_global
+    attributesfile = ~/.gitattributes_global
     editor = vim
     pager = nkf -w | LESSCHARSET=utf-8 less
 
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-    
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+[merge]
+    tool = vimdiff
+    renamelimit = 3000
+    ff = true
+
+[color]
+    ui = true
+
+[diff]
+    tool = vimdiff
+
+[difftool]
+    prompt = true
 
 [alias]
-    co = checkout
-    ci = commit
-    st = status
-    br = branch
-    di = diff --color --color-words
-    dp = diff --color --patience
-    ft = fetch
-    wh = whatchanged
+    co   = checkout
+    cm   = commit
+    cma  = commit --amend
+    st   = status
+    br   = branch
+    di   = diff --color --color-words
+    dp   = diff --color --patience
+    ft   = fetch
+    wh   = whatchanged
     stat = log --stat --summary
-    ht = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-    hf = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --follow -p
-    lt = log -1 HEAD
-    ld = log -u -1
-    lf = log --follow -p
+    ht   = log --pretty = format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    hf   = log --pretty = format:\"%h %ad | %s%d [%an]\" --graph --date=short --follow -p
+    lt   = log -1 HEAD
+    ld   = log -u -1
+    lf   = log --follow -p
     cifu = commit --fixup=HEAD
 
 [include]

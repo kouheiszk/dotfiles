@@ -1,1 +1,1 @@
-/home/bkapps/tmp/dotfiles/.module/solarized/vim-colors-solarized/colors/solarized.vim
+.modules/solarized/vim-colors-solarized/colors/solarized.vim
