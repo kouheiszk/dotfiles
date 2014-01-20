@@ -1,7 +1,7 @@
 # PATH
 # export PATH=/usr/local/sbin:$PATH
 export DEFAULT_PATH=$PATH
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/.local/bin:/usr/local/opt/ruby/bin:$HOME/perl5/bin:$DEFAULT_PATH
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/.local/bin:/usr/local/opt/ruby/bin:$HOME/perl5/bin:/usr/bin:/bin:$DEFAULT_PATH
 
 export PERL5LIB=$HOME/.local/cpanm/lib/perl5
 
@@ -55,8 +55,9 @@ function git-root() {
 alias gr='git-root'
 
 # android
-[ -d /Applications/android-sdk/tools ] && export PATH=$PATH:/Applications/android-sdk/tools
-[ -d /Applications/android-sdk/platform-tools ] && export PATH=$PATH:/Applications/android-sdk/platform-tools
+[ -d /Applications/android-sdk ] && export ANDROID_SDK=/Applications/android-sdk
+[ -d /Applications/android-sdk/tools ] && export PATH=$PATH:$ANDROID_SDK/tools
+[ -d /Applications/android-sdk/platform-tools ] && export PATH=$PATH:$ANDROID_SDK/platform-tools
 
 # tmuxの開始
 #if which tmux 2>&1 >/dev/null; then
