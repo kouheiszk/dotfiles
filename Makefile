@@ -80,3 +80,7 @@ install_keyremap4mac:
 	mkdir -p ~/Library/Application\ Support/KeyRemap4MacBook && \
 		ln -s ./Library/Application\ Support/KeyRemap4MacBook/private.xml ~/Library/Application\ Support/KeyRemap4MacBook/private.xml
 
+##
+## brew install wget git tig tmux tree zsh ag cpanm npm mercurial vim coreutils gauche rlwrap nkf hub
+## defaults write com.apple.desktopservices DSDontWriteNetworkStores true
+##
