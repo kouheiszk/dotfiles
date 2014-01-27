@@ -21,7 +21,7 @@ update:
 
 run_scripts: 
 ifeq ($(UNAME),Darwin)
-	./scripts/install_homebrew4mac.sh
+	./scripts/install_homebrew.sh
 	./scripts/install_xcode_themes.sh
 	./scripts/install_xcode_plugins.sh
 	./scripts/install_keyremap4mac.sh
