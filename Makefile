@@ -31,6 +31,7 @@ endif
 	./scripts/install_vim_dics.sh
 	make gitsubmodules 
 	./scripts/install_zsh_completions.sh
+	./scripts/install_bash_completions.sh
 
 gitsubmodules:
 	git submodule sync

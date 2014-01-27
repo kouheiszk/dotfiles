@@ -1,4 +1,4 @@
-#!/bis/sh
+#!/bin/sh
 
 MAKE_WORK_DIR=$(cd "$(dirname $0)/../"; pwd)
 WORK_DIR="$MAKE_WORK_DIR/.zsh.d/functions"
