@@ -20,6 +20,7 @@ update:
 	clear
 
 run_scripts: 
+	make gitsubmodules 
 ifeq ($(UNAME),Darwin)
 	./scripts/install_homebrew.sh
 	./scripts/install_xcode_themes.sh
@@ -29,7 +30,6 @@ endif
 	./scripts/install_vim_plugins.sh
 	./scripts/install_vim_theme.sh
 	./scripts/install_vim_dics.sh
-	make gitsubmodules 
 	./scripts/install_zsh_completions.sh
 	./scripts/install_bash_completions.sh
 
