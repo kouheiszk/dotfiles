@@ -86,7 +86,7 @@ set shortmess+=I
 set completeopt& completeopt+=longest
 set matchpairs& matchpairs+=<:>
 set nrformats-=octal
-set list listchars=tab:»-,eol:$,extends:»,precedes:«,nbsp:%
+""set list listchars=tab:»-,eol:$,extends:»,precedes:«,nbsp:%
 
 "" --------------------------------------------------
 "" Language, Encoding
