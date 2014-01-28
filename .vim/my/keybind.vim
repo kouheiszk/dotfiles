@@ -92,6 +92,10 @@ cnoremap <expr>/ getcmdtype() == '/' ? '\/' : '/'
 "" window操作
 nmap <silent> <C-w>a <C-w>_<C-w>|
 
+"" カーソルのあるwindow以外を閉じる
+
+nnoremap <silent> <Leader>o :only<CR>
+
 "" C-wでトグル
 function! GetBufferList()
   redir =>buflist
