@@ -40,7 +40,7 @@ brew install mercurial
 brew install hub
 
 # Install misc
-brew install vim 
+brew install vim --with-lua
 brew install coreutils 
 brew install gauche
 
