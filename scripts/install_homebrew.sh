@@ -24,13 +24,25 @@ brew update
 brew install apple-gcc42
 
 # Install console utils
-brew install mobile-shell tmux zsh wget ag rlwrap nkf tree
+brew install mobile-shell 
+brew install tmux 
+brew install zsh 
+brew install wget 
+brew install ag
+brew install rlwrap 
+brew install nkf
+brew install tree
 
 # Install version control system
-brew install git tig mercurial hub
+brew install git 
+brew install tig 
+brew install mercurial
+brew install hub
 
 # Install misc
-brew install vim coreutils gauche
+brew install vim 
+brew install coreutils 
+brew install gauche
 
 # Install programing languages manager
 brew install rbenv
@@ -43,7 +55,10 @@ brew install cpanm npm
 brew install brew-cask
 
 # Install browsers
-brew cask install google-chrome firefox fluid limechat
+brew cask install google-chrome 
+brew cask install firefox 
+brew cask install fluid 
+brew cask install limechat
 
 # Install multimedia player
 brew cask install mplayerx
@@ -55,16 +70,25 @@ brew cask install appcleaner
 brew cask install iterm2
 
 # Install virtualization softwares
-brew cask install vmware-fusion vagrant
+brew cask install vmware-fusion
+brew cask install vagrant
 
 # Install documentation shareing
-brew cask install dropbox evernote google-drive
+brew cask install dropbox
+brew cask install evernote
+brew cask install google-drive
 
 # Install visual editor
 brew cask install sublime-text
 
 # Install misc
-brew cask install keyremap4macbook skitch caffeine alfred the-unarchiver bettertouchtool cheatsheet
+brew cask install keyremap4macbook
+brew cask isntall skitch
+brew cask install caffeine
+brew cask install alfred
+brew cask install the-unarchiver
+brew cask install bettertouchtool
+brew cask install cheatsheet
 
 # Remove repositories
 brew untap homebrew/versions
