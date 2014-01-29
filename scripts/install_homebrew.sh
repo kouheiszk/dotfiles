@@ -16,9 +16,7 @@ brew tap homebrew/binary
 brew tap mix3/homebrew-ndenv
 brew tap boxelly/homebrew-boxelly
 brew tap phinze/homebrew-cask
-
-# Update
-brew update
+brew tap kouheiszk/Homebrew-mycask
 
 # Install compilers
 brew install apple-gcc42
@@ -91,6 +89,9 @@ brew cask install the-unarchiver
 brew cask install bettertouchtool
 brew cask install cheatsheet
 
+# Update
+brew update
+
 # Remove repositories
 brew untap homebrew/versions
 brew untap homebrew/dupes
@@ -98,6 +99,8 @@ brew untap homebrew/binary
 brew untap mix3/homebrew-ndenv
 brew untap boxelly/homebrew-boxelly
 brew untap phinze/homebrew-cask
+brew untap kouheiszk/Homebrew-mycask
 
 # Remove outdated versions
 brew cleanup
+

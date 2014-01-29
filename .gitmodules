@@ -7,3 +7,6 @@
 [submodule ".module/tern_namespace_js_plugin"]
 	path = .module/tern_namespace_js_plugin
 	url = https://github.com/ypresto/tern_namespace_js_plugin.git
+[submodule ".module/homebrew-mycask"]
+	path = .module/homebrew-mycask
+	url = https://github.com/kouheiszk/homebrew-mycask.git
