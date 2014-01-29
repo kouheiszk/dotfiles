@@ -82,7 +82,7 @@ brew cask install sublime-text
 
 # Install misc
 brew cask install keyremap4macbook
-brew cask isntall skitch
+brew cask install skitch
 brew cask install caffeine
 brew cask install alfred
 brew cask install the-unarchiver
