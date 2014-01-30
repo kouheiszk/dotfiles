@@ -89,6 +89,7 @@ brew cask install alfred
 brew cask install the-unarchiver
 brew cask install bettertouchtool
 brew cask install cheatsheet
+brew cask install slicy
 
 # Update
 brew update
