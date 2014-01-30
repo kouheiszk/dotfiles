@@ -1,17 +1,3 @@
-SELF="$HOME/.bashrc"
-MODULE_DIR=""
-if [ -L $SELF ]; then
-    case "$OSTYPE" in
-        darwin*)
-            REAL_SELF="`readlink $SELF`"
-        ;;
-        linux*)
-            REAL_SELF=`readlink $SELF`
-        ;;
-    esac
-    MODULE_DIR=`dirname $REAL_SELF`/.module
-fi
-
 # COLOR
 export LS_OPTIONS='--color=auto'
 export CLICOLOR='Yes'
@@ -41,9 +27,9 @@ HISTIGNORE="ls:cd"
 export HISTTIMEFORMAT="%y/%m/%d %H:%M:%S: "
 
 # GIT SETTINGS
-if [ $MODULE_DIR != "" ] && [ -f $MODULE_DIR/git/contrib/completion/git-completion.bash ]; then
-    source $MODULE_DIR/git/contrib/completion/git-prompt.sh
-    source $MODULE_DIR/git/contrib/completion/git-completion.bash
+if [ -f $HOME/.bash.d/functions/git-completion.bash ] && [ -f $HOME/.bash.d/functions/git-prompt.sh ]; then
+    source $HOME/.bash.d/functions/git-prompt.sh
+    source $HOME/.bash.d/functions/git-completion.bash
     export GIT_PS1_SHOWUPSTREAM=1
     export GIT_PS1_SHOWSTASHSTATE=1
     export GIT_PS1_SHOWDIRTYSTATE=1
@@ -59,3 +45,4 @@ alias cpanm='cpanm -l $HOME/.local/cpanm'
 
 # .local_bash_profileを読み込む
 [ -f ~/.local_bash_profile ] && source ~/.local_bash_profile
+

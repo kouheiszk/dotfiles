@@ -59,3 +59,5 @@ alias gr='git-root'
 [ -d /Applications/android-sdk/tools ] && export PATH=$PATH:$ANDROID_SDK/tools
 [ -d /Applications/android-sdk/platform-tools ] && export PATH=$PATH:$ANDROID_SDK/platform-tools
 
+# .local_profileを読み込む
+[ -f ~/.local_profile ] && source ~/.local_profile
