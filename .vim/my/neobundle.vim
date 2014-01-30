@@ -36,6 +36,7 @@ else
 endif
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'h1mesuke/vim-alignta'

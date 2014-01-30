@@ -37,17 +37,18 @@ brew install tig
 brew install mercurial
 brew install hub
 
-# Install misc
-brew install vim --with-lua
-brew install coreutils 
-brew install gauche
-
 # Install programing languages manager
 brew install rbenv
 brew install ruby-build
 brew install ndenv --HEAD
 brew install node-build --HEAD
 brew install cpanm npm
+brew install lua
+
+# Install misc
+brew install vim --with-cscope --with-lua --HEAD
+brew install coreutils 
+brew install gauche
 
 # Install homebrew-cask
 brew install brew-cask
