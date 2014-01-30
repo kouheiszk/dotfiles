@@ -74,4 +74,6 @@ endif
 
 let g:neosnippet#snippets_directory = $HOME . '/.vim/bundle/neosnippet/autoload/neosnippet/'
 
+"" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
 

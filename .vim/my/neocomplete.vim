@@ -59,9 +59,9 @@ imap <expr> neocomplcache#close_popup() : "\<CR>"
 imap <expr><C-e> neocomplcache#cancel_popup()
 
 "" Plugin key-mappings.
-"" imap <Tab> <Plug>(neosnippet_expand_or_jump)
-"" smap <Tab> <Plug>(neosnippet_expand_or_jump)
-"" xmap <Tab> <Plug>(neosnippet_expand_target)
+imap <Tab> <Plug>(neosnippet_expand_or_jump)
+smap <Tab> <Plug>(neosnippet_expand_or_jump)
+xmap <Tab> <Plug>(neosnippet_expand_target)
 
 "" SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -74,4 +74,6 @@ endif
 
 let g:neosnippet#snippets_directory = $HOME . '/.vim/bundle/neosnippet/autoload/neosnippet/'
 
+"" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
 
