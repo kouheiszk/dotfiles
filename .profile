@@ -46,6 +46,8 @@ alias gosh="rlwrap -b '(){}[],#\";| ' gosh"
 alias show='open -a Preview'
 alias finda='open .'
 
+alias cpanm='cpanm -l ~/.local/cpanm'
+
 # Git ルートディレクトリ移動
 function git-root() {
     if git rev-parse --is-inside-work-tree 2>&1 > /dev/null; then

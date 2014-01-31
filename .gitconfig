@@ -40,6 +40,7 @@
     ld   = log -u -1
     lf   = log --follow -p
     cifu = commit --fixup=HEAD
+    mt   = mergetool
 
 [include]
     path = ~/.local_gitconfig
