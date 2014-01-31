@@ -9,7 +9,10 @@ setl ts=4 sw=4 sts=4 expandtab shiftround
 setlocal formatoptions-=r " 挿入モードで改行した時に # を自動挿入しない
 setlocal formatoptions-=o " ノーマルモードで o や O をした時に # を自動挿入しない
 
-let g:syntastic_perl_lib_path = ['./lib', $PERL5LIB]
+""let g:syntastic_perl_lib_path = []
+""for path in ['./lib', $PERL5LIB]
+""  call extend(g:syntastic_perl_lib_path, split(path, ':'))
+""endfor
 
 nnoremap <buffer> <silent> ,f :!perldoc -f <cword><Enter>
 

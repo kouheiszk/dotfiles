@@ -1,9 +1,9 @@
 # PATH
 # export PATH=/usr/local/sbin:$PATH
 export DEFAULT_PATH=$PATH
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/.local/bin:/usr/local/opt/ruby/bin:$HOME/perl5/bin:/usr/bin:/bin:$DEFAULT_PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$HOME/.local/bin:$DEFAULT_PATH:/usr/sbin:/sbin:/usr/local/opt/ruby/bin:$HOME/perl5/bin:/usr/bin:/bin
 
-export PERL5LIB=$HOME/.local/cpanm/lib/perl5
+# export PERL5LIB=$HOME/.local/cpanm/lib/perl5
 
 # alias
 alias javac='javac -J-Dfile.encoding=UTF-8'
