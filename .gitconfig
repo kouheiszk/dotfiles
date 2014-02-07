@@ -27,7 +27,7 @@
     co   = checkout
     cm   = commit
     cma  = commit --amend
-    st   = status
+    st   = status --short --branch
     br   = branch
     di   = diff --color --color-words
     dp   = diff --color --patience
