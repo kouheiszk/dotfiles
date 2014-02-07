@@ -3,7 +3,7 @@
 export DEFAULT_PATH=$PATH
 export PATH=/usr/local/bin:/usr/local/sbin:$HOME/.local/bin:$DEFAULT_PATH:/usr/sbin:/sbin:/usr/local/opt/ruby/bin:$HOME/perl5/bin:/usr/bin:/bin
 
-# export PERL5LIB=$HOME/.local/cpanm/lib/perl5
+export PERL5LIB=$PERL5LIB:$HOME/.local/cpanm/lib/perl5
 
 # alias
 alias javac='javac -J-Dfile.encoding=UTF-8'
@@ -38,6 +38,8 @@ alias llad='ls -al | grep /'
 alias ant='ant -logger org.apache.tools.ant.listener.AnsiColorLogger'
 alias ag='ag -aQ --search-binary'
 alias g='git'
+alias tl='tmux list-sessions'
+alias ta='tmux attach-session -t'
 
 # gosh alias
 alias gosh="rlwrap -b '(){}[],#\";| ' gosh"

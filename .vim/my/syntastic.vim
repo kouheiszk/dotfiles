@@ -4,7 +4,7 @@
 
 let g:syntastic_mode_maps = { 'mode': 'active',
       \ 'active_filetypes' : [],
-      \ 'passive_filetypes': ['java'] 
+      \ 'passive_filetypes': ['java', 'perl'] 
       \ }
 
 let g:syntastic_error_symbol             = 'E>'
