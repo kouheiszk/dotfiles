@@ -45,3 +45,6 @@
 [include]
     path = ~/.local_gitconfig
 
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f

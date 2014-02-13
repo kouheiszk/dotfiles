@@ -5,6 +5,8 @@ if [ ! -x "$(which brew)" ]; then
     ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 fi;
 
+# Update
+brew update
 brew upgrade
 brew -v
 brew doctor
@@ -90,9 +92,7 @@ brew cask install the-unarchiver
 brew cask install bettertouchtool
 brew cask install cheatsheet
 brew cask install slicy
-
-# Update
-brew update
+brew cask install github
 
 # Remove repositories
 brew untap homebrew/versions

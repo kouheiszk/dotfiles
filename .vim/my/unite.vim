@@ -2,7 +2,7 @@ let g:unite_enable_start_insert      = 1
 let g:unite_winheight                = "10"
 let g:unite_winwidth                 = "35"
 ""let g:unite_source_grep_default_opts = '-iRHn --color=none'
-let g:unite_source_grep_default_opts = '-iRHn'
+let g:unite_source_grep_default_opts = '-iHRn'
 let g:unite_source_session_options   = &sessionoptions
 
 " unite mapping
