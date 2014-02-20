@@ -1,8 +1,5 @@
 # PATH
-# export PATH=/usr/local/sbin:$PATH
-export DEFAULT_PATH=$PATH
-export PATH=/usr/local/bin:/usr/local/sbin:$HOME/.local/bin:$DEFAULT_PATH:/usr/sbin:/sbin:/usr/local/opt/ruby/bin:$HOME/perl5/bin:/usr/bin:/bin
-
+export PATH=/usr/local/bin:/usr/local/sbin:$HOME/.local/bin:$PATH:/usr/sbin:/sbin:/usr/local/opt/ruby/bin:$HOME/perl5/bin:/usr/bin:/bin
 export PERL5LIB=$PERL5LIB:$HOME/.local/cpanm/lib/perl5
 
 # alias

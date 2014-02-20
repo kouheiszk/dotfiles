@@ -20,6 +20,9 @@ nmap <silent> <Leader>1 <SID>(toggle-number)
 nmap <silent> <Leader>2 <SID>(toggle-relativenumber)
 nmap <silent> <Leader>3 <SID>(toggle-paste)
 
+"" インサートモードを解除したらペーストモードを解除する
+autocmd InsertLeave * set nopaste
+
 "" Ctrl-a Ctrl-eで移動できるようにする
 function! MoveCursorToHome()
   let c = col(".")
