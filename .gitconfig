@@ -41,6 +41,8 @@
     lf   = log --follow -p
     cifu = commit --fixup=HEAD
     mt   = mergetool
+    rv   = remote -v
+    ru   = remote update
 
 [include]
     path = ~/.local_gitconfig
