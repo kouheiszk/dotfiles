@@ -13,3 +13,4 @@
 *.py diff=python
 *.rb diff=ruby
 *.js diff=java
+*.pbxproj merge=mergepbx

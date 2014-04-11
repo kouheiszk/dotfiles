@@ -10,3 +10,6 @@
 [submodule ".module/homebrew-mycask"]
 	path = .module/homebrew-mycask
 	url = https://github.com/kouheiszk/homebrew-mycask.git
+[submodule ".module/mergepbx"]
+	path = .module/mergepbx
+	url = https://github.com/simonwagner/mergepbx

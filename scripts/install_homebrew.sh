@@ -3,7 +3,15 @@
 # Install homebrew if necessary
 if [ ! -x "$(which brew)" ]; then
     ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-fi;
+fi
+
+if command -v git &>/dev/null
+then
+    echo "git is already exists :)"
+else
+    sudo xcodebuild -license
+    xcode-select --install
+fi
 
 # Update
 brew update
@@ -18,7 +26,7 @@ brew tap homebrew/binary
 brew tap mix3/homebrew-ndenv
 brew tap boxelly/homebrew-boxelly
 brew tap phinze/homebrew-cask
-brew tap kouheiszk/Homebrew-mycask
+# brew tap kouheiszk/Homebrew-mycask
 
 # Install compilers
 brew install apple-gcc42
@@ -93,6 +101,11 @@ brew cask install bettertouchtool
 brew cask install cheatsheet
 brew cask install slicy
 brew cask install github
+brew cask install kobito
+brew cask install slack
+
+# Alfred link
+brew cask alfred link
 
 # Remove repositories
 brew untap homebrew/versions
@@ -101,7 +114,7 @@ brew untap homebrew/binary
 brew untap mix3/homebrew-ndenv
 brew untap boxelly/homebrew-boxelly
 brew untap phinze/homebrew-cask
-brew untap kouheiszk/Homebrew-mycask
+# brew untap kouheiszk/Homebrew-mycask
 
 # Remove outdated versions
 brew cleanup

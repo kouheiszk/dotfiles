@@ -43,7 +43,6 @@ alias gosh="rlwrap -b '(){}[],#\";| ' gosh"
 
 # preview
 alias show='open -a Preview'
-alias finda='open .'
 
 alias cpanm='cpanm -l ~/.local/cpanm'
 
