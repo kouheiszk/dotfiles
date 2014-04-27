@@ -9,9 +9,6 @@ export PS1="\033[1;37m[\u@\h \w]\$ \033[0m"
 # .profileを読み込む
 [ -f ~/.profile ] && source ~/.profile
 
-# .local_profileを読み込む
-[ -f ~/.local_profile ] && source ~/.local_profile
-
 # HISTORY
 function share_history {  # 以下の内容を関数として定義
     history -a  # .bash_historyに前回コマンドを1行追記
