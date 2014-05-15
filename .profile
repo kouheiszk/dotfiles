@@ -2,6 +2,9 @@
 export PATH=/usr/local/bin:/usr/local/sbin:$HOME/.local/bin:$PATH:/usr/sbin:/sbin:/usr/local/opt/ruby/bin:$HOME/perl5/bin:/usr/bin:/bin
 export PERL5LIB=$PERL5LIB:$HOME/.local/cpanm/lib/perl5
 
+# ENV
+export DOCKER_HOST=tcp://localhost:4243
+
 # alias
 alias javac='javac -J-Dfile.encoding=UTF-8'
 alias java='java -Dfile.encoding=UTF-8'

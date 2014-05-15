@@ -55,6 +55,10 @@ brew install node-build --HEAD
 brew install cpanm npm
 brew install lua
 
+# Install docker
+brew install boot2docker 
+brew install docker
+
 # Install misc
 brew install vim --with-cscope --with-lua --HEAD
 brew install coreutils 
