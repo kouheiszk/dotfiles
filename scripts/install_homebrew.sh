@@ -13,12 +13,6 @@ else
     xcode-select --install
 fi
 
-# Update
-brew update
-brew upgrade
-brew -v
-brew doctor
-
 # Add extra repositories
 brew tap homebrew/versions
 brew tap homebrew/dupes
@@ -27,6 +21,15 @@ brew tap mix3/homebrew-ndenv
 brew tap boxelly/homebrew-boxelly
 brew tap phinze/homebrew-cask
 # brew tap kouheiszk/Homebrew-mycask
+
+# Update
+brew update
+brew upgrade
+brew -v
+brew doctor
+
+# Install gdbm
+brew install gdbm
 
 # Install compilers
 brew install apple-gcc42

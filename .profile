@@ -50,12 +50,23 @@ alias show='open -a Preview'
 alias cpanm='cpanm -l ~/.local/cpanm'
 
 # Git ルートディレクトリ移動
-function git-root() {
-    if git rev-parse --is-inside-work-tree 2>&1 > /dev/null; then
-        cd `git rev-parse --show-toplevel`
-    fi
+function gitroot() {
+  if `git rev-parse --is-inside-work-tree 2>&1 > /dev/null`; then
+    cd `git rev-parse --show-toplevel`
+  fi
 }
-alias gr='git-root'
+
+alias gr='gitroot'
+
+# anyenv
+if [ -d "$HOME/.anyenv" ]; then
+    export PATH="$HOME/.anyenv/bin:$PATH"
+    eval "$(anyenv init -)"
+    for D in `ls -F $HOME/.anyenv/envs`
+    do
+        export PATH="$HOME/.anyenv/envs/${D}shims:$PATH"
+    done
+fi
 
 # android
 [ -d /Applications/android-sdk ] && export ANDROID_SDK=/Applications/android-sdk
