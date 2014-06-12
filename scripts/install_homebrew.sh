@@ -20,6 +20,7 @@ brew tap homebrew/binary
 brew tap mix3/homebrew-ndenv
 brew tap boxelly/homebrew-boxelly
 brew tap phinze/homebrew-cask
+brew tap laurent22/massren
 # brew tap kouheiszk/Homebrew-mycask
 
 # Update
@@ -66,6 +67,9 @@ brew install docker
 brew install vim --with-cscope --with-lua --HEAD
 brew install coreutils 
 brew install gauche
+
+# Install massren
+brew install massren
 
 # Install homebrew-cask
 brew install brew-cask
@@ -121,6 +125,7 @@ brew untap homebrew/binary
 brew untap mix3/homebrew-ndenv
 brew untap boxelly/homebrew-boxelly
 brew untap phinze/homebrew-cask
+brew untap laurent22/massren
 # brew untap kouheiszk/Homebrew-mycask
 
 # Remove outdated versions

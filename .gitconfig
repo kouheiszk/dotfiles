@@ -14,6 +14,10 @@
     renamelimit = 3000
     ff = true
 
+[merge "mergepbx"]
+    name = XCode project files merger
+    driver = mergepbx %O %A %B
+
 [color]
     ui = true
 
@@ -30,7 +34,9 @@
     st   = status --short --branch
     br   = branch
     di   = diff --color --color-words
+    dic  = diff --color --color-words --cached
     dp   = diff --color --patience
+    dpc  = diff --color --patience --cached
     ft   = fetch
     wh   = whatchanged
     stat = log --stat --summary
