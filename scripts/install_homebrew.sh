@@ -59,6 +59,9 @@ brew install node-build --HEAD
 brew install cpanm npm
 brew install lua
 
+# Install debugger for xcode
+brew install chisel
+
 # Install docker
 brew install boot2docker 
 brew install docker
