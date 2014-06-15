@@ -19,7 +19,7 @@ brew tap homebrew/dupes
 brew tap homebrew/binary
 brew tap mix3/homebrew-ndenv
 brew tap boxelly/homebrew-boxelly
-brew tap phinze/homebrew-cask
+brew tap caskroom/homebrew-cask
 brew tap laurent22/massren
 # brew tap kouheiszk/Homebrew-mycask
 
@@ -127,7 +127,7 @@ brew untap homebrew/dupes
 brew untap homebrew/binary
 brew untap mix3/homebrew-ndenv
 brew untap boxelly/homebrew-boxelly
-brew untap phinze/homebrew-cask
+brew untap caskroom/homebrew-cask
 brew untap laurent22/massren
 # brew untap kouheiszk/Homebrew-mycask
 
