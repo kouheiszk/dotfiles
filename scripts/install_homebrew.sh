@@ -80,6 +80,9 @@ brew install massren
 # Install homebrew-cask
 brew install brew-cask
 
+# Cask Update
+brew cask cleanup
+
 # Install browsers
 brew cask install google-chrome 
 brew cask install firefox 
@@ -109,7 +112,7 @@ brew cask install google-drive
 brew cask install sublime-text
 
 # Install misc
-brew cask install keyremap4macbook
+brew cask install karabiner
 #brew cask install skitch
 brew cask install caffeine
 brew cask install alfred

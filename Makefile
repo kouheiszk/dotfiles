@@ -26,7 +26,7 @@ ifeq ($(UNAME),Darwin)
 	./scripts/install_xcode_mergepbx.sh
 	./scripts/install_xcode_themes.sh
 	./scripts/install_xcode_plugins.sh
-	./scripts/install_keyremap4mac.sh
+	./scripts/install_karabiner.sh
 endif
 	./scripts/install_vim_plugins.sh
 	./scripts/install_vim_theme.sh
