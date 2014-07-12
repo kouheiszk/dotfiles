@@ -71,6 +71,9 @@ brew install vim --with-cscope --with-lua --HEAD
 brew install coreutils 
 brew install gauche
 
+# Install database
+brew install mysql
+
 # Install massren
 brew install massren
 
