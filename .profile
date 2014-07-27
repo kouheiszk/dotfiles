@@ -1,8 +1,30 @@
 # PATH
+
+if [ -x /usr/libexec/path_helper ]; then
+    PATH=''
+    eval `/usr/libexec/path_helper -s`
+fi
+
 export PATH=/usr/local/bin:/usr/local/sbin:$HOME/.local/bin:$PATH:/usr/sbin:/sbin:/usr/local/opt/ruby/bin:$HOME/perl5/bin:/usr/bin:/bin
-export PERL5LIB=$PERL5LIB:$HOME/.local/cpanm/lib/perl5
+
+# anyenv
+if [ -d "$HOME/.anyenv" ]; then
+    export PATH="$HOME/.anyenv/bin:$PATH"
+    eval "$(anyenv init -)"
+    # for D in `ls -F $HOME/.anyenv/envs`
+    # do
+    #     export PATH="$HOME/.anyenv/envs/${D}shims:$PATH"
+    # done
+fi
+
+# android
+[ -d /Applications/android-sdk ] && export ANDROID_SDK=/Applications/android-sdk
+[ -d /Applications/android-sdk/tools ] && export PATH=$PATH:$ANDROID_SDK/tools
+[ -d /Applications/android-sdk/platform-tools ] && export PATH=$PATH:$ANDROID_SDK/platform-tools
 
 # ENV
+
+export PERL5LIB=$PERL5LIB:$HOME/.local/cpanm/lib/perl5
 export DOCKER_HOST=tcp://localhost:4243
 
 # alias
@@ -57,21 +79,6 @@ function gitroot() {
 }
 
 alias gr='gitroot'
-
-# anyenv
-if [ -d "$HOME/.anyenv" ]; then
-    export PATH="$HOME/.anyenv/bin:$PATH"
-    eval "$(anyenv init -)"
-    for D in `ls -F $HOME/.anyenv/envs`
-    do
-        export PATH="$HOME/.anyenv/envs/${D}shims:$PATH"
-    done
-fi
-
-# android
-[ -d /Applications/android-sdk ] && export ANDROID_SDK=/Applications/android-sdk
-[ -d /Applications/android-sdk/tools ] && export PATH=$PATH:$ANDROID_SDK/tools
-[ -d /Applications/android-sdk/platform-tools ] && export PATH=$PATH:$ANDROID_SDK/platform-tools
 
 # .local_profileを読み込む
 [ -f ~/.local_profile ] && source ~/.local_profile

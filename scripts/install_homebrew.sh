@@ -17,10 +17,10 @@ fi
 brew tap homebrew/versions
 brew tap homebrew/dupes
 brew tap homebrew/binary
-brew tap mix3/homebrew-ndenv
 brew tap boxelly/homebrew-boxelly
 brew tap caskroom/homebrew-cask
 brew tap laurent22/massren
+brew tap josegonzalez/homebrew-php
 # brew tap kouheiszk/Homebrew-mycask
 
 # Update
@@ -34,6 +34,24 @@ brew install gdbm
 
 # Install compilers
 brew install apple-gcc42
+
+# Install libraries
+brew install autoconf
+brew install mcrypt
+brew install libmemcached
+brew install gd
+brew install bison
+brew install re2c
+brew install pcre
+brew install libvpx
+brew install libpng
+brew install jpeg
+brew install fontconfig
+brew install freetype
+brew install libtiff
+brew install libgd
+brew install gettext
+brew install yasm
 
 # Install console utils
 brew install mobile-shell 
@@ -52,10 +70,6 @@ brew install mercurial
 brew install hub
 
 # Install programing languages manager
-brew install rbenv
-brew install ruby-build
-brew install ndenv --HEAD
-brew install node-build --HEAD
 brew install cpanm npm
 brew install lua
 
@@ -131,10 +145,10 @@ brew cask alfred link
 brew untap homebrew/versions
 brew untap homebrew/dupes
 brew untap homebrew/binary
-brew untap mix3/homebrew-ndenv
 brew untap boxelly/homebrew-boxelly
 brew untap caskroom/homebrew-cask
 brew untap laurent22/massren
+brew untap josegonzalez/homebrew-php
 # brew untap kouheiszk/Homebrew-mycask
 
 # Remove outdated versions
