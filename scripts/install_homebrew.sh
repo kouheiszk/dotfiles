@@ -98,8 +98,8 @@ brew install brew-cask
 brew cask cleanup
 
 # Install browsers
-brew cask install google-chrome 
-brew cask install firefox 
+#brew cask install google-chrome 
+#brew cask install firefox 
 #brew cask install fluid 
 brew cask install limechat
 
