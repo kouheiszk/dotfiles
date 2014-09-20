@@ -101,10 +101,10 @@ brew cask cleanup
 #brew cask install google-chrome 
 #brew cask install firefox 
 #brew cask install fluid 
-brew cask install limechat
+#brew cask install limechat
 
 # Install multimedia player
-brew cask install mplayerx
+#brew cask install mplayerx
 
 # Install application utility
 brew cask install appcleaner
@@ -114,8 +114,8 @@ brew cask install iterm2
 
 # Install virtualization softwares
 #brew cask install vmware-fusion
-brew cask install virtualbox
-brew cask install vagrant
+#brew cask install virtualbox
+#brew cask install vagrant
 
 # Install documentation shareing
 brew cask install dropbox
@@ -123,7 +123,7 @@ brew cask install evernote
 brew cask install google-drive
 
 # Install visual editor
-brew cask install sublime-text
+#brew cask install sublime-text
 
 # Install misc
 brew cask install karabiner
@@ -132,9 +132,9 @@ brew cask install caffeine
 brew cask install alfred
 brew cask install the-unarchiver
 #brew cask install bettertouchtool
-brew cask install cheatsheet
+#brew cask install cheatsheet
 #brew cask install slicy
-brew cask install github
+#brew cask install github
 #brew cask install kobito
 brew cask install slack
 
