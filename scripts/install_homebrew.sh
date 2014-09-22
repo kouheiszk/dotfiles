@@ -114,8 +114,8 @@ brew cask install iterm2
 
 # Install virtualization softwares
 #brew cask install vmware-fusion
-brew cask install virtualbox
-brew cask install vagrant
+#brew cask install virtualbox
+#brew cask install vagrant
 
 # Install documentation shareing
 brew cask install dropbox
