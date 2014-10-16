@@ -81,7 +81,8 @@ brew install boot2docker
 brew install docker
 
 # Install misc
-brew install vim --with-cscope --with-lua --HEAD
+brew install vim --enable-interp=python,python3,ruby --with-cscope --with-lua --HEAD
+brew install neovim --enable-interp=python,python3,ruby --with-cscope --with-lua --HEAD https://raw.github.com/neovim/neovim/master/neovim.rb
 brew install coreutils 
 brew install gauche
 
