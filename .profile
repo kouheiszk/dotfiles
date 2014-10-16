@@ -73,12 +73,30 @@ alias cpanm='cpanm -l ~/.local/cpanm'
 
 # Git ルートディレクトリ移動
 function gitroot() {
-  if `git rev-parse --is-inside-work-tree 2>&1 > /dev/null`; then
+if `git rev-parse --is-inside-work-tree 2>&1 > /dev/null`; then
     cd `git rev-parse --show-toplevel`
-  fi
+fi
 }
 
 alias gr='gitroot'
+
+# ssh
+
+AGENT_SOCK_FILE="/tmp/ssh-agent-$USER"
+SSH_AGENT_FILE="$HOME/.ssh-agent-info"
+if test $SSH_AUTH_SOCK ; then
+    if [ $SSH_AUTH_SOCK != $AGENT_SOCK_FILE ] ; then
+        ln -sf $SSH_AUTH_SOCK $AGENT_SOCK_FILE
+        export SSH_AUTH_SOCK=$AGENT_SOCK_FILE
+    fi
+else
+    test -f $SSH_AGENT_FILE && source $SSH_AGENT_FILE
+    if ! ssh-add -l >& /dev/null ; then
+        ssh-agent > $SSH_AGENT_FILE
+        source $SSH_AGENT_FILE
+        ssh-add
+    fi
+fi
 
 # .local_profileを読み込む
 [ -f ~/.local_profile ] && source ~/.local_profile
