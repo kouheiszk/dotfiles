@@ -11,10 +11,10 @@ export PATH=/usr/local/bin:/usr/local/sbin:$HOME/.local/bin:$PATH:/usr/sbin:/sbi
 if [ -d "$HOME/.anyenv" ]; then
     export PATH="$HOME/.anyenv/bin:$PATH"
     eval "$(anyenv init -)"
-    # for D in `ls -F $HOME/.anyenv/envs`
-    # do
-    #     export PATH="$HOME/.anyenv/envs/${D}shims:$PATH"
-    # done
+    for D in $(/bin/ls $HOME/.anyenv/envs)
+    do
+        export PATH="$HOME/.anyenv/envs/${D}shims:$PATH"
+    done
 fi
 
 # android

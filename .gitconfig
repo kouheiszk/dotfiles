@@ -50,6 +50,8 @@
     mt   = mergetool
     rv   = remote -v
     ru   = remote update
+    rhd  = reset --hard
+    rst  = reset --soft
 
 [include]
     path = ~/.local_gitconfig

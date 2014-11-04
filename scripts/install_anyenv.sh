@@ -13,6 +13,8 @@ if [ ! -d "$HOME/.anyenv" ]; then
 fi
 
 # install **env
+mkdir -p .anyenv/envs
+
 anyenv install rbenv
 anyenv install plenv
 anyenv install pyenv
@@ -22,7 +24,7 @@ anyenv install luaenv
 
 exec $SHELL -l
 
-rbenv install 2.1.0
+rbenv install 2.1.2
 plenv install 5.16.3
 pyenv install 2.7.6
 pyenv install 3.3.3
