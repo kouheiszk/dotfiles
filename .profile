@@ -27,6 +27,9 @@ fi
 export PERL5LIB=$PERL5LIB:$HOME/.local/cpanm/lib/perl5
 export DOCKER_HOST=tcp://localhost:4243
 
+# added by travis gem
+[ -f "$HOME/.travis/travis.sh" ] && source "$HOME/.travis/travis.sh" 
+
 # alias
 alias javac='javac -J-Dfile.encoding=UTF-8'
 alias java='java -Dfile.encoding=UTF-8'
