@@ -25,7 +25,8 @@ fi
 # ENV
 
 export PERL5LIB=$PERL5LIB:$HOME/.local/cpanm/lib/perl5
-export DOCKER_HOST=tcp://localhost:4243
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH="$HOME/.docker/boot2docker-vm"
 
 # added by travis gem
 [ -f "$HOME/.travis/travis.sh" ] && source "$HOME/.travis/travis.sh" 
@@ -73,6 +74,7 @@ alias gosh="rlwrap -b '(){}[],#\";| ' gosh"
 alias show='open -a Preview'
 
 alias cpanm='cpanm -l ~/.local/cpanm'
+alias docker='docker --tls'
 
 # Git ルートディレクトリ移動
 function gitroot() {
