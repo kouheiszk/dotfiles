@@ -82,7 +82,7 @@ brew install docker
 
 # Install misc
 brew install vim --enable-interp=python,python3,ruby --with-cscope --with-lua --HEAD
-brew install neovim --enable-interp=python,python3,ruby --with-cscope --with-lua --HEAD https://raw.github.com/neovim/neovim/master/neovim.rb
+# brew install neovim --enable-interp=python,python3,ruby --with-cscope --with-lua --HEAD https://raw.github.com/neovim/neovim/master/neovim.rb
 brew install coreutils 
 brew install gauche
 
@@ -119,9 +119,9 @@ brew cask install iterm2
 #brew cask install vagrant
 
 # Install documentation shareing
-brew cask install dropbox
-brew cask install evernote
-brew cask install google-drive
+# brew cask install dropbox
+# brew cask install evernote
+# brew cask install google-drive
 
 # Install visual editor
 #brew cask install sublime-text
