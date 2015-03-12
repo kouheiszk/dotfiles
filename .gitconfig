@@ -43,6 +43,7 @@
     wh   = whatchanged
     stat = log --stat --summary
     ht   = log --pretty=format:\"%C(yellow)%h%Creset %ad | %s%C(green)%d%Creset %C(cyan)[%an]%Creset\" --graph --date=short
+    htd  = log --pretty=format:\"%C(yellow)%h%Creset %ad | %s%C(green)%d%Creset %C(cyan)[%an]%Creset\" --graph --date=local
     lt   = log -1 HEAD
     ld   = log -u -1
     lf   = log --follow -p

@@ -17,6 +17,10 @@ if [ -d "$HOME/.anyenv" ]; then
     done
 fi
 
+# cpan
+
+export PATH=$PATH:$HOME/.local/cpanm/bin
+
 # android
 [ -d /Applications/android-sdk ] && export ANDROID_SDK=/Applications/android-sdk
 [ -d /Applications/android-sdk/tools ] && export PATH=$PATH:$ANDROID_SDK/tools
@@ -24,7 +28,7 @@ fi
 
 # ENV
 
-export PERL5LIB=$PERL5LIB:$HOME/.local/cpanm/lib/perl5
+export PERL5LIB=$HOME/.local/cpanm/lib/perl5
 export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH="$HOME/.docker/boot2docker-vm"
 
