@@ -21,6 +21,13 @@ fi
 
 export PATH=$PATH:$HOME/.local/cpanm/bin
 
+# go
+export GOPATH=$HOME/.local/go
+export PATH=$PATH:$GOPATH/bin
+
+# node
+export NODE_PATH=`npm root -g`
+
 # android
 [ -d /Applications/android-sdk ] && export ANDROID_SDK=/Applications/android-sdk
 [ -d /Applications/android-sdk/tools ] && export PATH=$PATH:$ANDROID_SDK/tools
@@ -70,6 +77,8 @@ alias ag='ag -aQ --search-binary'
 alias g='git'
 alias tl='tmux list-sessions'
 alias ta='tmux attach-session -t'
+
+alias be='bundle exec'
 
 # gosh alias
 alias gosh="rlwrap -b '(){}[],#\";| ' gosh"

@@ -8,3 +8,6 @@
 [ -f ~/.local_zsh_profile ] && source ~/.local_zsh_profile
 
 
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
