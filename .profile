@@ -6,6 +6,7 @@ if [ -x /usr/libexec/path_helper ]; then
 fi
 
 export PATH=/usr/local/bin:/usr/local/sbin:$HOME/.local/bin:$PATH:/usr/sbin:/sbin:/usr/local/opt/ruby/bin:$HOME/perl5/bin:/usr/bin:/bin
+export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
 
 # anyenv
 if [ -d "$HOME/.anyenv" ]; then
@@ -22,7 +23,7 @@ fi
 export PATH=$PATH:$HOME/.local/cpanm/bin
 
 # go
-export GOPATH=$HOME/.local/go
+export GOPATH=$HOME/Documents/workspace
 export PATH=$PATH:$GOPATH/bin
 
 # node
@@ -88,6 +89,12 @@ alias show='open -a Preview'
 
 alias cpanm='cpanm -l ~/.local/cpanm'
 alias docker='docker --tls'
+
+# brew
+alias brew='sudo chown $(whoami):admin /usr/local && sudo chown -R $(whoami):admin /usr/local && brew'
+
+# objc2swift
+alias objc2swift='java -jar /Users/kouhei/Documents/workspace/src/github.com/yahoojapan/objc2swift/build/libs/objc2swift-1.0.jar'
 
 # peco
 

@@ -54,6 +54,9 @@
     rhd  = reset --hard
     rst  = reset --soft
     sed  = "!LANG=C LC_ALL=C sh -c \"git ls-files $1 | grep -iv '.\\(so\\|ico\\|exe\\|pdf\\|jar\\|gif\\|air\\|zip\\|ser\\|p12\\|pbj\\|swz\\|swc\\|mp3\\|png\\|jpg\\|swf\\)$' | xargs -I{} sed -i '' -e '$2' {} \""
+    ps = !git push origin `git rev-parse --abbrev-ref HEAD`
+    pl = !git pull origin `git rev-parse --abbrev-ref HEAD`
+
 
 [include]
     path = ~/.local_gitconfig
@@ -64,3 +67,5 @@
 
 [ghq]
     root = ~/Documents/workspace/src
+[pr-release]
+	token = 8440c1519b2351a0647a62786610bf6c92981204
