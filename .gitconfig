@@ -54,9 +54,10 @@
     rhd  = reset --hard
     rst  = reset --soft
     sed  = "!LANG=C LC_ALL=C sh -c \"git ls-files $1 | grep -iv '.\\(so\\|ico\\|exe\\|pdf\\|jar\\|gif\\|air\\|zip\\|ser\\|p12\\|pbj\\|swz\\|swc\\|mp3\\|png\\|jpg\\|swf\\)$' | xargs -I{} sed -i '' -e '$2' {} \""
+    base = "!git show-branch --all | grep '*' | grep -v \"$(git rev-parse --abbrev-ref HEAD)\" | head -1 | awk -F'[]~^[]' '{print $2}'"
     ps = !git push origin `git rev-parse --abbrev-ref HEAD`
     pl = !git pull origin `git rev-parse --abbrev-ref HEAD`
-
+    pr = "!hub pull-request $(git base | sed -e 's#origin/##' | awk '{ if($0==\"HEAD\"){print \"\"}else{print \"-b $0\"} }')"
 
 [include]
     path = ~/.local_gitconfig
