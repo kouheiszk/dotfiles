@@ -1,11 +1,10 @@
 # PATH
-
 if [ -x /usr/libexec/path_helper ]; then
-    PATH=''
+    export PATH=''
     eval `/usr/libexec/path_helper -s`
 fi
 
-export PATH=/usr/local/bin:/usr/local/sbin:$HOME/.local/bin:$PATH:/usr/sbin:/sbin:/usr/local/opt/ruby/bin:$HOME/perl5/bin:/usr/bin:/bin
+export PATH=/usr/local/bin:/usr/local/sbin:$HOME/.local/bin:$PATH:/usr/local/opt/ruby/bin:/usr/bin:/bin
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
 
 # anyenv
@@ -19,7 +18,6 @@ if [ -d "$HOME/.anyenv" ]; then
 fi
 
 # cpan
-
 export PATH=$PATH:$HOME/.local/cpanm/bin
 
 # go
@@ -41,7 +39,7 @@ export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH="$HOME/.docker/boot2docker-vm"
 
 # added by travis gem
-[ -f "$HOME/.travis/travis.sh" ] && source "$HOME/.travis/travis.sh" 
+[ -f "$HOME/.travis/travis.sh" ] && source "$HOME/.travis/travis.sh"
 
 # alias
 alias javac='javac -J-Dfile.encoding=UTF-8'
@@ -120,18 +118,19 @@ alias gr='gitroot'
 
 # ssh
 
-AGENT_SOCK_FILE="/tmp/ssh-agent-$USER"
-SSH_AGENT_FILE="$HOME/.ssh-agent-info"
-if test $SSH_AUTH_SOCK ; then
-    if [ $SSH_AUTH_SOCK != $AGENT_SOCK_FILE ] ; then
-        ln -sf $SSH_AUTH_SOCK $AGENT_SOCK_FILE
-        export SSH_AUTH_SOCK=$AGENT_SOCK_FILE
-    fi
+SSH_AGENT="$HOME/.ssh/agent"
+if [ -S "$SSH_AUTH_SOCK" ]; then
+    case $SSH_AUTH_SOCK in
+    /private/tmp/com.apple.launchd.[0-9a-zA-Z]*/Listeners)
+        ln -snf "$SSH_AUTH_SOCK" $SSH_AGENT && export SSH_AUTH_SOCK=$SSH_AGENT
+    esac
+elif [ -S $SSH_AGENT ]; then
+    export SSH_AUTH_SOCK=$SSH_AGENT
 else
-    test -f $SSH_AGENT_FILE && source $SSH_AGENT_FILE
-    if ! ssh-add -l >& /dev/null ; then
-        ssh-agent > $SSH_AGENT_FILE
-        source $SSH_AGENT_FILE
+    test -f $SSH_AGENT && source $SSH_AGENT
+    if ! ssh-add -l >& /dev/null; then
+        ssh-agent > $SSH_AGENT
+        source $SSH_AGENT
         ssh-add
     fi
 fi

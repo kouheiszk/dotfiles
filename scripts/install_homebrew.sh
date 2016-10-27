@@ -138,7 +138,7 @@ brew cask install the-unarchiver
 #brew cask install slicy
 #brew cask install github
 #brew cask install kobito
-brew cask install slack
+#brew cask install slack
 
 # Alfred link
 brew cask alfred link
