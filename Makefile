@@ -1,41 +1,12 @@
-UNAME := $(shell uname)
-
 all:
 	echo "call 'make install' or 'make update'"
 
-.PHONY: install update run_scripts gitsubmodules
+.PHONY: install update
 
 install:
-	./scripts/make_symboliclink.pl
-	make run_scripts
-	npm install
-	./scripts/make_symboliclink.pl
+	./scripts/install.sh
 	clear
 
 update:
-	./scripts/make_symboliclink.pl
-	make run_scripts
-	npm update
-	./scripts/make_symboliclink.pl
+	./scripts/update.sh
 	clear
-
-run_scripts: 
-	make gitsubmodules 
-ifeq ($(UNAME),Darwin)
-	./scripts/install_homebrew.sh
-	./scripts/install_xcode_mergepbx.sh
-	./scripts/install_xcode_themes.sh
-	./scripts/install_xcode_plugins.sh
-	./scripts/install_karabiner.sh
-endif
-	./scripts/install_vim_plugins.sh
-	./scripts/install_vim_theme.sh
-	./scripts/install_vim_dics.sh
-	./scripts/install_zsh_completions.sh
-	./scripts/install_bash_completions.sh
-
-gitsubmodules:
-	git submodule sync
-	git submodule update --init
-	git submodule foreach 'git checkout master; git pull; git submodule sync; git submodule update --init'
-
