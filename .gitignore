@@ -5,8 +5,9 @@
 .vim/.netrwhist
 .vim/colors/*
 npm-debug.log
-!.aws/source/default.config
-.aws/source/*
-.aws/config
-.aws/credentials
-.aws/credentials.bak
+/.aws/source/*
+!/.aws/source/default.config
+!/.aws/source/.keep
+/.aws/config
+/.aws/credentials
+/.aws/credentials.bak
