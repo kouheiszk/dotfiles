@@ -1,9 +1,3 @@
-.vim/bundle/*
-.eclipse
-.vim/history/*
-.vim/undo/*
-.vim/.netrwhist
-.vim/colors/*
 npm-debug.log
 /.aws/source/*
 !/.aws/source/default.config
