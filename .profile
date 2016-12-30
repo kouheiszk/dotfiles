@@ -1,3 +1,12 @@
+#!/bin/sh
+
+# ~/.profile は複数のログインシェルが実行するファイル
+# bashの場合、この ~/.profile は .bash_profile や .bash_login があれば自動で読み込まないので、手動で読み込む必要がある
+# bashの場合:
+# .bash_profile -> .bashrc -> .profile -> .profile.bash -> .local_profile
+# zshの場合:
+# .zshrc -> .profile -> .profile.zsh -> .local_profile
+
 # anyenv
 if [ -d "$HOME/.anyenv" ]; then
     export PATH="$HOME/.anyenv/bin:$PATH"
