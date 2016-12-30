@@ -12,9 +12,7 @@ if [ ! -x "$(which anyenv)" ]; then
     mkdir -p $(anyenv root)/plugins
     git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
   fi
-fi
 
-if [ -x "$(which anyenv)" ]; then
   mkdir -p $(anyenv root)/envs
 
   # Install **env
@@ -24,10 +22,12 @@ if [ -x "$(which anyenv)" ]; then
   anyenv install goenv
 
   exec $SHELL -l
+fi
 
+if [ -x "$(which anyenv)" ]; then
   # Install new versions at 2017.1.1
   rbenv install 2.3.1
-  pyenv install 3.6
+  pyenv install 3.6.0
   ndenv install v6.9.2
   goenv install 1.7.4
 
