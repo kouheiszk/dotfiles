@@ -8,9 +8,8 @@ else
     exit 1
 fi
 
-mkdir -p ~/tmp
-git clone https://github.com/kouheiszk/dotfiles.git ~/tmp/dotfiles
-cd ~/tmp/dotfiles/
+mkdir -p $HOME/.tmp
+git clone https://github.com/kouheiszk/dotfiles.git $HOME/.tmp/dotfiles
+cd $HOME/.tmp/dotfiles/
 make install
 cd -
-
