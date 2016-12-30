@@ -53,29 +53,14 @@ alias g='git'
 # preview
 alias show='open -a Preview'
 
-# peco
-if [ ! -x "$(which zle)" ]; then
-  function kouheiszk_peco_src_selection () {
-    local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
-    if [ -n "$selected_dir" ]; then
-      BUFFER="cd ${selected_dir}"
-      zle accept-line
-    fi
-    zle clear-screen
-  }
-
-  zle -N kouheiszk_peco_src_selection
-  bindkey '^]' kouheiszk_peco_src_selection
-fi
-
 # Git ルートディレクトリ移動
-function kouheiszk_gitroot() {
+function kouheiszk_cd_gitroot() {
   if `git rev-parse --is-inside-work-tree 2>&1 > /dev/null`; then
     cd `git rev-parse --show-toplevel`
   fi
 }
 
-alias gr='kouheiszk_gitroot'
+alias gr='kouheiszk_cd_gitroot'
 
 # ssh
 # SSH_AGENT="$HOME/.ssh/agent"

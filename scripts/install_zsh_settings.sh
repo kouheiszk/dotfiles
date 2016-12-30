@@ -1,8 +1,24 @@
 #!/bin/sh
 
+# shellをzshに切り替える
+if [ $( cat /etc/shells | grep '/usr/local/bin/zsh' ) ]; then
+  :
+else
+  echo '/usr/local/bin/zsh' | sudo tee -a /etc/shells > /dev/null
+fi
+
 case $SHELL in
-  "/bin/bash" ) chsh -s /bin/zsh ;;
-  "/bin/zsh" | "/usr/local/bin/zsh" ) continue ;;
+  "/usr/local/bin/zsh" ) continue ;;
+  "/bin/bash" | "/bin/zsh" )
+    if [ -f "/usr/local/bin/zsh" ]; then
+      echo "Switch shell to /usr/local/bin/zsh"
+      chsh -s /usr/local/bin/zsh
+    elif [ $SHELL != "/bin/zsh" ] && [ -f "/bin/zsh" ]; then
+      echo "Switch shell to /bin/zsh"
+      chsh -s /bin/zsh
+    fi
+    ;;
 esac
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# zplugのインストール
+curl -sL zplug.sh/installer | zsh

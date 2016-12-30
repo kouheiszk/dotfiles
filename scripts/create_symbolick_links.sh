@@ -18,7 +18,7 @@ for dotfile in .?*;do
       if [ -f "$HOME/$dotfile" ] || [ -d "$HOME/$dotfile" ]; then
         if [ -L "$HOME/$dotfile" ]; then
           # すでにシンボリックリンクが存在するので、リンク元のファイルをチェックする
-          local real_file=$( ls -la $HOME/$dotfile | awk '{ print $NF }' )
+          real_file=$( ls -la $HOME/$dotfile | awk '{ print $NF }' )
           if [ "$real_file" != "$DOTFILES_DIR/$dotfile" ]; then
             echo "Wrong symbolic link of ${dotfile} is exist."
           fi

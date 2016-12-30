@@ -35,15 +35,14 @@ mas \
 ansible \
 fswatch \
 jq \
-docker \
-docker-machine-nfs \
 openssl \
 md5sha1sum \
 nmap \
 curl \
 wget \
 hugo \
-peco
+fzf \
+gawk
 
 # Install from brew cask
 brew cask install \
@@ -51,8 +50,8 @@ google-chrome \
 firefox \
 google-japanese-ime \
 iterm2 \
-vagrant \
 atom \
+docker \
 docker-toolbox \
 appcleaner \
 sequel-pro
