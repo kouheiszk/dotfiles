@@ -5,3 +5,5 @@ npm-debug.log
 /.aws/config
 /.aws/credentials
 /.aws/credentials.bak
+/.atom/*
+!/.atom/keymap.cson

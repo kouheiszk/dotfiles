@@ -2,10 +2,6 @@
 if [ -d "$HOME/.anyenv" ]; then
     export PATH="$HOME/.anyenv/bin:$PATH"
     eval "$(anyenv init -)"
-    for D in $(/bin/ls $HOME/.anyenv/envs)
-    do
-        export PATH="$HOME/.anyenv/envs/${D}shims:$PATH"
-    done
 fi
 
 # go
@@ -46,11 +42,9 @@ alias ag='ag -aQ --search-binary'
 alias g='git'
 
 # preview
-
 alias show='open -a Preview'
 
 # peco
-
 if [ ! -x "$(which peco)" ]; then
   function peco-src-selection () {
     local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
@@ -66,7 +60,6 @@ if [ ! -x "$(which peco)" ]; then
 fi
 
 # Git ルートディレクトリ移動
-
 function gitroot() {
   if `git rev-parse --is-inside-work-tree 2>&1 > /dev/null`; then
     cd `git rev-parse --show-toplevel`
@@ -76,7 +69,6 @@ function gitroot() {
 alias gr='gitroot'
 
 # ssh
-
 # SSH_AGENT="$HOME/.ssh/agent"
 # if [ -S "$SSH_AUTH_SOCK" ]; then
 #     case $SSH_AUTH_SOCK in
