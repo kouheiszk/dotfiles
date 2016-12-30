@@ -55,7 +55,7 @@ alias show='open -a Preview'
 
 # peco
 if [ ! -x "$(which peco)" ]; then
-  function peco-src-selection () {
+  function kouheiszk_peco_src_selection () {
     local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
     if [ -n "$selected_dir" ]; then
       BUFFER="cd ${selected_dir}"
@@ -64,18 +64,18 @@ if [ ! -x "$(which peco)" ]; then
     zle clear-screen
   }
 
-  zle -N peco-src-selection
-  bindkey '^]' peco-src-selection
+  zle -N kouheiszk_peco_src_selection
+  bindkey '^]' kouheiszk_peco_src_selection
 fi
 
 # Git ルートディレクトリ移動
-function gitroot() {
+function kouheiszk_gitroot() {
   if `git rev-parse --is-inside-work-tree 2>&1 > /dev/null`; then
     cd `git rev-parse --show-toplevel`
   fi
 }
 
-alias gr='gitroot'
+alias gr='kouheiszk_gitroot'
 
 # ssh
 # SSH_AGENT="$HOME/.ssh/agent"
@@ -94,6 +94,12 @@ alias gr='gitroot'
 #         ssh-add
 #     fi
 # fi
+
+# シェル固有の設定を読み込む
+case $SHELL in
+  "/bin/bash" ) [ -f "$HOME/.profile.bash" ] && source $HOME/.profile.bash ;;
+  "/bin/zsh" | "/usr/local/bin/zsh" ) [ -f "$HOME/.profile.zsh" ] && source $HOME/.profile.zsh ;;
+esac
 
 # .local_profileを読み込む
 [ -f "$HOME/.local_profile" ] && source $HOME/.local_profile
