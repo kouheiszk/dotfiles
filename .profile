@@ -54,7 +54,7 @@ alias g='git'
 alias show='open -a Preview'
 
 # peco
-if [ ! -x "$(which peco)" ]; then
+if [ ! -x "$(which zle)" ]; then
   function kouheiszk_peco_src_selection () {
     local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
     if [ -n "$selected_dir" ]; then
