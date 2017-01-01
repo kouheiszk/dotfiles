@@ -12,6 +12,7 @@ find -L $HOME -d 1 -type l | xargs rm -r
 for dotfile in .?*;do
   case "$dotfile" in
     ".." ) continue ;;
+    ".DS_Store" ) continue ;;
     "*.elc" ) continue ;;
     ".git" | ".gitignore" | ".gitmodules" | ".module" ) continue ;;
     * )

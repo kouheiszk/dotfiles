@@ -54,7 +54,8 @@ atom \
 docker \
 docker-toolbox \
 appcleaner \
-sequel-pro
+sequel-pro \
+dropbox
 
 # Remove outdated versions
 brew cleanup
