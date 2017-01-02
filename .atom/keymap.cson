@@ -31,14 +31,24 @@
 # Atom Flight Manual:
 # http://flight-manual.atom.io/using-atom/sections/basic-customization/#_cson
 
-'atom-text-editor':
+'atom-workspace, atom-text-editor:not([mini])':
+  'cmd-ctrl-h': 'editor:move-to-first-character-of-line'
+  'cmd-ctrl-j': 'core:move-to-bottom'
+  'cmd-ctrl-k': 'core:move-to-top'
+  'cmd-ctrl-l': 'editor:move-to-end-of-screen-line'
+
+  'cmd-shift-ctrl-h': 'editor:select-to-first-character-of-line'
+  'cmd-shift-ctrl-j': 'core:select-to-bottom'
+  'cmd-shift-ctrl-k': 'core:select-to-top'
+  'cmd-shift-ctrl-l': 'editor:select-to-end-of-line'
+
+'body, atom-workspace, atom-text-editor':
   'ctrl-h': 'core:move-left'
   'ctrl-j': 'core:move-down'
   'ctrl-k': 'core:move-up'
   'ctrl-l': 'core:move-right'
 
-'atom-workspace':
-  'ctrl-h': 'core:move-left'
-  'ctrl-j': 'core:move-down'
-  'ctrl-k': 'core:move-up'
-  'ctrl-l': 'core:move-right'
+  'shift-ctrl-h': 'core:select-left'
+  'shift-ctrl-j': 'core:select-down'
+  'shift-ctrl-k': 'core:select-up'
+  'shift-ctrl-l': 'core:select-right'
