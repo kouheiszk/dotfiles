@@ -25,6 +25,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias du='du -h'
 alias df='df -h'
+alias vim='nvim'
 alias vi='vim'
 alias v='vim'
 

@@ -1,0 +1,172 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# ==========================================================
+# color
+# ==========================================================
+
+[[plugins]] # solarized
+repo = 'altercation/vim-colors-solarized'
+hook_add = '''
+source ~/.config/nvim/plugins/solarized.vim
+'''
+
+# # ==========================================================
+# # basic
+# # ==========================================================
+#
+# [[plugins]]
+# repo = 'scrooloose/nerdcommenter'
+# hook_add = '''
+# source ~/.config/nvim/plugins/nerdcomenter.rc.vim
+# '''
+#
+# [[plugins]]
+# repo = 'osyo-manga/vim-anzu'
+# hook_add = '''
+# source ~/.config/nvim/plugins/anzu.rc.vim
+# '''
+#
+# [[plugins]]
+# repo = 'LeafCage/yankround.vim.git'
+# hook_add = '''
+# source ~/.config/nvim/plugins/yankround.rc.vim
+# '''
+#
+# [[plugins]]
+# repo = 'mattn/webapi-vim'
+#
+# [[plugins]]
+# repo = 'cohama/lexima.vim'
+#
+# [[plugins]]
+# repo = 'Shougo/vinarise.vim'
+# on_cmd = 'Vinarise'
+#
+# [[plugins]]
+# repo = 'rhysd/clever-f.vim'
+#
+# [[plugins]]
+# repo = 'tpope/vim-surround'
+#
+# [[plugins]]
+# repo = 'bronson/vim-trailing-whitespace'
+#
+# [[plugins]]
+# repo = 'milkypostman/vim-togglelist'
+# hook_add = '''
+# nmap <script> <silent> <C-l> :call ToggleLocationList()<CR>
+# nmap <script> <silent> <C-q> :call ToggleQuickfixList()<CR> " Bug: not work in neovim
+# '''
+#
+# [[plugins]]
+# repo = 'kana/vim-operator-user'
+#
+# [[plugins]]
+# repo = 'kana/vim-textobj-user'
+#
+# [[plugins]]
+# repo = 'kana/vim-textobj-function'
+#
+# [[plugins]]
+# repo = 'osyo-manga/vim-operator-search'
+# depends = ['vim-operator-user', 'vim-textobj-function', 'vim-textobj-user']
+# hook_add = '''
+# nmap <Space>/ <Plug>(operator-search)if
+# '''
+#
+# # ==========================================================
+# # linter
+# # ==========================================================
+#
+# [[plugins]]
+# repo = 'neomake/neomake'
+# if = "has('nvim')"
+# hook_add = '''
+# source ~/.config/nvim/plugins/neomake.rc.vim
+# '''
+#
+# #[[plugins]]
+# #repo = 'benjie/neomake-local-eslint.vim'
+# #if = "has('nvim')"
+# #depends = 'neomake'
+#
+# [[plugins]]
+# repo = 'vim-syntastic/syntastic'
+# if = "!has('nvim')"
+# hook_add = '''
+# source ~/.config/nvim/plugins/syntastic.rc.vim
+# '''
+#
+# #[[plugins]]
+# #repo = 'mtscout6/syntastic-local-eslint.vim'
+# #if = "!has('nvim')"
+# #depends = 'syntastic'
+# #on_ft = 'javascript'
+#
+# # ==========================================================
+# # filer
+# # ==========================================================
+#
+# [[plugins]]
+# repo = 'Shougo/unite.vim'
+# hook_add = '''
+# nnoremap <silent> fb :<C-u>Unite buffer<CR>
+# '''
+#
+# [[plugins]]
+# repo = 'Shougo/vimfiler.vim'
+# depends = 'unite.vim'
+# hook_add = '''
+# source ~/.config/nvim/plugins/vimfiler.rc.vim
+# '''
+#
+# # ==========================================================
+# # powerline
+# # ==========================================================
+#
+# [[plugins]]
+# repo = 'majutsushi/tagbar'
+#
+# [[plugins]]
+# repo = 'tpope/vim-fugitive'
+#
+# [[plugins]]
+# repo = 'vim-airline/vim-airline'
+# depends = ['tagbar', 'vim-fugitive']
+# hook_add = '''
+# source ~/.config/nvim/plugins/airline.rc.vim
+# '''
+#
+# [[plugins]]
+# repo = 'vim-airline/vim-airline-themes'
+# depends = 'vim-airline'
+# hook_add = '''
+# let g:airline_theme='luna'
+# '''
+#
+# # ==========================================================
+# # terminal
+# # ==========================================================
+#
+# [[plugins]]
+# repo = 'kassio/neoterm'
+# if = "has('nvim')"
+# hook_add = '''
+# source ~/.config/nvim/plugins/neoterm.rc.vim
+# '''
+#
+# [[plugins]]
+# repo = 'Shougo/vimshell'
+# if = "!has('nvim')"
+# hook_add = '''
+# source ~/.config/nvim/plugins/vimshell.rc.vim
+# '''
+#
+# [[plugins]]
+# repo = 'Shougo/vimproc.vim'
+# if = "!has('nvim')"
+# build = 'make'
+#
+# [[plugins]]
+# repo = 'thinca/vim-quickrun'
