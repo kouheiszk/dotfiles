@@ -1,6 +1,0 @@
-[submodule ".module/solarized"]
-	path = .module/solarized
-    url = https://github.com/altercation/solarized.git
-[submodule ".module/powerline-fonts"]
-	path = .module/powerline-fonts
-	url = https://github.com/Lokaltog/powerline-fonts

@@ -42,7 +42,8 @@ curl \
 wget \
 hugo \
 fzf \
-gawk
+gawk \
+neovim/neovim/neovim
 
 # Install from brew cask
 brew cask install \
