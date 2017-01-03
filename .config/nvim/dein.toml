@@ -19,6 +19,8 @@ set background=dark
 [[plugins]]
 repo = 'LeafCage/yankround.vim.git'
 hook_add = '''
+let g:yankround_dir = '~/.cache/yankround'
+
 nmap p <Plug>(yankround-p)
 xmap p <Plug>(yankround-p)
 nmap P <Plug>(yankround-P)

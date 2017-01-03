@@ -39,7 +39,7 @@ filetype plugin indent on
 syntax enable
 
 set runtimepath+=~/.config/nvim/
-runtime! /my/*.vim
+runtime! my/*.vim
 
 if filereadable(expand('~/.local_vim/.vimrc'))
   set runtimepath+=~/.local_vim
