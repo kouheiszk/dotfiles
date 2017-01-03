@@ -80,9 +80,5 @@ endfunction
 
 nmap <silent> <Esc><Esc> :call ToggleHighlighting()<CR>
 
-"" ビジュアルモードで選択した範囲を検索
-vnoremap z/ <ESC>/\%V
-vnoremap z? <ESC>?\%V
-
 "" 検索時に/をエスケープ
 cnoremap <expr>/ getcmdtype() == '/' ? '\/' : '/'

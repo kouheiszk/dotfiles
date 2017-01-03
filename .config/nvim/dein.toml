@@ -8,165 +8,180 @@ repo = 'Shougo/dein.vim'
 [[plugins]] # solarized
 repo = 'altercation/vim-colors-solarized'
 hook_add = '''
-source ~/.config/nvim/plugins/solarized.vim
+au MyAutoCmd VimEnter * nested colorscheme solarized
+set background=dark
 '''
 
-# # ==========================================================
-# # basic
-# # ==========================================================
-#
-# [[plugins]]
-# repo = 'scrooloose/nerdcommenter'
-# hook_add = '''
-# source ~/.config/nvim/plugins/nerdcomenter.rc.vim
-# '''
-#
-# [[plugins]]
-# repo = 'osyo-manga/vim-anzu'
-# hook_add = '''
-# source ~/.config/nvim/plugins/anzu.rc.vim
-# '''
-#
-# [[plugins]]
-# repo = 'LeafCage/yankround.vim.git'
-# hook_add = '''
-# source ~/.config/nvim/plugins/yankround.rc.vim
-# '''
-#
-# [[plugins]]
-# repo = 'mattn/webapi-vim'
-#
-# [[plugins]]
-# repo = 'cohama/lexima.vim'
-#
-# [[plugins]]
-# repo = 'Shougo/vinarise.vim'
-# on_cmd = 'Vinarise'
-#
-# [[plugins]]
-# repo = 'rhysd/clever-f.vim'
-#
-# [[plugins]]
-# repo = 'tpope/vim-surround'
-#
-# [[plugins]]
-# repo = 'bronson/vim-trailing-whitespace'
-#
-# [[plugins]]
-# repo = 'milkypostman/vim-togglelist'
-# hook_add = '''
-# nmap <script> <silent> <C-l> :call ToggleLocationList()<CR>
-# nmap <script> <silent> <C-q> :call ToggleQuickfixList()<CR> " Bug: not work in neovim
-# '''
-#
-# [[plugins]]
-# repo = 'kana/vim-operator-user'
-#
-# [[plugins]]
-# repo = 'kana/vim-textobj-user'
-#
-# [[plugins]]
-# repo = 'kana/vim-textobj-function'
-#
-# [[plugins]]
-# repo = 'osyo-manga/vim-operator-search'
-# depends = ['vim-operator-user', 'vim-textobj-function', 'vim-textobj-user']
-# hook_add = '''
-# nmap <Space>/ <Plug>(operator-search)if
-# '''
-#
-# # ==========================================================
-# # linter
-# # ==========================================================
-#
-# [[plugins]]
-# repo = 'neomake/neomake'
-# if = "has('nvim')"
-# hook_add = '''
-# source ~/.config/nvim/plugins/neomake.rc.vim
-# '''
-#
-# #[[plugins]]
-# #repo = 'benjie/neomake-local-eslint.vim'
-# #if = "has('nvim')"
-# #depends = 'neomake'
-#
-# [[plugins]]
-# repo = 'vim-syntastic/syntastic'
-# if = "!has('nvim')"
-# hook_add = '''
-# source ~/.config/nvim/plugins/syntastic.rc.vim
-# '''
-#
-# #[[plugins]]
-# #repo = 'mtscout6/syntastic-local-eslint.vim'
-# #if = "!has('nvim')"
-# #depends = 'syntastic'
-# #on_ft = 'javascript'
-#
-# # ==========================================================
-# # filer
-# # ==========================================================
-#
-# [[plugins]]
-# repo = 'Shougo/unite.vim'
-# hook_add = '''
-# nnoremap <silent> fb :<C-u>Unite buffer<CR>
-# '''
-#
-# [[plugins]]
-# repo = 'Shougo/vimfiler.vim'
-# depends = 'unite.vim'
-# hook_add = '''
-# source ~/.config/nvim/plugins/vimfiler.rc.vim
-# '''
-#
-# # ==========================================================
-# # powerline
-# # ==========================================================
-#
-# [[plugins]]
-# repo = 'majutsushi/tagbar'
-#
-# [[plugins]]
-# repo = 'tpope/vim-fugitive'
-#
-# [[plugins]]
-# repo = 'vim-airline/vim-airline'
-# depends = ['tagbar', 'vim-fugitive']
-# hook_add = '''
-# source ~/.config/nvim/plugins/airline.rc.vim
-# '''
-#
-# [[plugins]]
-# repo = 'vim-airline/vim-airline-themes'
-# depends = 'vim-airline'
-# hook_add = '''
-# let g:airline_theme='luna'
-# '''
-#
-# # ==========================================================
-# # terminal
-# # ==========================================================
-#
-# [[plugins]]
-# repo = 'kassio/neoterm'
-# if = "has('nvim')"
-# hook_add = '''
-# source ~/.config/nvim/plugins/neoterm.rc.vim
-# '''
-#
-# [[plugins]]
-# repo = 'Shougo/vimshell'
-# if = "!has('nvim')"
-# hook_add = '''
-# source ~/.config/nvim/plugins/vimshell.rc.vim
-# '''
-#
-# [[plugins]]
-# repo = 'Shougo/vimproc.vim'
-# if = "!has('nvim')"
-# build = 'make'
-#
-# [[plugins]]
-# repo = 'thinca/vim-quickrun'
+# ==========================================================
+# basic
+# ==========================================================
+
+[[plugins]]
+repo = 'LeafCage/yankround.vim.git'
+hook_add = '''
+nmap p <Plug>(yankround-p)
+xmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap gp <Plug>(yankround-gp)
+xmap gp <Plug>(yankround-gp)
+nmap gP <Plug>(yankround-gP)
+nmap <C-p> <Plug>(yankround-prev)
+nmap <C-n> <Plug>(yankround-next)
+'''
+
+[[plugins]]
+repo = 'rhysd/clever-f.vim'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+
+[[plugins]]
+repo = 'milkypostman/vim-togglelist'
+hook_add = '''
+nmap <script> <silent> <C-l> :call ToggleLocationList()<CR>
+nmap <script> <silent> <C-q> :call ToggleQuickfixList()<CR> " Bug: not work in neovim
+'''
+
+[[plugins]]
+repo = 'kana/vim-operator-user'
+
+[[plugins]]
+repo = 'kana/vim-textobj-user'
+
+[[plugins]]
+repo = 'kana/vim-textobj-function'
+
+[[plugins]]
+repo = 'osyo-manga/vim-operator-search'
+depends = ['vim-operator-user', 'vim-textobj-function', 'vim-textobj-user']
+hook_add = '''
+nmap <Space>/ <Plug>(operator-search)if
+'''
+
+# ==========================================================
+# filer
+# ==========================================================
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+hook_add = '''
+nnoremap <silent> fb :<C-u>Unite buffer<CR>
+'''
+
+[[plugins]]
+repo = 'Shougo/vimfiler.vim'
+depends = 'unite.vim'
+hook_add = '''
+call vimfiler#custom#profile('default', 'context', {
+     \ 'safe' : 0,
+     \ 'auto_expand' : 1,
+     \ 'parent' : 0,
+     \ })
+" default explore -> vimfiler
+let g:vimfiler_as_default_explorer = 1
+" buffer directory
+nnoremap <silent> fe :<C-u>VimFilerBufferDir -quit<CR>
+" Nerdtree like
+nnoremap <C-e> :<C-u>VimFilerBufferDir -split -winwidth=120 -toggle -no-quit<CR>
+" key mapping
+autocmd MyAutoCmd FileType vimfiler call s:vimfiler_my_settings()
+function! s:vimfiler_my_settings()
+  nnoremap <silent><buffer><expr> s vimfiler#do_switch_action('vsplit')
+  nnoremap <silent><buffer><expr> v vimfiler#do_switch_action('split')
+  nnoremap <silent><buffer><expr> t vimfiler#do_action('tabopen')
+endfunction
+" Textmate icons
+let g:vimfiler_tree_leaf_icon = ' '
+let g:vimfiler_tree_opened_icon = '▾'
+let g:vimfiler_tree_closed_icon = '▸'
+let g:vimfiler_file_icon = '-'
+let g:vimfiler_marked_file_icon = '*'
+'''
+
+[[plugins]]
+repo = 'ctrlpvim/ctrlp.vim'
+hook_add = '''
+let g:ctrlp_map                 = '<Leader><C-p>'
+let g:ctrlp_by_filename         = 1
+let g:ctrlp_jump_to_buffer      = 2
+let g:ctrlp_open_new_file       = 't' " open in a new tab
+let g:ctrlp_open_multiple_files = 't'
+let g:ctrlp_max_files           = 0
+let g:ctrlp_mruf_max            = 1000
+let g:ctrlp_user_command        = ['.git', 'cd %s && git ls-files --cached --others --exclude-standard'] " speedup
+let g:ctrlp_prompt_mappings     = {
+      \ 'AcceptSelection("e")': ['<c-cr>', '<2-LeftMouse>'],
+      \ 'AcceptSelection("h")': ['<c-s>'],
+      \ 'AcceptSelection("t")': ['<c-t>', '<cr>'],
+      \ 'AcceptSelection("v")': ['<c-v>', '<RightMouse>'],
+      \ }
+'''
+
+# ==========================================================
+# powerline
+# ==========================================================
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+depends = ['tagbar', 'vim-fugitive']
+hook_add = '''
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1 " タブラインにもairlineを適用
+let g:airline#extensions#tabline#show_buffers = 0 " （タブが一個の場合）バッファのリストをタブラインに表示する機能をオフ
+let g:airline#extensions#tabline#tab_nr_type = 1 " 0でそのタブで開いてるウィンドウ数、1で左のタブから連番
+let g:airline#extensions#tabline#fnamemod = ':t' " タブに表示する名前（fnamemodifyの第二引数）
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+if !has('nvim')
+  let g:airline#extensions#whitespace#mixed_indent_algo = 2 " see :help airline-whitespace@en
+endif
+
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+depends = 'vim-airline'
+hook_add = '''
+let g:airline_theme='solarized dark'
+'''
+
+# ==========================================================
+# terminal
+# ==========================================================
+
+[[plugins]]
+repo = 'kassio/neoterm'
+if = "has('nvim')"
+hook_add = '''
+nnoremap <silent> ,rc :TREPLSendFile<cr>
+nnoremap <silent> ,rl :TREPLSendLine<cr>
+vnoremap <silent> ,rl :TREPLSendSelection<cr>
+nnoremap <silent> vt :Ttoggle<cr>
+nnoremap <silent> vs :terminal<cr>
+'''
+
+[[plugins]]
+repo = 'Shougo/vimshell'
+if = "!has('nvim')"
+hook_add = '''
+nnoremap <silent> vs :<C-u>VimShell<CR>
+let g:vimshell_prompt_expr = 'getcwd()." > "'
+let g:vimshell_prompt_pattern = '^\f\+ > '
+'''
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+if = "!has('nvim')"
+build = 'make'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'

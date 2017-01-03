@@ -55,13 +55,13 @@ alias g='git'
 alias show='open -a Preview'
 
 # Git ルートディレクトリ移動
-function kouheiszk_cd_gitroot() {
+function my_cd_gitroot() {
   if `git rev-parse --is-inside-work-tree 2>&1 > /dev/null`; then
     cd `git rev-parse --show-toplevel`
   fi
 }
 
-alias gr='kouheiszk_cd_gitroot'
+alias gr='my_cd_gitroot'
 
 # ssh
 # SSH_AGENT="$HOME/.ssh/agent"

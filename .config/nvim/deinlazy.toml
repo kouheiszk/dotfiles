@@ -1,135 +1,159 @@
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
 
-# [[plugins]]
-# repo = 'Shougo/deoplete.nvim'
-# depends = 'context_filetype.vim'
-# if = "has('nvim')"
-# on_i = 1
-# hook_source = '''
-# source ~/.config/nvim/plugins/deoplete.vim
-# '''
-#
-# [[plugins]]
-# repo = 'Shougo/neocomplete.vim'
-# depends = 'context_filetype.vim'
-# if = "has('lua')"
-# on_i = 1
-# hook_source = '''
-# source ~/.config/nvim/plugins/neocomplete.rc.vim
-# '''
-#
-# [[plugins]]
-# repo = 'zchee/deoplete-jedi'
-# depends = 'deoplete.nvim'
-# if = "has('nvim')"
-# on_ft = 'python'
-#
-# [[plugins]]
-# repo = 'zchee/deoplete-go'
-# depends = 'deoplete.nvim'
-# if = "has('nvim')"
-# on_ft = 'go'
-# build = 'make'
-# hook_source = '''
-# let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-# let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-# let g:deoplete#sources#go#use_cache = 1
-# let g:deoplete#sources#go#json_directory = '~/.cache/deoplete/go/$GOOS_$GOARCH'
-# '''
-#
-# [[plugins]]
-# repo = 'ujihisa/neco-look'
-# on_source = ['neocomplete.vim', 'deoplete.nvim']
-#
-# [[plugins]]
-# repo = 'racer-rust/vim-racer'
-# on_ft = 'rust'
-# hook_source = '''
-# let g:racer_cmd = "~/.cargo/bin/racer"
-# let $RUST_SRC_PATH="/usr/local/src/rustc-1.13.0/src/"
-# '''
-#
-# [[plugins]]
-# repo = 'osyo-manga/vim-precious'
-# depends = 'context_filetype.vim'
-# on_ft = ['vim', 'html', 'toml']
-#
-# # ==========================================================
-# # lang
-# # ==========================================================
-#
-# [[plugins]]
-# repo = 'Shougo/neco-vim'
-# on_ft = 'vim'
-#
-# [[plugins]]
-# repo = 'cespare/vim-toml'
-# on_ft = 'toml'
-#
-# #[[plugins]]
-# #repo = 'Shougo/neoinclude.vim'
-#
-# [[plugins]]
-# repo = 'vim-jp/cpp-vim'
-# on_ft = ['c', 'cpp']
-#
-# [[plugins]]
-# repo = 'rust-lang/rust.vim'
-# on_ft = 'rust'
-#
-# [[plugins]]
-# repo = 'fatih/vim-go'
-# on_ft = 'go'
-# hook_source = '''
-# let g:go_highlight_functions = 1
-# let g:go_highlight_methods = 1
-# let g:go_highlight_fields = 1
-# let g:go_highlight_types = 1
-# let g:go_highlight_operators = 1
-# let g:go_highlight_build_constraints = 1
-# '''
-#
-# [[plugins]]
-# repo = 'hynek/vim-python-pep8-indent'
-# on_ft = 'python'
-#
-# [[plugins]]
-# repo = 'elzr/vim-json'
-# on_ft = 'json'
-#
-# [[plugins]]
-# repo = 'hail2u/vim-css3-syntax'
-# on_ft = 'css'
-#
-# [[plugins]]
-# repo = 'mxw/vim-jsx'
-# on_ft = 'javascript'
-#
-# [[plugins]]
-# repo = 'leafgarland/typescript-vim'
-# on_ft = 'typescript'
-#
-# [[plugins]]
-# repo = 'dag/vim-fish'
-# on_ft = 'fish'
-#
-# [[plugins]]
-# repo = 'tikhomirov/vim-glsl'
-# on_ft = 'glsl'
-#
-# [[plugins]]
-# repo = 'neovimhaskell/haskell-vim'
-# on_ft = ['haskell', 'cabal']
-#
-# [[plugins]]
-# repo = 'rhysd/vim-gfm-syntax'
-# on_ft = ['markdown', 'mkd']
-#
-# [[plugins]]
-# repo = 'udalov/kotlin-vim'
-# on_ft = 'kotlin'
-#
-# [[plugins]]
-# repo = 'keith/swift.vim'
-# on_ft = 'swift'
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+depends = 'context_filetype.vim'
+if = "has('nvim')"
+on_i = 1
+hook_source = '''
+let g:deoplete#enable_at_startup = 1
+" <TAB>: completion.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ deoplete#manual_complete()
+function! s:check_back_space() abort "{{{
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+
+" <S-TAB>: completion back.
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" <BS>: close popup and delete backword char.
+inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
+
+" Use auto delimiter
+call deoplete#custom#set('_', 'converters', [
+      \ 'converter_remove_paren',
+      \ 'converter_remove_overlap',
+      \ 'converter_truncate_abbr',
+      \ 'converter_truncate_menu',
+      \ 'converter_auto_delimiter',
+\ ])
+
+let g:deoplete#enable_camel_case = 1
+'''
+
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+depends = 'context_filetype.vim'
+if = "has('lua')"
+on_i = 1
+hook_source = '''
+
+let g:acp_enableAtStartup = 0
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_camel_case = 1
+let g:neocomplete#enable_auto_delimiter = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 4
+let g:neocomplete#auto_completion_start_length = 4
+let g:neocomplete_enable_insert_char_pre = 1
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+" <TAB>: completion.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ neocomplete#start_manual_complete()
+function! s:check_back_space() abort "{{{
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+" <S-TAB>: completion back.
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist'
+    \ }
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+'''
+
+[[plugins]]
+repo = 'zchee/deoplete-jedi'
+depends = 'deoplete.nvim'
+if = "has('nvim')"
+on_ft = 'python'
+
+[[plugins]]
+repo = 'zchee/deoplete-go'
+depends = 'deoplete.nvim'
+if = "has('nvim')"
+on_ft = 'go'
+build = 'make'
+hook_source = '''
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+let g:deoplete#sources#go#use_cache = 1
+let g:deoplete#sources#go#json_directory = '~/.cache/deoplete/go/$GOOS_$GOARCH'
+'''
+
+[[plugins]]
+repo = 'ujihisa/neco-look'
+on_source = ['neocomplete.vim', 'deoplete.nvim']
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = 'context_filetype.vim'
+on_ft = ['vim', 'html', 'toml']
+
+# ==========================================================
+# lang
+# ==========================================================
+
+[[plugins]]
+repo = 'Shougo/neco-vim'
+on_ft = 'vim'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
+repo = 'vim-jp/cpp-vim'
+on_ft = ['c', 'cpp']
+
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = 'go'
+hook_source = '''
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+'''
+
+[[plugins]]
+repo = 'hynek/vim-python-pep8-indent'
+on_ft = 'python'
+
+[[plugins]]
+repo = 'elzr/vim-json'
+on_ft = 'json'
+
+[[plugins]]
+repo = 'hail2u/vim-css3-syntax'
+on_ft = 'css'
+
+[[plugins]]
+repo = 'mxw/vim-jsx'
+on_ft = 'javascript'
+
+[[plugins]]
+repo = 'rhysd/vim-gfm-syntax'
+on_ft = ['markdown', 'mkd']
+
+[[plugins]]
+repo = 'keith/swift.vim'
+on_ft = 'swift'

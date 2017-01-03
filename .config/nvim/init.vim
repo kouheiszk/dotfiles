@@ -38,5 +38,10 @@ endif
 filetype plugin indent on
 syntax enable
 
-runtime! ./my/basic.vim
-runtime! ./my/keybind.vim
+set runtimepath+=~/.config/nvim/
+runtime! my/*.vim
+
+if filereadable(expand('~/.local_vim/.vimrc'))
+  set runtimepath+=~/.local_vim
+  source $HOME/.local_vim/.vimrc
+end
