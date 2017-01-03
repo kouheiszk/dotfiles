@@ -63,20 +63,6 @@ function my_cd_gitroot() {
 
 alias gr='my_cd_gitroot'
 
-# ssh
-if [ "$SSH_AUTH_SOCK" = "" ]; then
-  sock_tmp=$( ls -t /private/tmp/*launchd*/Listeners )
-  for s in ${sock_tmp[@]}; do
-    export SSH_AUTH_SOCK=$s
-    ssh-add -l >& /dev/null
-    if [ $? -eq 0 ]; then
-      break
-    fi
-    unset SSH_AUTH_SOCK
-  done
-  unset sock_tmp
-fi
-
 # シェル固有の設定を読み込む
 case $SHELL in
   "/bin/bash" ) [ -f "$HOME/.profile.bash" ] && source $HOME/.profile.bash ;;
