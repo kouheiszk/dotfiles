@@ -66,7 +66,7 @@ alias gr='my_cd_gitroot'
 # ssh-addでキーを読み込んでおく
 
 case $( uname ) in
-  "Darwin" ) ssh-add -K $HOME/.ssh/id_rsa ;;
+  "Darwin" ) ssh-add -K $HOME/.ssh/id_rsa >/dev/null 2>&1 ;;
   * ) continue ;;
 esac
 
