@@ -43,7 +43,8 @@ wget \
 hugo \
 fzf \
 gawk \
-neovim/neovim/neovim
+neovim/neovim/neovim \
+fswatch unison # use for docker-sync
 
 # Install from brew cask
 brew cask install \
@@ -64,14 +65,14 @@ brew cleanup
 brew cask cleanup
 
 # Install from mas
-# NOTE: mdfind "kMDItemAppStoreHasReceipt=1" | while read a;do echo $(mdls -name kMDItemAppStoreAdamID -raw "$a") $(echo $a|awk '{n=split($0, tmp, "/")}{print tmp[n]}');done | sort -k2 | awk '{ print "mas install " $1 " # " $2 }'
-mas install 405843582 # Alfred.app
-mas install 406056744 # Evernote.app
-mas install 682658836 # GarageBand.app
-mas install 409183694 # Keynote.app
-mas install 539883307 # LINE.app
-mas install 409203825 # Numbers.app
-mas install 409201541 # Pages.app
-mas install 803453959 # Slack.app
-mas install 425424353 # The
-mas install 408981434 # iMovie.app
+# NOTE: mdfind "kMDItemAppStoreHasReceipt=1" | while read a;do echo $(mdls -name kMDItemAppStoreAdamID -raw "$a") $(echo $a|awk '{n=split($0, tmp, "/")}{print tmp[n]}');done | sort -k2 | awk '{ print "mas install " $1 " # " $0 }'
+mas install 405843582 # 405843582 Alfred.app
+mas install 406056744 # 406056744 Evernote.app
+mas install 682658836 # 682658836 GarageBand.app
+mas install 409183694 # 409183694 Keynote.app
+mas install 539883307 # 539883307 LINE.app
+mas install 409203825 # 409203825 Numbers.app
+mas install 409201541 # 409201541 Pages.app
+mas install 803453959 # 803453959 Slack.app
+mas install 425424353 # 425424353 The Unarchiver.app
+mas install 408981434 # 408981434 iMovie.app

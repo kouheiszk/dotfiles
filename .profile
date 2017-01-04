@@ -63,6 +63,13 @@ function my_cd_gitroot() {
 
 alias gr='my_cd_gitroot'
 
+# ssh-addでキーを読み込んでおく
+
+case $( uname ) in
+  "Darwin" ) ssh-add -K $HOME/.ssh/id_rsa ;;
+  * ) continue ;;
+esac
+
 # シェル固有の設定を読み込む
 case $SHELL in
   "/bin/bash" ) [ -f "$HOME/.profile.bash" ] && source $HOME/.profile.bash ;;
