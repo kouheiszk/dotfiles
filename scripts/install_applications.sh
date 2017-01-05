@@ -58,7 +58,9 @@ docker-toolbox \
 appcleaner \
 sequel-pro \
 dropbox \
-1password
+1password \
+shuttle \
+sketch
 
 # Remove outdated versions
 brew cleanup
