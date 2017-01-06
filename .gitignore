@@ -7,3 +7,5 @@ npm-debug.log
 /.aws/credentials.bak
 /.atom/*
 !/.atom/keymap.cson
+/.config/*
+!/.config/nvim
