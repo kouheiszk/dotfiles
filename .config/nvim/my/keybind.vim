@@ -38,8 +38,11 @@ noremap <C-e> <End>
 xnoremap <silent> <C-a> :call MoveCursorToHome()<CR>
 xnoremap <C-e> <End>
 
-"" InsertモードでCtrlで移動可能に
+"" Ctrl-Dで消せるようにする
+inoremap <C-d> <Nop>
 inoremap <C-d> <Del>
+
+"" InsertモードでCtrlで移動可能に
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
@@ -65,6 +68,9 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
+
+"" exモードを使わない
+nnoremap Q <Nop>
 
 "" normalモードで、;でコマンドモードに入る
 noremap ; :

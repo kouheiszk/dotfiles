@@ -12,3 +12,6 @@ setopt extended_history # 開始と終了を記録
 setopt hist_reduce_blanks # 余分な空白は詰めて記録
 setopt hist_verify # ヒストリを呼び出してから実行する間に一旦編集可能
 setopt hist_ignore_space # スペースで始まるコマンド行はヒストリリストから削除
+setopt share_history # ヒストリを共有
+setopt inc_append_history # コマンドを実行した直後にヒストリファイルに追記する
+

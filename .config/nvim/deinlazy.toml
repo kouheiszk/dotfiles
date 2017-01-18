@@ -157,3 +157,12 @@ on_ft = ['markdown', 'mkd']
 [[plugins]]
 repo = 'keith/swift.vim'
 on_ft = 'swift'
+
+[[plugins]]
+repo = 'tpope/vim-rails'
+on_ft = ['rb', 'erb']
+
+[[plugins]]
+repo = 'vim-ruby/vim-ruby'
+on_ft = ['rb', 'erb']
+

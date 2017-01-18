@@ -5,5 +5,8 @@
 [ -f "$HOME/.zsh/fzf.zsh" ] && source $HOME/.zsh/fzf.zsh
 [ -f "$HOME/.zsh/history.zsh" ] && source $HOME/.zsh/history.zsh
 
+# Ctrl-Dで閉じちゃうのをやめる
+stty eof undef
+
 # PATHの重複読み込みをなくす
 typeset -U path PATH
