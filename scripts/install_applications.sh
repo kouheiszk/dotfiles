@@ -61,7 +61,10 @@ dropbox \
 1password \
 shuttle \
 sketch \
-alfred
+alfred \
+# burn \
+# virtualbox \
+karabiner-elements
 
 # Remove outdated versions
 brew cleanup
