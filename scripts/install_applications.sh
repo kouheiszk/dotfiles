@@ -62,9 +62,10 @@ dropbox \
 shuttle \
 sketch \
 alfred \
-# burn \
-# virtualbox \
+kindle \
 karabiner-elements
+# burn 
+# virtualbox 
 
 # Remove outdated versions
 brew cleanup

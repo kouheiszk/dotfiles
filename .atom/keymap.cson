@@ -52,3 +52,6 @@
   'shift-ctrl-j': 'core:select-down'
   'shift-ctrl-k': 'core:select-up'
   'shift-ctrl-l': 'core:select-right'
+
+'atom-text-editor':
+  'cmd-alt-l': 'editor:auto-indent'
