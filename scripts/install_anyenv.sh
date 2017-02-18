@@ -34,4 +34,9 @@ if [ -x "$(which anyenv)" ]; then
   # update
   anyenv update
   anyenv versions
+
+  # Install pyenv virtualenv
+  git clone https://github.com/yyuu/pyenv-virtualenv.git "$HOME/.anyenv/envs/pyenv/plugins/pyenv-virtualenv"
+
+  exec $SHELL -l
 fi

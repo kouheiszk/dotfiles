@@ -49,6 +49,7 @@ fswatch unison # use for docker-sync
 # Install from brew cask
 brew cask install \
 google-chrome \
+google-drive \
 firefox \
 google-japanese-ime \
 iterm2 \
