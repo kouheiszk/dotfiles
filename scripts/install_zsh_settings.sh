@@ -21,4 +21,6 @@ case $SHELL in
 esac
 
 # zplugのインストール
-curl -sL zplug.sh/installer | zsh
+if [ ! -d "$HOME/.zplug" ]; then
+  curl -sL zplug.sh/installer | zsh
+fi
