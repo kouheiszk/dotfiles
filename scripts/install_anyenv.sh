@@ -20,8 +20,13 @@ if [ ! -x "$(which anyenv)" ]; then
   anyenv install pyenv
   anyenv install ndenv
   anyenv install goenv
+  anyenv install phpenv
 
   exec $SHELL -l
+fi
+
+if [ ! -d "$HOME/.local/bin" ]; then
+  mkdir -p $HOME/.local/bin
 fi
 
 if [ -x "$(which anyenv)" ]; then
@@ -30,13 +35,23 @@ if [ -x "$(which anyenv)" ]; then
   pyenv install 3.6.0
   ndenv install v6.9.2
   goenv install 1.7.4
+  # phpenv install 7.0.15
 
   # update
   anyenv update
   anyenv versions
-
-  # Install pyenv virtualenv
-  git clone https://github.com/yyuu/pyenv-virtualenv.git "$HOME/.anyenv/envs/pyenv/plugins/pyenv-virtualenv"
-
-  exec $SHELL -l
 fi
+
+# Install pyenv virtualenv
+if [ -d "$HOME/.anyenv/envs/pyenv/plugins/pyenv-virtualenv" ]; then
+  echo "Install pyenv-virtualenv"
+  git clone https://github.com/yyuu/pyenv-virtualenv.git "$HOME/.anyenv/envs/pyenv/plugins/pyenv-virtualenv"
+fi
+
+# Install composer
+if [ ! -f "$HOME/.local/bin/composer" ]; then
+  echo "Install composer"
+  curl -sS https://getcomposer.org/installer | php
+  mv composer.phar $HOME/.local/bin/composer
+fi
+

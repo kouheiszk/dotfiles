@@ -13,6 +13,9 @@ if [ -d "$HOME/.anyenv" ]; then
     eval "$(anyenv init -)"
 fi
 
+# local
+export PATH=$PATH:$HOME/.local/bin
+
 # go
 export GOPATH=$HOME/workspace
 export PATH=$PATH:$GOPATH/bin
