@@ -44,7 +44,10 @@ hugo \
 fzf \
 gawk \
 neovim/neovim/neovim \
-fswatch unison # use for docker-sync
+fswatch unison \
+yarn \
+terraform \
+laurent22/massren/massren
 
 # Install from brew cask
 brew cask install \
@@ -64,9 +67,10 @@ shuttle \
 sketch \
 alfred \
 kindle \
-karabiner-elements
-# burn 
-# virtualbox 
+karabiner-elements \
+pg-commander
+# burn
+# virtualbox
 
 # Remove outdated versions
 brew cleanup

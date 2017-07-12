@@ -11,6 +11,7 @@ if [ $( uname ) == "Darwin" ]; then
   sh $SCRIPT_DIR/install_anyenv.sh
   sh $SCRIPT_DIR/install_fonts.sh
   sh $SCRIPT_DIR/install_vim_settings.sh
+  sh $SCRIPT_DIR/install_atom_settings.sh
 else
   echo "Nothing to do..."
 fi

@@ -9,3 +9,4 @@ npm-debug.log
 !/.atom/keymap.cson
 /.config/*
 !/.config/nvim
+!/.config/karabiner/karabiner.json
