@@ -67,8 +67,8 @@ shuttle \
 sketch \
 alfred \
 kindle \
-karabiner-elements \
-pg-commander
+karabiner-elements
+# pg-commander
 # burn
 # virtualbox
 
@@ -81,9 +81,13 @@ brew cask cleanup
 mas install 406056744 # 406056744 Evernote.app
 mas install 682658836 # 682658836 GarageBand.app
 mas install 409183694 # 409183694 Keynote.app
+mas install 896624060 # 896624060 Kobito.app
 mas install 539883307 # 539883307 LINE.app
 mas install 409203825 # 409203825 Numbers.app
 mas install 409201541 # 409201541 Pages.app
+mas install 425955336 # 425955336 Skitch.app
 mas install 803453959 # 803453959 Slack.app
 mas install 425424353 # 425424353 The Unarchiver.app
+mas install 907364780 # 907364780 Tomato One.app
+mas install 497799835 # 497799835 Xcode.app
 mas install 408981434 # 408981434 iMovie.app
