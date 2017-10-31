@@ -81,7 +81,6 @@ brew cask cleanup
 mas install 406056744 # 406056744 Evernote.app
 mas install 682658836 # 682658836 GarageBand.app
 mas install 409183694 # 409183694 Keynote.app
-mas install 896624060 # 896624060 Kobito.app
 mas install 539883307 # 539883307 LINE.app
 mas install 409203825 # 409203825 Numbers.app
 mas install 409201541 # 409201541 Pages.app

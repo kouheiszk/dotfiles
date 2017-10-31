@@ -31,6 +31,7 @@
 
 [alias]
     co   = checkout
+    cob  = checkout -b
     cm   = commit
     cma  = commit --amend
     st   = status --short --branch
@@ -69,5 +70,3 @@
 [ghq]
   root = ~/workspace/src
 
-[pr-release]
-	token = 8440c1519b2351a0647a62786610bf6c92981204
