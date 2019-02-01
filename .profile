@@ -20,6 +20,32 @@ export PATH=$PATH:$HOME/.local/bin
 export GOPATH=$HOME/workspace
 export PATH=$PATH:$GOPATH/bin
 
+# java for android
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export PATH=$JAVA_HOME/bin:$PATH
+
+# flutter
+# anyenv
+if [ -d "$GOPATH/src/github.com/flutter/flutter" ]; then
+    export FLUTTER_PATH="$GOPATH/src/github.com/flutter/flutter"
+    export PATH=$FLUTTER_PATH/bin:$PATH
+fi
+
+# GPC
+case $SHELL in
+  "/bin/bash" )
+    source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
+    source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
+    ;;
+  "/bin/zsh" | "/usr/local/bin/zsh" )
+    source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+    source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+    ;;
+esac
+
+# editor
+export EDITOR=vim
+
 # alias
 alias javac='javac -J-Dfile.encoding=UTF-8'
 alias java='java -Dfile.encoding=UTF-8'
@@ -69,7 +95,7 @@ alias gr='my_cd_gitroot'
 # ssh-addでキーを読み込んでおく
 
 case $( uname ) in
-  "Darwin" ) 
+  "Darwin" )
     for private_key in $( ls ~/.ssh | grep id_rsa | grep -v .pub ); do
       ssh-add -K $HOME/.ssh/$private_key >/dev/null 2>&1
     done

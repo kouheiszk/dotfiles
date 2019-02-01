@@ -12,3 +12,6 @@
 
 # xcode
 xcuserdata
+
+# secrets
+*.pem
