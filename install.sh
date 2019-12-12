@@ -8,8 +8,15 @@ else
     exit 1
 fi
 
-mkdir -p $HOME/.tmp
-git clone https://github.com/kouheiszk/dotfiles.git $HOME/.tmp/dotfiles
-cd $HOME/.tmp/dotfiles/
+if [ -d $HOME/.tmp/dotfiles ]; then
+  cd $HOME/.tmp/dotfiles/
+  git pull origin master
+else
+  mkdir -p $HOME/.tmp
+  git clone https://github.com/kouheiszk/dotfiles.git $HOME/.tmp/dotfiles
+  cd $HOME/.tmp/dotfiles/
+fi
+
 make install
+
 cd -
