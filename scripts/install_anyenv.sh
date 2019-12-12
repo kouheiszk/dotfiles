@@ -7,10 +7,12 @@ fi
 mkdir -p $(anyenv root)/plugins
 git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
 
-anyenv install --init
+anyenv install --init --force
 anyenv install rbenv
 anyenv install nodenv
 anyenv install pyenv
+
+exec $SHELL -l
 
 # Install new versions at 2019.12.12
 rbenv install 2.6.4

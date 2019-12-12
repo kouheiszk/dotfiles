@@ -35,18 +35,6 @@ if [ -d "$GOPATH/src/github.com/flutter/flutter" ]; then
     export PATH=$FLUTTER_PATH/bin:$PATH
 fi
 
-# GPC
-case $SHELL in
-  "/bin/bash" )
-    source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
-    source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
-    ;;
-  "/bin/zsh" | "/usr/local/bin/zsh" )
-    source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-    source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
-    ;;
-esac
-
 # editor
 export EDITOR=vim
 
