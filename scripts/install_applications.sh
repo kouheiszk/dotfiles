@@ -52,11 +52,10 @@ brew install \
 
 # Install from brew cask
 brew cask install \
-  google-chrome \
+  # google-chrome \ # 手動で入れる
   google-drive-file-stream \
-  firefox \
   google-japanese-ime \
-  iterm2 \
+  # iterm2 \ # 手動で入れる
   atom \
   docker \
   docker-toolbox \
