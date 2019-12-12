@@ -8,13 +8,21 @@ mkdir -p $(anyenv root)/plugins
 git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
 
 echo y | anyenv install --init
+
+echo "Install rbenv"
 anyenv install rbenv
+
+echo "Install nodenv"
 anyenv install nodenv
+
+echo "Install pyenv"
 anyenv install pyenv
 
-exec $SHELL -l
+echo "Reload shell"
+exec ${SHELL:-/usr/local/bin/zsh} -l
 
 # update
+echo "Update anyenv and display versions"
 anyenv update
 anyenv versions
 
