@@ -70,7 +70,7 @@ brew cask install \
   karabiner-elements
 
 # Remove outdated versions
-brew cleanup --prune
+brew cleanup
 
 # Install from mas
 # NOTE: mdfind "kMDItemAppStoreHasReceipt=1" | while read a;do echo $(mdls -name kMDItemAppStoreAdamID -raw "$a") $(echo $a|awk '{n=split($0, tmp, "/")}{print tmp[n]}');done | sort -k2 | awk '{ print "mas install " $1 " # " $0 }'
