@@ -51,7 +51,10 @@ brew install \
   laurent22/massren/massren
 
 # Install from brew cask
+brew tap homebrew/cask-versions
+
 brew cask install \
+  java11 \
   google-japanese-ime \
   atom \
   docker \
