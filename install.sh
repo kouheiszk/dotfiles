@@ -9,13 +9,12 @@ else
 fi
 
 if [ -d $HOME/.tmp/dotfiles ]; then
-  cd $HOME/.tmp/dotfiles/
-  git pull origin master
-else
-  mkdir -p $HOME/.tmp
-  git clone https://github.com/kouheiszk/dotfiles.git $HOME/.tmp/dotfiles
-  cd $HOME/.tmp/dotfiles/
+  rm -rf $HOME/.tmp/dotfiles
 fi
+
+mkdir -p $HOME/.tmp
+git clone https://github.com/kouheiszk/dotfiles.git $HOME/.tmp/dotfiles
+cd $HOME/.tmp/dotfiles/
 
 make install
 
