@@ -6,7 +6,7 @@ DOTFILES_DIR=$(cd $SCRIPT_DIR/../; pwd)
 cd $DOTFILES_DIR
 
 # リンクの切れたシンボリックリンクを削除する
-find -L $HOME -d 1 -type l | xargs rm -r
+find -L $HOME -mindepth 1 -maxdepth -type l | xargs rm -r
 
 # シンボリックリンクを作成する
 for dotfile in .?*;do
