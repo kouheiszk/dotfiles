@@ -4,15 +4,18 @@ if [ ! -x "$(which anyenv)" ]; then
   brew install anyenv
 fi
 
-anyenv install --init
-exec $SHELL -l
-
 mkdir -p $(anyenv root)/plugins
 git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
+
+anyenv install --init
+anyenv install rbenv
+anyenv install nodenv
+anyenv install pyenv
 
 # Install new versions at 2019.12.12
 rbenv install 2.6.4
 nodenv install v13.3.0
+pyenv install 3.7.4
 
 # update
 anyenv update

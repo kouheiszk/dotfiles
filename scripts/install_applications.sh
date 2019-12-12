@@ -21,7 +21,6 @@ brew doctor
 # Install from brew
 brew install \
   anyenv \
-  apm \
   zsh \
   git \
   tig \
