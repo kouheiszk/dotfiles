@@ -20,11 +20,13 @@ anyenv versions
 
 # Install new versions at 2019.12.12
 rbenv install 2.6.4
+rbenv versions
+
 nodenv install v13.3.0
+nodenv versions
+
 pyenv install 3.7.4
-
-
-
+pyenv versions
 
 # #!/bin/sh
 #
