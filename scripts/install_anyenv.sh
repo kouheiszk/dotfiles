@@ -7,7 +7,7 @@ fi
 mkdir -p $(anyenv root)/plugins
 git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
 
-anyenv install --init --force
+echo y | anyenv install --init
 anyenv install rbenv
 anyenv install nodenv
 anyenv install pyenv
