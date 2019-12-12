@@ -21,8 +21,13 @@ export GOPATH=$HOME/workspace
 export PATH=$PATH:$GOPATH/bin
 
 # java for android
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-export PATH=$JAVA_HOME/bin:$PATH
+if java -version &>/dev/null; then
+    export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+    export PATH=$JAVA_HOME/bin:$PATH
+fi
+
+# mysql
+export PATH=/usr/local/opt/mysql@5.7/bin:$PATH
 
 # flutter
 # anyenv

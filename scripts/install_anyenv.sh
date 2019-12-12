@@ -2,7 +2,7 @@
 
 if [ ! -x "$(which anyenv)" ]; then
   if [ ! -d "$HOME/.anyenv" ]; then
-    git clone https://github.com/riywo/anyenv "$HOME/.anyenv"
+    git clone https://github.com/anyenv/anyenv "$HOME/.anyenv"
 
     case $SHELL in
       "/bin/bash" ) source "$HOME/.bashrc" ;;
@@ -54,4 +54,3 @@ if [ ! -f "$HOME/.local/bin/composer" ]; then
   curl -sS https://getcomposer.org/installer | php
   mv composer.phar $HOME/.local/bin/composer
 fi
-

@@ -10,6 +10,7 @@
     pager = nkf -w | LESSCHARSET=utf-8 less
     precomposeunicode = true
     quotepath = false
+    ignorecase = false
 
 [merge]
     tool = vimdiff
