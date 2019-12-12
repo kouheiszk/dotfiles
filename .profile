@@ -100,9 +100,11 @@ alias gr='my_cd_gitroot'
 
 case $( uname ) in
   "Darwin" )
-    for private_key in $( ls ~/.ssh | grep id_rsa | grep -v .pub ); do
-      ssh-add -K $HOME/.ssh/$private_key >/dev/null 2>&1
-    done
+    if [ -d $HOME/.ssh ]; then
+      for private_key in $(ls $HOME/.ssh | grep id_rsa | grep -v .pub); do
+        ssh-add -K $HOME/.ssh/$private_key >/dev/null 2>&1
+      done
+    fi
     ;;
   * ) continue ;;
 esac
