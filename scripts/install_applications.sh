@@ -52,21 +52,22 @@ brew install \
 
 # Install from brew cask
 brew cask install \
-  # google-chrome \ # 手動で入れる
-  google-drive-file-stream \
   google-japanese-ime \
-  # iterm2 \ # 手動で入れる
   atom \
   docker \
   docker-toolbox \
   appcleaner \
   sequel-pro \
-  dropbox \
-  1password \
   sketch \
   alfred \
   kindle \
   karabiner-elements
+
+  # 手動で入れる
+  # dropbox
+  # 1password
+  # google-chrome
+  # iterm2
 
 # Remove outdated versions
 brew cleanup
