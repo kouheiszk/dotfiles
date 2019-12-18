@@ -32,6 +32,10 @@ if [ -d "$GOPATH/src/github.com/flutter/flutter" ]; then
     export PATH=$FLUTTER_PATH/bin:$PATH
 fi
 
+if [ -d "/usr/local/opt/imagemagick@6" ]; then
+  export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
+fi
+
 # editor
 export EDITOR=vim
 
@@ -82,7 +86,6 @@ function my_cd_gitroot() {
 alias gr='my_cd_gitroot'
 
 # ssh-addでキーを読み込んでおく
-
 case $( uname ) in
   "Darwin" )
     if [ -d $HOME/.ssh ]; then

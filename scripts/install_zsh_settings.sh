@@ -20,7 +20,12 @@ case $SHELL in
     ;;
 esac
 
-# zplugのインストール
-if [ ! -d "$HOME/.zplug" ]; then
-  curl -sL zplug.sh/installer | zsh
+# zpluginのインストール
+if [ ! -d "$HOME/.zplugin" ]; then
+  git clone https://github.com/zdharma/zplugin.git $HOME/.zplugin/bin
+elif [ -x "$(which zplugin)" ]; then
+  zplugin self-update
+else
+  cd $HOME/.zplugin/bin
+  git pull origin master
 fi

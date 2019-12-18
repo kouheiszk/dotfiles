@@ -23,6 +23,7 @@ brew install \
   anyenv \
   zsh \
   git \
+  ghq \
   tig \
   hub \
   doxygen \
@@ -52,7 +53,6 @@ brew install \
 
 # Install from brew cask
 brew tap homebrew/cask-versions
-
 brew cask install \
   java11 \
   google-japanese-ime \
