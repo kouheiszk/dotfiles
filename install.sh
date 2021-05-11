@@ -1,7 +1,6 @@
 #!/bin/sh
 
-wget https://raw.githubusercontent.com/MikeMcQuaid/strap/master/bin/strap.sh -O /tmp/strap.sh
-bash /tmp/strap.sh
+curl -SLfs https://raw.githubusercontent.com/MikeMcQuaid/strap/master/bin/strap.sh | bash
 
 # if command -v git &>/dev/null
 # then
