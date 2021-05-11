@@ -1,23 +1,20 @@
 #!/bin/sh
 
-curl -SLfs https://raw.githubusercontent.com/MikeMcQuaid/strap/master/bin/strap.sh | bash
+if [ -f "/Library/Developer/CommandLineTools/usr/bin/git" ]; then
+    echo "git is already exists :)"
+else
+    echo "git is not exists :("
+    exit 1
+fi
 
-# if command -v git &>/dev/null
-# then
-#     echo "git is already exists :)"
-# else
-#     echo "git is not exists :("
-#     exit 1
-# fi
-#
-# if [ -d $HOME/.tmp/dotfiles ]; then
-#   rm -rf $HOME/.tmp/dotfiles
-# fi
-#
-# mkdir -p $HOME/.tmp
-# git clone https://github.com/kouheiszk/dotfiles.git $HOME/.tmp/dotfiles
-# cd $HOME/.tmp/dotfiles/
-#
-# make install
-#
-# cd -
+SCRIPT_DIR=$(cd $(dirname $BASH_SOURCE)/scripts; pwd)
+
+if [ $( uname ) == "Darwin" ]; then
+  sh $SCRIPT_DIR/create_symbolick_links.sh
+  sh $SCRIPT_DIR/install_zsh_settings.sh
+  sh $SCRIPT_DIR/install_bash_settings.sh
+  sh $SCRIPT_DIR/install_anyenv.sh
+  sh $SCRIPT_DIR/install_fonts.sh
+else
+  echo "Nothing to do..."
+fi

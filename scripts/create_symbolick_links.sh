@@ -9,7 +9,7 @@ cd $DOTFILES_DIR
 find -L $HOME -mindepth 1 -maxdepth 1 -type l | xargs rm -r
 
 # シンボリックリンクを作成する
-for dotfile in .?*;do
+for dotfile in .?*; do
   case "$dotfile" in
     ".." ) continue ;;
     ".DS_Store" ) continue ;;
