@@ -1,7 +1,7 @@
 ;; 上書きする場合は~/.gitconfig_localに記述する
 [user]
-    name = Kouhei Suzuki
-    email = kouhei.szk@gmail.com
+	name = Kouhei Suzuki
+	email = kouhei.szk@gmail.com
 
 [core]
     excludesfile = ~/.gitignore_global
@@ -71,3 +71,5 @@
 [ghq]
   root = ~/workspace/src
 
+[pull]
+	rebase = false

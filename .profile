@@ -21,19 +21,24 @@ export PATH=$PATH:$GOPATH/bin
 
 # java for android
 if java -version &>/dev/null; then
-    export JAVA_HOME=$(/usr/libexec/java_home -v 11)
-    export PATH=$JAVA_HOME/bin:$PATH
+  export JAVA_HOME=$(/usr/libexec/java_home -v 11)
+  export PATH=$JAVA_HOME/bin:$PATH
 fi
 
 # flutter
 # anyenv
 if [ -d "$GOPATH/src/github.com/flutter/flutter" ]; then
-    export FLUTTER_PATH="$GOPATH/src/github.com/flutter/flutter"
-    export PATH=$FLUTTER_PATH/bin:$PATH
+  export FLUTTER_PATH="$GOPATH/src/github.com/flutter/flutter"
+  export PATH=$FLUTTER_PATH/bin:$PATH
 fi
 
 if [ -d "/usr/local/opt/imagemagick@6" ]; then
   export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
+fi
+
+if [ -d "$HOME/Library/Android" ]; then
+  export ANDROID_HOME=$HOME/Library/Android/sdk
+  export PATH=$HOME/Library/Android/sdk/platform-tools:$PATH
 fi
 
 # editor
@@ -86,7 +91,7 @@ function my_cd_gitroot() {
 alias gr='my_cd_gitroot'
 
 # ssh-addでキーを読み込んでおく
-case $( uname ) in
+case $(uname) in
   "Darwin" )
     if [ -d $HOME/.ssh ]; then
       for private_key in $(ls $HOME/.ssh | grep id_rsa | grep -v .pub); do
