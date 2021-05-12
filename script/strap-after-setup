@@ -1,0 +1,58 @@
+#!/bin/bash
+#/ Usage: script/strap-after-setup
+
+set -e
+
+log()   { echo "==> $*"; }
+logn()  { printf -- "==> %s " "$*"; }
+
+abort() { echo '!!! $*' >&2; exit 1; }
+
+change_default_shell_to_zsh() {
+  if [ -f '/usr/local/bin/zsh' ]; then
+    if ! grep -q '/usr/local/bin/zsh' /etc/shells; then
+      echo '/usr/local/bin/zsh' | sudo tee -a /etc/shells > /dev/null
+    fi
+  fi
+
+  case $SHELL in
+    '/usr/local/bin/zsh' )
+      if [ ! -f '/usr/local/bin/zsh' ]; then
+        echo 'Switch shell to /bin/zsh'
+        chsh -s /bin/zsh
+      fi
+      ;;
+    '/bin/bash' | '/bin/zsh' )
+      if [ -f '/usr/local/bin/zsh' ]; then
+        echo 'Switch shell to /usr/local/bin/zsh'
+        chsh -s /usr/local/bin/zsh
+      elif [ "$SHELL" != '/bin/zsh' ] && [ -f '/bin/zsh' ]; then
+        echo 'Switch shell to /bin/zsh'
+        chsh -s /bin/zsh
+      fi
+      ;;
+  esac
+}
+
+install_zsh_plugins() {
+  if [ ! -d ~/.zinit ]; then
+    log "Cloning to ~/.zinit:"
+    git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
+  elif [ -x "$(which zinit)" ]; then
+    zinit self-update
+  else
+    (
+      cd ~/.zinit/bin
+      git pull origin master
+    )
+  fi
+}
+
+logn 'Change default shell to zsh:'
+change_default_shell_to_zsh
+logn 'Install zsh plugins:'
+install_zsh_plugins
+
+logn 'Setup anyenv:'
+
+logn 'Setup powerline font:'

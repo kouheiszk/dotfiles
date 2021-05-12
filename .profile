@@ -99,7 +99,8 @@ case $(uname) in
       done
     fi
     ;;
-  * ) continue ;;
+  * )
+    ;;
 esac
 
 # シェル固有の設定を読み込む

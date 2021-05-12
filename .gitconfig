@@ -73,3 +73,12 @@
 
 [pull]
 	rebase = false
+
+[push]
+	default = simple
+
+[github]
+	user = kouheiszk
+
+[credential]
+	helper = osxkeychain

@@ -1,20 +1,38 @@
-#!/bin/sh
+#!/bin/bash
+#/ Usage: script/setup
 
-if [ -f "/Library/Developer/CommandLineTools/usr/bin/git" ]; then
-    echo "git is already exists :)"
-else
-    echo "git is not exists :("
-    exit 1
-fi
+set -e
 
-SCRIPT_DIR=$(cd $(dirname $BASH_SOURCE); pwd)
+log() { echo "==> $*"; }
+abort() { echo "!!! $*" >&2; exit 1; }
 
-if [ $( uname ) == "Darwin" ]; then
-  sh $SCRIPT_DIR/create_symbolick_links.sh
-  sh $SCRIPT_DIR/install_zsh_settings.sh
-  sh $SCRIPT_DIR/install_bash_settings.sh
-  sh $SCRIPT_DIR/install_anyenv.sh
-  sh $SCRIPT_DIR/install_fonts.sh
-else
-  echo "Nothing to do..."
-fi
+create_symbolic_link_of_dotfiles() {
+  for dotfile in .?*; do
+    case "$dotfile" in
+      ".." ) continue ;;
+      ".DS_Store" ) continue ;;
+      "*.elc" ) continue ;;
+      ".git" | ".gitignore" | ".gitmodules" | ".module" ) continue ;;
+      * )
+        if [ -f "$HOME/$dotfile" ] || [ -d "$HOME/$dotfile" ]; then
+          if [ ! -L "$HOME/$dotfile" ]; then
+            # シンボリックリンクではないファイルが存在する
+            echo "${dotfile} is already exists."
+            echo "------ $HOME/${dotfile} ------"
+            cat $HOME/${dotfile}
+            echo "------"
+            echo "Remove existing $HOME/${dotfile} and create new one."
+          fi
+
+          rm $HOME/${dotfile}
+        fi
+
+        ln -is $HOME/.dotfiles/${dotfile} $HOME
+        echo "~/${dotfile} -> $HOME/.dotfiles/${dotfile}"
+        ;;
+    esac
+  done
+}
+
+log "Create symbolic link of dotfiles:"
+create_symbolic_link_of_dotfiles
