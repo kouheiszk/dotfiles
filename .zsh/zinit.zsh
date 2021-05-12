@@ -1,4 +1,3 @@
-### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
@@ -20,3 +19,11 @@ zinit light-mode for \
     zinit-zsh/z-a-bin-gem-node \
     zsh-users/zsh-syntax-highlighting \
     zsh-users/zsh-autosuggestions
+
+zinit snippet OMZL::git.zsh
+zinit snippet OMZP::git
+zinit cdclear -q
+
+setopt promptsubst
+zinit snippet OMZT::gnzh
+zinit light agnoster/agnoster-zsh-theme
