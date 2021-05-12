@@ -7,7 +7,7 @@ else
     exit 1
 fi
 
-SCRIPT_DIR=$(cd $(dirname $BASH_SOURCE)/scripts; pwd)
+SCRIPT_DIR=$(cd $(dirname $BASH_SOURCE); pwd)
 
 if [ $( uname ) == "Darwin" ]; then
   sh $SCRIPT_DIR/create_symbolick_links.sh
