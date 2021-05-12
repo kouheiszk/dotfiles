@@ -61,17 +61,6 @@ setup_anyenv() {
     mkdir -p $(anyenv root)/plugins
     git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
   fi
-
-  if [ ! -d ~/.config/anyenv/anyenv-install ]; then
-    echo "Initialize anyenv:"
-    anyenv install --init
-  fi
-
-  echo "Update anyenv:"
-  anyenv update
-
-  echo "List anyenv versions:"
-  anyenv versions
 }
 
 log 'Change default shell to zsh:'
