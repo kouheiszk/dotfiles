@@ -5,6 +5,10 @@
 [ -f ~/.zsh/fzf.zsh ] && source $HOME/.zsh/fzf.zsh
 [ -f ~/.zsh/history.zsh ] && source $HOME/.zsh/history.zsh
 
+## コンプリートの設定
+autoload -U compinit
+compinit
+
 # Ctrl-Dで閉じちゃうのをやめる
 stty eof undef
 

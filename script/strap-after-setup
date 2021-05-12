@@ -4,8 +4,6 @@
 set -e
 
 log()   { echo "==> $*"; }
-logn()  { printf -- "==> %s " "$*"; }
-
 abort() { echo '!!! $*' >&2; exit 1; }
 
 change_default_shell_to_zsh() {
@@ -48,11 +46,42 @@ install_zsh_plugins() {
   fi
 }
 
-logn 'Change default shell to zsh:'
+setup_powerline_fonts() {
+  git submodule update --init
+  sh .module/powerline-fonts/install.sh
+}
+
+setup_anyenv() {
+  if [ ! -x "$(which anyenv)" ]; then
+    echo "Install anyenv:"
+    brew install anyenv
+  fi
+
+  if [ ! -d "$(anyenv root)/plugins/anyenv-update" ]; then
+    mkdir -p $(anyenv root)/plugins
+    git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
+  fi
+
+  if [ ! -d ~/.config/anyenv/anyenv-install ]; then
+    echo "Initialize anyenv:"
+    anyenv install --init
+  fi
+
+  echo "Update anyenv:"
+  anyenv update
+
+  echo "List anyenv versions:"
+  anyenv versions
+}
+
+log 'Change default shell to zsh:'
 change_default_shell_to_zsh
-logn 'Install zsh plugins:'
+
+log 'Install zsh plugins:'
 install_zsh_plugins
 
-logn 'Setup anyenv:'
+log 'Setup powerline font:'
+setup_powerline_fonts
 
-logn 'Setup powerline font:'
+log 'Setup anyenv:'
+setup_anyenv
