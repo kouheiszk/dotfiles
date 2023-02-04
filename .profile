@@ -7,6 +7,19 @@
 # zshの場合:
 # .zshrc -> .profile -> .profile.zsh -> .local_profile
 
+# brew
+if [ -f /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# pyenv
+if [ -d "$HOME/.anyenv/envs/pyenv" ]; then
+  export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)" 2>&1 > /dev/null
+  eval "$(pyenv init --path)" 2>&1 > /dev/null
+fi
+
 # anyenv
 if [ -d "$HOME/.anyenv" ]; then
     eval "$(anyenv init -)"
@@ -21,12 +34,11 @@ export PATH=$PATH:$GOPATH/bin
 
 # java for android
 if java -version &>/dev/null; then
-  export JAVA_HOME=$(/usr/libexec/java_home -v 11)
+  export JAVA_HOME=$(/usr/libexec/java_home)
   export PATH=$JAVA_HOME/bin:$PATH
 fi
 
 # flutter
-# anyenv
 if [ -d "$GOPATH/src/github.com/flutter/flutter" ]; then
   export FLUTTER_PATH="$GOPATH/src/github.com/flutter/flutter"
   export PATH=$FLUTTER_PATH/bin:$PATH
@@ -40,6 +52,9 @@ if [ -d "$HOME/Library/Android" ]; then
   export ANDROID_HOME=$HOME/Library/Android/sdk
   export PATH=$HOME/Library/Android/sdk/platform-tools:$PATH
 fi
+
+# Suppress +[__NSCFConstantString initialize] may have been in progress in another thread when fork() was called. error
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 # editor
 export EDITOR=vim
