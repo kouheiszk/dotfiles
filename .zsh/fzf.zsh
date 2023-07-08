@@ -3,9 +3,9 @@
 export FZF_DEFAULT_OPTS='-m -x --reverse'
 
 if [ -d /opt/homebrew/opt/fzf/ ]; then
-  FZF_PATH=/opt/homebrew/opt/fzf/
+  FZF_PATH=/opt/homebrew/opt/fzf
 else
-  FZF_PATH=/usr/local/opt/fzf/
+  FZF_PATH=/usr/local/opt/fzf
 fi
 
 if [ -x "$(which fzf)" ]; then
