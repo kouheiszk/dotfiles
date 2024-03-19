@@ -33,7 +33,10 @@ export GOPATH=$HOME/workspace
 export PATH=$PATH:$GOPATH/bin
 
 # java for android
-if java -version &>/dev/null; then
+if [ -d "/Applications/Android Studio.app/Contents/jbr/Contents/Home" ]; then
+  export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+  export PATH=$JAVA_HOME/bin:$PATH
+elif java --version &>/dev/null; then
   export JAVA_HOME=$(/usr/libexec/java_home)
   export PATH=$JAVA_HOME/bin:$PATH
 fi
@@ -126,3 +129,4 @@ esac
 
 # .local_profileを読み込む
 [ -f "$HOME/.local_profile" ] && source $HOME/.local_profile
+. "$HOME/.cargo/env"

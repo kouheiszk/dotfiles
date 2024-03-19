@@ -14,3 +14,6 @@ stty eof undef
 
 # PATHの重複読み込みをなくす
 typeset -U path PATH
+
+# direnv
+eval "$(direnv hook zsh)"

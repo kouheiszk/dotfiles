@@ -2,3 +2,6 @@
 
 # プラグインや設定の読み込み
 [ -f "$HOME/.bash/fzf.bash" ] && source $HOME/.zsh/fzf.bash
+
+# direnv
+eval "$(direnv hook bash)"
