@@ -25,6 +25,9 @@ if [ -d "$HOME/.anyenv" ]; then
     eval "$(anyenv init -)"
 fi
 
+# asdf
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
 # local
 export PATH=$PATH:$HOME/.local/bin
 
