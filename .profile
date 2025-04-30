@@ -26,7 +26,10 @@ if [ -d "$HOME/.anyenv" ]; then
 fi
 
 # asdf
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+if which asdf > /dev/null 2>&1; then
+  export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+fi
+
 
 # local
 export PATH=$PATH:$HOME/.local/bin
@@ -124,6 +127,10 @@ case $(uname) in
     ;;
 esac
 
+if [ -d $HOME/.cargo ]; then
+  . "$HOME/.cargo/env"
+fi
+
 # シェル固有の設定を読み込む
 case $SHELL in
   "/bin/bash" ) [ -f "$HOME/.profile.bash" ] && source $HOME/.profile.bash ;;
@@ -132,4 +139,3 @@ esac
 
 # .local_profileを読み込む
 [ -f "$HOME/.local_profile" ] && source $HOME/.local_profile
-. "$HOME/.cargo/env"
