@@ -5,6 +5,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# PATHの重複読み込みをなくす
+typeset -U path PATH
+
 # .profileを読み込む
 [[ ! -f ~/.profile ]] || source ~/.profile
 

@@ -68,6 +68,10 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 # editor
 export EDITOR=vim
 
+if [ -d "$HOME/Library/Application Support/JetBrains/Toolbox/scripts" ]; then
+  export PATH=$PATH:$HOME/Library/Application\ Support/JetBrains/Toolbox/scripts
+fi
+
 # alias
 alias javac='javac -J-Dfile.encoding=UTF-8'
 alias java='java -Dfile.encoding=UTF-8'

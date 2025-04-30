@@ -15,5 +15,5 @@ stty eof undef
 # direnv
 eval "$(direnv hook zsh)"
 
-# PATHの重複読み込みをなくす
-typeset -U path PATH
+# asdf
+. $(brew --prefix asdf)/libexec/asdf.sh
