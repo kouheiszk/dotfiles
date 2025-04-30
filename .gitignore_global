@@ -15,3 +15,7 @@ xcuserdata
 
 # secrets
 *.pem
+*.envr
+*.envrc
+
+kouhei_tmp.rb

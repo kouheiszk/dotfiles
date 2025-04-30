@@ -5,3 +5,6 @@
 
 # direnv
 eval "$(direnv hook bash)"
+
+# asdf
+. "$(brew --prefix asdf)/etc/bash_completion.d/asdf.bash"
