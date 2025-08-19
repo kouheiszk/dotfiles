@@ -1,4 +1,4 @@
-;; 上書きする場合は~/.gitconfig_localに記述する
+;; 上書きする場合は ~/.local_gitconfig に記述する
 [user]
 	name = Kouhei Suzuki
 	email = kouhei.szk@gmail.com
