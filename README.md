@@ -3,6 +3,7 @@ dotfiles
 
 ```sh
 ssh-keygen -t ed25519 -C xxx@xxx
+ssh-add --apple-load-keychain
 ```
 
 Register public key to github SSH key.
