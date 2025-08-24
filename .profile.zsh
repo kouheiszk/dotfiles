@@ -9,6 +9,9 @@
 autoload -U compinit
 compinit
 
+# Emacsモードで利用する
+bindkey -e
+
 # Ctrl-Dで閉じちゃうのをやめる
 stty eof undef
 
