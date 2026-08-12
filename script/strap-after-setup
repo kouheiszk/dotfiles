@@ -4,51 +4,83 @@
 set -e
 
 log()   { echo "==> $*"; }
-abort() { echo '!!! $*' >&2; exit 1; }
+abort() { echo "!!! $*" >&2; exit 1; }
+
+# Homebrew's zsh lives under /opt/homebrew on Apple Silicon and /usr/local on
+# Intel, so ask brew instead of hardcoding either prefix.
+preferred_zsh() {
+  local prefix
+  prefix="$(brew --prefix 2>/dev/null)"
+  if [ -n "$prefix" ] && [ -x "$prefix/bin/zsh" ]; then
+    echo "$prefix/bin/zsh"
+  else
+    echo '/bin/zsh'
+  fi
+}
+
+current_shell() {
+  dscl . -read "/Users/$USER" UserShell 2>/dev/null | awk '{print $2}'
+}
 
 change_default_shell_to_zsh() {
-  if [ -f '/usr/local/bin/zsh' ]; then
-    if ! grep -q '/usr/local/bin/zsh' /etc/shells; then
-      echo '/usr/local/bin/zsh' | sudo tee -a /etc/shells > /dev/null
-    fi
+  local target current
+  target="$(preferred_zsh)"
+
+  if ! grep -qx "$target" /etc/shells; then
+    log "Add $target to /etc/shells"
+    echo "$target" | sudo tee -a /etc/shells > /dev/null
   fi
 
-  case $SHELL in
-    '/usr/local/bin/zsh' )
-      if [ ! -f '/usr/local/bin/zsh' ]; then
-        echo 'Switch shell to /bin/zsh'
-        chsh -s /bin/zsh
-      fi
-      ;;
-    '/bin/bash' | '/bin/zsh' )
-      if [ -f '/usr/local/bin/zsh' ]; then
-        echo 'Switch shell to /usr/local/bin/zsh'
-        chsh -s /usr/local/bin/zsh
-      elif [ "$SHELL" != '/bin/zsh' ] && [ -f '/bin/zsh' ]; then
-        echo 'Switch shell to /bin/zsh'
-        chsh -s /bin/zsh
-      fi
-      ;;
-  esac
+  current="$(current_shell)"
+  : "${current:=$SHELL}"
+
+  if [ "$current" != "$target" ]; then
+    log "Switch shell to $target"
+    chsh -s "$target"
+  else
+    log "Shell is already $target"
+  fi
 }
+
+# .zsh/zinit.zsh が読むのはこのパス。ここを外すとスクリプトが誰も使わない
+# 複製を育てるだけになるので、設定側と必ず揃えること
+ZINIT_HOME="$HOME/.local/share/zinit/zinit.git"
 
 install_zsh_plugins() {
-  if [ ! -d ~/.zinit ]; then
-    log "Cloning to ~/.zinit:"
-    git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
-  elif [ -x "$(which zinit)" ]; then
-    zinit self-update
+  if [ ! -d "$ZINIT_HOME" ]; then
+    log "Cloning zinit to $ZINIT_HOME:"
+    mkdir -p "$(dirname "$ZINIT_HOME")"
+    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
   else
-    (
-      cd ~/.zinit/bin
-      git pull origin master
-    )
+    log "Updating $ZINIT_HOME:"
+    git -C "$ZINIT_HOME" pull --ff-only
   fi
 }
 
-setup_powerline_fonts() {
-  git submodule update --init
-  sh .module/powerline-fonts/install.sh
+# powerlevel10k は POWERLEVEL9K_MODE=nerdfont-complete で動かしているため、
+# Powerline パッチ済みフォントでは足りず Nerd Font が要る
+# (Powerline パッチ版は U+E0A0-E0B3 の区切り記号しか持たない)
+NERD_FONTS=(
+  font-sauce-code-pro-nerd-font
+  font-meslo-lg-nerd-font
+)
+
+setup_nerd_fonts() {
+  if ! command -v brew > /dev/null 2>&1; then
+    abort 'brew not found; install Homebrew first'
+  fi
+
+  local font
+  for font in "${NERD_FONTS[@]}"; do
+    if brew list --cask "$font" > /dev/null 2>&1; then
+      log "$font is already installed"
+    else
+      log "Installing $font"
+      brew install --cask "$font"
+    fi
+  done
+
+  log 'Set your terminal font to one of the installed Nerd Fonts'
 }
 
 log 'Change default shell to zsh:'
@@ -57,5 +89,5 @@ change_default_shell_to_zsh
 log 'Install zsh plugins:'
 install_zsh_plugins
 
-log 'Setup powerline font:'
-setup_powerline_fonts
+log 'Setup nerd fonts:'
+setup_nerd_fonts
