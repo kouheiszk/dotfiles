@@ -15,5 +15,5 @@ autoload -Uz _zinit
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
-zinit light zdharma/history-search-multi-word
+zinit light zdharma-continuum/history-search-multi-word
 zinit ice depth=1; zinit light romkatv/powerlevel10k

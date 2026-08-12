@@ -136,10 +136,14 @@ if [ -d $HOME/.cargo ]; then
 fi
 
 # シェル固有の設定を読み込む
-case $SHELL in
-  "/bin/bash" ) [ -f "$HOME/.profile.bash" ] && source $HOME/.profile.bash ;;
-  "/bin/zsh" | "/usr/local/bin/zsh" ) [ -f "$HOME/.profile.zsh" ] && source $HOME/.profile.zsh ;;
-esac
+# $SHELL のパス一致で判定すると Homebrew の zsh (Apple Silicon なら
+# /opt/homebrew/bin/zsh) に chsh した途端どの枝にも入らなくなるので、
+# 実際に動いているシェルを $ZSH_VERSION / $BASH_VERSION で判定する
+if [ -n "$ZSH_VERSION" ]; then
+  [ -f "$HOME/.profile.zsh" ] && source $HOME/.profile.zsh
+elif [ -n "$BASH_VERSION" ]; then
+  [ -f "$HOME/.profile.bash" ] && source $HOME/.profile.bash
+fi
 
 # .local_profileを読み込む
 [ -f "$HOME/.local_profile" ] && source $HOME/.local_profile
