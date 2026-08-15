@@ -25,9 +25,11 @@ if [ -d "$HOME/.anyenv" ]; then
     eval "$(anyenv init -)"
 fi
 
-# asdf
-if which asdf > /dev/null 2>&1; then
-  export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+# mise (旧 asdf の置き換え)
+# 対話シェルのフックは .profile.zsh / .profile.bash 側で張る。ここで shims を通すのは
+# make や エディタなど「フックが走らない非対話シェル」でもツールを解決させるため
+if [ -d "${MISE_DATA_DIR:-$HOME/.local/share/mise}/shims" ]; then
+  export PATH="${MISE_DATA_DIR:-$HOME/.local/share/mise}/shims:$PATH"
 fi
 
 
