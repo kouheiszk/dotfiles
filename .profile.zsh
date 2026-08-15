@@ -20,15 +20,16 @@ bindkey -e
 # Ctrl-Dで閉じちゃうのをやめる
 stty eof undef
 
+# mise (旧 asdf の置き換え)
+# 注: direnv の zsh フックは自分を precmd_functions の先頭に prepend するため、
+# 読み込み順に関わらず direnv -> mise の順で走る。つまり direnv 側で venv を
+# activate しても mise が PATH を張り直して覆い隠す。venv を使うプロジェクトでは
+# .mise.toml に `_.python.venv` を書いて mise 側に venv を認識させること
+if command -v mise > /dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
+
 # direnv
 if command -v direnv > /dev/null 2>&1; then
   eval "$(direnv hook zsh)"
-fi
-
-# asdf
-# brew --prefix は未インストールでもパスを返すので、実体の有無で判定する
-if command -v brew > /dev/null 2>&1; then
-  asdf_sh="$(brew --prefix asdf 2>/dev/null)/libexec/asdf.sh"
-  [ -f "$asdf_sh" ] && . "$asdf_sh"
-  unset asdf_sh
 fi
