@@ -3,28 +3,34 @@
 
 set -e
 
+cd "$(dirname "$0")/.."
+
 log()   { echo "==> $*"; }
 abort() { echo '!!! $*' >&2; exit 1; }
 
 change_default_shell_to_zsh() {
-  if [ -f '/usr/local/bin/zsh' ]; then
-    if ! grep -q '/usr/local/bin/zsh' /etc/shells; then
-      echo '/usr/local/bin/zsh' | sudo tee -a /etc/shells > /dev/null
+  local brew_zsh='/opt/homebrew/bin/zsh'
+  # $SHELL は再ログインするまで更新されないので、実際のログインシェルを見る
+  local login_shell="$(dscl . -read "/Users/$(id -un)" UserShell | awk '{ print $2 }')"
+
+  if [ -f "$brew_zsh" ]; then
+    if ! grep -qx "$brew_zsh" /etc/shells; then
+      echo "$brew_zsh" | sudo tee -a /etc/shells > /dev/null
     fi
   fi
 
-  case $SHELL in
-    '/usr/local/bin/zsh' )
-      if [ ! -f '/usr/local/bin/zsh' ]; then
+  case $login_shell in
+    "$brew_zsh" )
+      if [ ! -f "$brew_zsh" ]; then
         echo 'Switch shell to /bin/zsh'
         chsh -s /bin/zsh
       fi
       ;;
     '/bin/bash' | '/bin/zsh' )
-      if [ -f '/usr/local/bin/zsh' ]; then
-        echo 'Switch shell to /usr/local/bin/zsh'
-        chsh -s /usr/local/bin/zsh
-      elif [ "$SHELL" != '/bin/zsh' ] && [ -f '/bin/zsh' ]; then
+      if [ -f "$brew_zsh" ]; then
+        echo "Switch shell to $brew_zsh"
+        chsh -s "$brew_zsh"
+      elif [ "$login_shell" != '/bin/zsh' ] && [ -f '/bin/zsh' ]; then
         echo 'Switch shell to /bin/zsh'
         chsh -s /bin/zsh
       fi
@@ -32,18 +38,8 @@ change_default_shell_to_zsh() {
   esac
 }
 
-install_zsh_plugins() {
-  if [ ! -d ~/.zinit ]; then
-    log "Cloning to ~/.zinit:"
-    git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
-  elif [ -x "$(which zinit)" ]; then
-    zinit self-update
-  else
-    (
-      cd ~/.zinit/bin
-      git pull origin master
-    )
-  fi
+install_mise_tools() {
+  (cd "$HOME" && /opt/homebrew/bin/mise install --yes)
 }
 
 setup_powerline_fonts() {
@@ -54,8 +50,8 @@ setup_powerline_fonts() {
 log 'Change default shell to zsh:'
 change_default_shell_to_zsh
 
-log 'Install zsh plugins:'
-install_zsh_plugins
+log 'Install mise tools:'
+install_mise_tools
 
 log 'Setup powerline font:'
 setup_powerline_fonts

@@ -18,5 +18,5 @@ stty eof undef
 # direnv
 eval "$(direnv hook zsh)"
 
-# asdf
-. $(brew --prefix asdf)/libexec/asdf.sh
+# mise
+eval "$(mise activate zsh)"
