@@ -19,3 +19,7 @@ xcuserdata
 *.envrc
 
 kouhei_tmp.rb
+
+# Claude
+.claude/settings.local.json
+*/.claude/settings.local.json

@@ -71,7 +71,7 @@
 	rebase = false
 
 [push]
-	default = simple
+	default = current
 
 [github]
 	user = kouheiszk
@@ -87,3 +87,5 @@
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 [url "ssh://git@github.com"]
 	insteadOf = https://github.com
+[init]
+	defaultBranch = main
