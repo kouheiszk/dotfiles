@@ -46,7 +46,7 @@
     command_execution_time  # duration of the last command
     background_jobs         # presence of background jobs
     direnv                  # direnv status (https://direnv.net/)
-    asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)
+    mise                    # mise version manager (https://mise.jdx.dev)
     virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
     anaconda                # conda environment (https://conda.io/)
     pyenv                   # python environment (https://github.com/pyenv/pyenv)
@@ -563,163 +563,88 @@
   # Custom icon.
   # typeset -g POWERLEVEL9K_DIRENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
-  ###############[ asdf: asdf version manager (https://github.com/asdf-vm/asdf) ]###############
-  # Default asdf color. Only used to display tools for which there is no color override (see below).
-  # Tip:  Override these parameters for ${TOOL} with POWERLEVEL9K_ASDF_${TOOL}_FOREGROUND and
-  # POWERLEVEL9K_ASDF_${TOOL}_BACKGROUND.
-  typeset -g POWERLEVEL9K_ASDF_FOREGROUND=0
-  typeset -g POWERLEVEL9K_ASDF_BACKGROUND=7
+  ####################[ mise: mise version manager (https://mise.jdx.dev) ]#####################
+  # Powerlevel10k has no built-in mise segment, so define one here. Tools that come from the
+  # global config (~/.config/mise) are hidden.
+  function prompt_mise() {
+    local line
+    local -a fields
+    for line in "${(@f)$(command mise ls --current --offline 2>/dev/null)}"; do
+      [[ -n $line && $line != *" ~/.config/mise/"* ]] || continue
+      fields=(${=line})
+      p10k segment -s "${${fields[1]//[^[:alnum:]]/_}:u}" -t "${fields[1]//\%/%%} ${fields[2]//\%/%%}"
+    done
+  }
 
-  # There are four parameters that can be used to hide asdf tools. Each parameter describes
-  # conditions under which a tool gets hidden. Parameters can hide tools but not unhide them. If at
-  # least one parameter decides to hide a tool, that tool gets hidden. If no parameter decides to
-  # hide a tool, it gets shown.
-  #
-  # Special note on the difference between POWERLEVEL9K_ASDF_SOURCES and
-  # POWERLEVEL9K_ASDF_PROMPT_ALWAYS_SHOW. Consider the effect of the following commands:
-  #
-  #   asdf local  python 3.8.1
-  #   asdf global python 3.8.1
-  #
-  # After running both commands the current python version is 3.8.1 and its source is "local" as
-  # it takes precedence over "global". If POWERLEVEL9K_ASDF_PROMPT_ALWAYS_SHOW is set to false,
-  # it'll hide python version in this case because 3.8.1 is the same as the global version.
-  # POWERLEVEL9K_ASDF_SOURCES will hide python version only if the value of this parameter doesn't
-  # contain "local".
+  # Default mise color. Only used to display tools for which there is no color override (see below).
+  # Tip:  Override these parameters for ${TOOL} with POWERLEVEL9K_MISE_${TOOL}_FOREGROUND and
+  # POWERLEVEL9K_MISE_${TOOL}_BACKGROUND.
+  typeset -g POWERLEVEL9K_MISE_FOREGROUND=0
+  typeset -g POWERLEVEL9K_MISE_BACKGROUND=7
 
-  # Hide tool versions that don't come from one of these sources.
-  #
-  # Available sources:
-  #
-  # - shell   `asdf current` says "set by ASDF_${TOOL}_VERSION environment variable"
-  # - local   `asdf current` says "set by /some/not/home/directory/file"
-  # - global  `asdf current` says "set by /home/username/file"
-  #
-  # Note: If this parameter is set to (shell local global), it won't hide tools.
-  # Tip:  Override this parameter for ${TOOL} with POWERLEVEL9K_ASDF_${TOOL}_SOURCES.
-  typeset -g POWERLEVEL9K_ASDF_SOURCES=(shell local global)
+  # Ruby version from mise.
+  typeset -g POWERLEVEL9K_MISE_RUBY_FOREGROUND=0
+  typeset -g POWERLEVEL9K_MISE_RUBY_BACKGROUND=1
 
-  # If set to false, hide tool versions that are the same as global.
-  #
-  # Note: The name of this parameter doesn't reflect its meaning at all.
-  # Note: If this parameter is set to true, it won't hide tools.
-  # Tip:  Override this parameter for ${TOOL} with POWERLEVEL9K_ASDF_${TOOL}_PROMPT_ALWAYS_SHOW.
-  typeset -g POWERLEVEL9K_ASDF_PROMPT_ALWAYS_SHOW=false
+  # Python version from mise.
+  typeset -g POWERLEVEL9K_MISE_PYTHON_FOREGROUND=0
+  typeset -g POWERLEVEL9K_MISE_PYTHON_BACKGROUND=4
 
-  # If set to false, hide tool versions that are equal to "system".
-  #
-  # Note: If this parameter is set to true, it won't hide tools.
-  # Tip: Override this parameter for ${TOOL} with POWERLEVEL9K_ASDF_${TOOL}_SHOW_SYSTEM.
-  typeset -g POWERLEVEL9K_ASDF_SHOW_SYSTEM=true
+  # Go version from mise.
+  typeset -g POWERLEVEL9K_MISE_GO_FOREGROUND=0
+  typeset -g POWERLEVEL9K_MISE_GO_BACKGROUND=4
 
-  # If set to non-empty value, hide tools unless there is a file matching the specified file pattern
-  # in the current directory, or its parent directory, or its grandparent directory, and so on.
-  #
-  # Note: If this parameter is set to empty value, it won't hide tools.
-  # Note: SHOW_ON_UPGLOB isn't specific to asdf. It works with all prompt segments.
-  # Tip: Override this parameter for ${TOOL} with POWERLEVEL9K_ASDF_${TOOL}_SHOW_ON_UPGLOB.
-  #
-  # Example: Hide nodejs version when there is no package.json and no *.js files in the current
-  # directory, in `..`, in `../..` and so on.
-  #
-  #   typeset -g POWERLEVEL9K_ASDF_NODEJS_SHOW_ON_UPGLOB='*.js|package.json'
-  typeset -g POWERLEVEL9K_ASDF_SHOW_ON_UPGLOB=
+  # Node.js version from mise.
+  typeset -g POWERLEVEL9K_MISE_NODE_FOREGROUND=0
+  typeset -g POWERLEVEL9K_MISE_NODE_BACKGROUND=2
 
-  # Ruby version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_RUBY_FOREGROUND=0
-  typeset -g POWERLEVEL9K_ASDF_RUBY_BACKGROUND=1
-  # typeset -g POWERLEVEL9K_ASDF_RUBY_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  # typeset -g POWERLEVEL9K_ASDF_RUBY_SHOW_ON_UPGLOB='*.foo|*.bar'
+  # Rust version from mise.
+  typeset -g POWERLEVEL9K_MISE_RUST_FOREGROUND=0
+  typeset -g POWERLEVEL9K_MISE_RUST_BACKGROUND=208
 
-  # Python version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_PYTHON_FOREGROUND=0
-  typeset -g POWERLEVEL9K_ASDF_PYTHON_BACKGROUND=4
-  # typeset -g POWERLEVEL9K_ASDF_PYTHON_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  # typeset -g POWERLEVEL9K_ASDF_PYTHON_SHOW_ON_UPGLOB='*.foo|*.bar'
+  # .NET version from mise.
+  typeset -g POWERLEVEL9K_MISE_DOTNET_FOREGROUND=0
+  typeset -g POWERLEVEL9K_MISE_DOTNET_BACKGROUND=5
 
-  # Go version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_GOLANG_FOREGROUND=0
-  typeset -g POWERLEVEL9K_ASDF_GOLANG_BACKGROUND=4
-  # typeset -g POWERLEVEL9K_ASDF_GOLANG_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  # typeset -g POWERLEVEL9K_ASDF_GOLANG_SHOW_ON_UPGLOB='*.foo|*.bar'
+  # Flutter version from mise.
+  typeset -g POWERLEVEL9K_MISE_FLUTTER_FOREGROUND=0
+  typeset -g POWERLEVEL9K_MISE_FLUTTER_BACKGROUND=4
 
-  # Node.js version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_NODEJS_FOREGROUND=0
-  typeset -g POWERLEVEL9K_ASDF_NODEJS_BACKGROUND=2
-  # typeset -g POWERLEVEL9K_ASDF_NODEJS_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  # typeset -g POWERLEVEL9K_ASDF_NODEJS_SHOW_ON_UPGLOB='*.foo|*.bar'
+  # Lua version from mise.
+  typeset -g POWERLEVEL9K_MISE_LUA_FOREGROUND=0
+  typeset -g POWERLEVEL9K_MISE_LUA_BACKGROUND=4
 
-  # Rust version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_RUST_FOREGROUND=0
-  typeset -g POWERLEVEL9K_ASDF_RUST_BACKGROUND=208
-  # typeset -g POWERLEVEL9K_ASDF_RUST_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  # typeset -g POWERLEVEL9K_ASDF_RUST_SHOW_ON_UPGLOB='*.foo|*.bar'
+  # Java version from mise.
+  typeset -g POWERLEVEL9K_MISE_JAVA_FOREGROUND=1
+  typeset -g POWERLEVEL9K_MISE_JAVA_BACKGROUND=7
 
-  # .NET Core version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_DOTNET_CORE_FOREGROUND=0
-  typeset -g POWERLEVEL9K_ASDF_DOTNET_CORE_BACKGROUND=5
-  # typeset -g POWERLEVEL9K_ASDF_DOTNET_CORE_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  # typeset -g POWERLEVEL9K_ASDF_DOTNET_CORE_SHOW_ON_UPGLOB='*.foo|*.bar'
+  # Perl version from mise.
+  typeset -g POWERLEVEL9K_MISE_PERL_FOREGROUND=0
+  typeset -g POWERLEVEL9K_MISE_PERL_BACKGROUND=4
 
-  # Flutter version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_FLUTTER_FOREGROUND=0
-  typeset -g POWERLEVEL9K_ASDF_FLUTTER_BACKGROUND=4
-  # typeset -g POWERLEVEL9K_ASDF_FLUTTER_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  # typeset -g POWERLEVEL9K_ASDF_FLUTTER_SHOW_ON_UPGLOB='*.foo|*.bar'
+  # Erlang version from mise.
+  typeset -g POWERLEVEL9K_MISE_ERLANG_FOREGROUND=0
+  typeset -g POWERLEVEL9K_MISE_ERLANG_BACKGROUND=1
 
-  # Lua version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_LUA_FOREGROUND=0
-  typeset -g POWERLEVEL9K_ASDF_LUA_BACKGROUND=4
-  # typeset -g POWERLEVEL9K_ASDF_LUA_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  # typeset -g POWERLEVEL9K_ASDF_LUA_SHOW_ON_UPGLOB='*.foo|*.bar'
+  # Elixir version from mise.
+  typeset -g POWERLEVEL9K_MISE_ELIXIR_FOREGROUND=0
+  typeset -g POWERLEVEL9K_MISE_ELIXIR_BACKGROUND=5
 
-  # Java version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_JAVA_FOREGROUND=1
-  typeset -g POWERLEVEL9K_ASDF_JAVA_BACKGROUND=7
-  # typeset -g POWERLEVEL9K_ASDF_JAVA_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  # typeset -g POWERLEVEL9K_ASDF_JAVA_SHOW_ON_UPGLOB='*.foo|*.bar'
+  # Postgres version from mise.
+  typeset -g POWERLEVEL9K_MISE_POSTGRES_FOREGROUND=0
+  typeset -g POWERLEVEL9K_MISE_POSTGRES_BACKGROUND=6
 
-  # Perl version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_PERL_FOREGROUND=0
-  typeset -g POWERLEVEL9K_ASDF_PERL_BACKGROUND=4
-  # typeset -g POWERLEVEL9K_ASDF_PERL_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  # typeset -g POWERLEVEL9K_ASDF_PERL_SHOW_ON_UPGLOB='*.foo|*.bar'
+  # PHP version from mise.
+  typeset -g POWERLEVEL9K_MISE_PHP_FOREGROUND=0
+  typeset -g POWERLEVEL9K_MISE_PHP_BACKGROUND=5
 
-  # Erlang version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_ERLANG_FOREGROUND=0
-  typeset -g POWERLEVEL9K_ASDF_ERLANG_BACKGROUND=1
-  # typeset -g POWERLEVEL9K_ASDF_ERLANG_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  # typeset -g POWERLEVEL9K_ASDF_ERLANG_SHOW_ON_UPGLOB='*.foo|*.bar'
+  # Haskell version from mise.
+  typeset -g POWERLEVEL9K_MISE_HASKELL_FOREGROUND=0
+  typeset -g POWERLEVEL9K_MISE_HASKELL_BACKGROUND=3
 
-  # Elixir version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_ELIXIR_FOREGROUND=0
-  typeset -g POWERLEVEL9K_ASDF_ELIXIR_BACKGROUND=5
-  # typeset -g POWERLEVEL9K_ASDF_ELIXIR_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  # typeset -g POWERLEVEL9K_ASDF_ELIXIR_SHOW_ON_UPGLOB='*.foo|*.bar'
-
-  # Postgres version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_POSTGRES_FOREGROUND=0
-  typeset -g POWERLEVEL9K_ASDF_POSTGRES_BACKGROUND=6
-  # typeset -g POWERLEVEL9K_ASDF_POSTGRES_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  # typeset -g POWERLEVEL9K_ASDF_POSTGRES_SHOW_ON_UPGLOB='*.foo|*.bar'
-
-  # PHP version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_PHP_FOREGROUND=0
-  typeset -g POWERLEVEL9K_ASDF_PHP_BACKGROUND=5
-  # typeset -g POWERLEVEL9K_ASDF_PHP_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  # typeset -g POWERLEVEL9K_ASDF_PHP_SHOW_ON_UPGLOB='*.foo|*.bar'
-
-  # Haskell version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_HASKELL_FOREGROUND=0
-  typeset -g POWERLEVEL9K_ASDF_HASKELL_BACKGROUND=3
-  # typeset -g POWERLEVEL9K_ASDF_HASKELL_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  # typeset -g POWERLEVEL9K_ASDF_HASKELL_SHOW_ON_UPGLOB='*.foo|*.bar'
-
-  # Julia version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_JULIA_FOREGROUND=0
-  typeset -g POWERLEVEL9K_ASDF_JULIA_BACKGROUND=2
-  # typeset -g POWERLEVEL9K_ASDF_JULIA_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  # typeset -g POWERLEVEL9K_ASDF_JULIA_SHOW_ON_UPGLOB='*.foo|*.bar'
+  # Julia version from mise.
+  typeset -g POWERLEVEL9K_MISE_JULIA_FOREGROUND=0
+  typeset -g POWERLEVEL9K_MISE_JULIA_BACKGROUND=2
 
   ##########[ nordvpn: nordvpn connection status, linux only (https://nordvpn.com/) ]###########
   # NordVPN connection indicator color.

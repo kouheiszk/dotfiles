@@ -12,25 +12,6 @@ if [ -f /opt/homebrew/bin/brew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# pyenv
-if [ -d "$HOME/.anyenv/envs/pyenv" ]; then
-  export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)" 2>&1 > /dev/null
-  eval "$(pyenv init --path)" 2>&1 > /dev/null
-fi
-
-# anyenv
-if [ -d "$HOME/.anyenv" ]; then
-    eval "$(anyenv init -)"
-fi
-
-# asdf
-if which asdf > /dev/null 2>&1; then
-  export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-fi
-
-
 # local
 export PATH=$PATH:$HOME/.local/bin
 
@@ -118,28 +99,16 @@ function my_cd_gitroot() {
 
 alias gr='my_cd_gitroot'
 
-# ssh-addでキーを読み込んでおく
-case $(uname) in
-  "Darwin" )
-    if [ -d $HOME/.ssh ]; then
-      for private_key in $(ls $HOME/.ssh | grep id_rsa | grep -v .pub); do
-        ssh-add -K $HOME/.ssh/$private_key >/dev/null 2>&1
-      done
-    fi
-    ;;
-  * )
-    ;;
-esac
-
 if [ -d $HOME/.cargo ]; then
   . "$HOME/.cargo/env"
 fi
 
 # シェル固有の設定を読み込む
-case $SHELL in
-  "/bin/bash" ) [ -f "$HOME/.profile.bash" ] && source $HOME/.profile.bash ;;
-  "/bin/zsh" | "/usr/local/bin/zsh" ) [ -f "$HOME/.profile.zsh" ] && source $HOME/.profile.zsh ;;
-esac
+if [ -n "$ZSH_VERSION" ]; then
+  [ -f "$HOME/.profile.zsh" ] && source $HOME/.profile.zsh
+elif [ -n "$BASH_VERSION" ]; then
+  [ -f "$HOME/.profile.bash" ] && source $HOME/.profile.bash
+fi
 
 # .local_profileを読み込む
 [ -f "$HOME/.local_profile" ] && source $HOME/.local_profile

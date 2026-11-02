@@ -3,8 +3,32 @@
 
 set -e
 
+cd "$(dirname "$0")/.."
+
 log() { echo "==> $*"; }
 abort() { echo "!!! $*" >&2; exit 1; }
+
+link() {
+  local source="$1"
+  local target="$2"
+
+  if [ ! -L "$target" ]; then
+    if [ -d "$target" ]; then
+      abort "$target is a directory. Move it manually and run again."
+    elif [ -e "$target" ]; then
+      # シンボリックリンクではないファイルが存在する
+      echo "$target is already exists."
+      echo "------ $target ------"
+      cat "$target"
+      echo "------"
+      echo "Remove existing $target and create new one."
+      rm -f "$target"
+    fi
+  fi
+
+  ln -sfn "$source" "$target"
+  echo "$target -> $source"
+}
 
 create_symbolic_link_of_dotfiles() {
   for dotfile in .?*; do
@@ -12,27 +36,41 @@ create_symbolic_link_of_dotfiles() {
       ".." ) continue ;;
       ".DS_Store" ) continue ;;
       "*.elc" ) continue ;;
-      ".git" | ".gitignore" | ".gitmodules" | ".module" ) continue ;;
-      * )
-        if [ -f "$HOME/$dotfile" ] || [ -d "$HOME/$dotfile" ]; then
-          if [ ! -L "$HOME/$dotfile" ]; then
-            # シンボリックリンクではないファイルが存在する
-            echo "${dotfile} is already exists."
-            echo "------ $HOME/${dotfile} ------"
-            cat $HOME/${dotfile}
-            echo "------"
-            echo "Remove existing $HOME/${dotfile} and create new one."
-          fi
-
-          rm $HOME/${dotfile}
-        fi
-
-        ln -is $HOME/.dotfiles/${dotfile} $HOME
-        echo "~/${dotfile} -> $HOME/.dotfiles/${dotfile}"
-        ;;
+      ".git" | ".gitignore" | ".gitmodules" | ".module" | ".config" ) continue ;;
+      * ) link "$HOME/.dotfiles/${dotfile}" "$HOME/${dotfile}" ;;
     esac
+  done
+}
+
+create_symbolic_link_of_config() {
+  mkdir -p "$HOME/.config"
+  for config in .config/*; do
+    link "$HOME/.dotfiles/${config}" "$HOME/${config}"
+  done
+}
+
+load_launch_agents() {
+  local domain="gui/$(id -u)"
+
+  mkdir -p "$HOME/Library/LaunchAgents"
+  for plist in launchd/*.plist; do
+    local label="$(basename "$plist" .plist)"
+    local target="$HOME/Library/LaunchAgents/${label}.plist"
+
+    link "$HOME/.dotfiles/${plist}" "$target"
+
+    # 読み込み済みなら実行中のジョブを止めないように何もしない
+    if ! launchctl print "$domain/$label" > /dev/null 2>&1; then
+      launchctl bootstrap "$domain" "$target"
+    fi
   done
 }
 
 log "Create symbolic link of dotfiles:"
 create_symbolic_link_of_dotfiles
+
+log "Create symbolic link of ~/.config:"
+create_symbolic_link_of_config
+
+log "Load launch agents:"
+load_launch_agents
