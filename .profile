@@ -12,26 +12,12 @@ if [ -f /opt/homebrew/bin/brew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# pyenv
-if [ -d "$HOME/.anyenv/envs/pyenv" ]; then
-  export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)" 2>&1 > /dev/null
-  eval "$(pyenv init --path)" 2>&1 > /dev/null
-fi
-
-# anyenv
-if [ -d "$HOME/.anyenv" ]; then
-    eval "$(anyenv init -)"
-fi
-
 # mise (旧 asdf の置き換え)
 # 対話シェルのフックは .profile.zsh / .profile.bash 側で張る。ここで shims を通すのは
 # make や エディタなど「フックが走らない非対話シェル」でもツールを解決させるため
 if [ -d "${MISE_DATA_DIR:-$HOME/.local/share/mise}/shims" ]; then
   export PATH="${MISE_DATA_DIR:-$HOME/.local/share/mise}/shims:$PATH"
 fi
-
 
 # local
 export PATH=$PATH:$HOME/.local/bin
@@ -119,19 +105,6 @@ function my_cd_gitroot() {
 }
 
 alias gr='my_cd_gitroot'
-
-# ssh-addでキーを読み込んでおく
-case $(uname) in
-  "Darwin" )
-    if [ -d $HOME/.ssh ]; then
-      for private_key in $(ls $HOME/.ssh | grep id_rsa | grep -v .pub); do
-        ssh-add -K $HOME/.ssh/$private_key >/dev/null 2>&1
-      done
-    fi
-    ;;
-  * )
-    ;;
-esac
 
 if [ -d $HOME/.cargo ]; then
   . "$HOME/.cargo/env"

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # プラグインや設定の読み込み
-[ -f "$HOME/.bash/fzf.bash" ] && source $HOME/.zsh/fzf.bash
+[ -f "$HOME/.bash/fzf.bash" ] && source $HOME/.bash/fzf.bash
 
 # mise (旧 asdf の置き換え)
 # 注: direnv と併用する場合、venv を direnv 側で activate しても mise が PATH を

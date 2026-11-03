@@ -1,10 +1,5 @@
 #!/usr/bin/env zsh
 
-# .zprofile と .zshrc の両方が ~/.profile を読むため、このファイルは
-# ログインシェルでは二重に読まれる。zinit を二度ロードしないよう番人を置く
-[ -n "$MY_PROFILE_ZSH_LOADED" ] && return
-MY_PROFILE_ZSH_LOADED=1
-
 # プラグインや設定の読み込み
 [ -f ~/.zsh/zinit.zsh ] && source $HOME/.zsh/zinit.zsh
 [ -f ~/.zsh/fzf.zsh ] && source $HOME/.zsh/fzf.zsh

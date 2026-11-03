@@ -3,6 +3,8 @@
 
 set -e
 
+cd "$(dirname "$0")/.."
+
 log()   { echo "==> $*"; }
 abort() { echo "!!! $*" >&2; exit 1; }
 
@@ -57,6 +59,10 @@ install_zsh_plugins() {
   fi
 }
 
+install_mise_tools() {
+  (cd "$HOME" && "$(brew --prefix)/bin/mise" install --yes)
+}
+
 # powerlevel10k は POWERLEVEL9K_MODE=nerdfont-complete で動かしているため、
 # Powerline パッチ済みフォントでは足りず Nerd Font が要る
 # (Powerline パッチ版は U+E0A0-E0B3 の区切り記号しか持たない)
@@ -88,6 +94,9 @@ change_default_shell_to_zsh
 
 log 'Install zsh plugins:'
 install_zsh_plugins
+
+log 'Install mise tools:'
+install_mise_tools
 
 log 'Setup nerd fonts:'
 setup_nerd_fonts
