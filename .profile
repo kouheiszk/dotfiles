@@ -7,8 +7,8 @@
 # zshの場合:
 # .zshrc -> .profile -> .profile.zsh -> .local_profile
 
-# brew
-if [ -f /opt/homebrew/bin/brew ]; then
+# brew (ログインシェルなら .zprofile で設定済みなので、brew の起動を省く)
+if [ -z "$HOMEBREW_PREFIX" ] && [ -f /opt/homebrew/bin/brew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
@@ -30,9 +30,12 @@ export PATH=$PATH:$GOPATH/bin
 if [ -d "/Applications/Android Studio.app/Contents/jbr/Contents/Home" ]; then
   export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
   export PATH=$JAVA_HOME/bin:$PATH
-elif java --version &>/dev/null; then
-  export JAVA_HOME=$(/usr/libexec/java_home)
+elif JAVA_HOME=$(/usr/libexec/java_home 2>/dev/null); then
+  # java --version で JVM を起動して確かめると遅いので、java_home の成否で判定する
+  export JAVA_HOME
   export PATH=$JAVA_HOME/bin:$PATH
+else
+  unset JAVA_HOME
 fi
 
 # flutter
