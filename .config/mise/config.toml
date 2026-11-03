@@ -1,0 +1,8 @@
+[tools]
+node = "lts"
+python = "latest"
+ruby = "latest"
+uv = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = ["node", "ruby"]
