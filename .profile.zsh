@@ -15,8 +15,16 @@ bindkey -e
 # Ctrl-Dで閉じちゃうのをやめる
 stty eof undef
 
-# direnv
-eval "$(direnv hook zsh)"
+# mise (旧 asdf の置き換え)
+# 注: direnv の zsh フックは自分を precmd_functions の先頭に prepend するため、
+# 読み込み順に関わらず direnv -> mise の順で走る。つまり direnv 側で venv を
+# activate しても mise が PATH を張り直して覆い隠す。venv を使うプロジェクトでは
+# .mise.toml に `_.python.venv` を書いて mise 側に venv を認識させること
+if command -v mise > /dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
 
-# mise
-eval "$(mise activate zsh)"
+# direnv
+if command -v direnv > /dev/null 2>&1; then
+  eval "$(direnv hook zsh)"
+fi

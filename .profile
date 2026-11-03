@@ -12,6 +12,13 @@ if [ -f /opt/homebrew/bin/brew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+# mise (旧 asdf の置き換え)
+# 対話シェルのフックは .profile.zsh / .profile.bash 側で張る。ここで shims を通すのは
+# make や エディタなど「フックが走らない非対話シェル」でもツールを解決させるため
+if [ -d "${MISE_DATA_DIR:-$HOME/.local/share/mise}/shims" ]; then
+  export PATH="${MISE_DATA_DIR:-$HOME/.local/share/mise}/shims:$PATH"
+fi
+
 # local
 export PATH=$PATH:$HOME/.local/bin
 
@@ -104,6 +111,9 @@ if [ -d $HOME/.cargo ]; then
 fi
 
 # シェル固有の設定を読み込む
+# $SHELL のパス一致で判定すると Homebrew の zsh (Apple Silicon なら
+# /opt/homebrew/bin/zsh) に chsh した途端どの枝にも入らなくなるので、
+# 実際に動いているシェルを $ZSH_VERSION / $BASH_VERSION で判定する
 if [ -n "$ZSH_VERSION" ]; then
   [ -f "$HOME/.profile.zsh" ] && source $HOME/.profile.zsh
 elif [ -n "$BASH_VERSION" ]; then
