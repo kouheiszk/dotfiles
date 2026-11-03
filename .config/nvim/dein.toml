@@ -6,10 +6,19 @@ repo = 'Shougo/dein.vim'
 # ==========================================================
 
 [[plugins]] # solarized
-repo = 'altercation/vim-colors-solarized'
+repo = 'lifepillar/vim-solarized8'
 hook_add = '''
-au MyAutoCmd VimEnter * nested colorscheme solarized
+" altercation 版はターミナルの配色自体が Solarized である前提なので、24bit カラーで描く版を使う
+if has('termguicolors') && $COLORTERM =~# '^\(truecolor\|24bit\)$'
+  if !has('nvim') && $TERM !~# '^xterm'
+    " tmux 内の vim は 24bit カラーのエスケープシーケンスを知らないので教える
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  endif
+  set termguicolors
+endif
 set background=dark
+au MyAutoCmd VimEnter * nested colorscheme solarized8
 '''
 
 # ==========================================================
@@ -40,71 +49,9 @@ repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
 
-[[plugins]]
-repo = 'milkypostman/vim-togglelist'
-hook_add = '''
-nmap <script> <silent> <C-l> :call ToggleLocationList()<CR>
-nmap <script> <silent> <C-q> :call ToggleQuickfixList()<CR> " Bug: not work in neovim
-'''
-
-[[plugins]]
-repo = 'kana/vim-operator-user'
-
-[[plugins]]
-repo = 'kana/vim-textobj-user'
-
-[[plugins]]
-repo = 'kana/vim-textobj-function'
-
-[[plugins]]
-repo = 'osyo-manga/vim-operator-search'
-depends = ['vim-operator-user', 'vim-textobj-function', 'vim-textobj-user']
-hook_add = '''
-nmap <Space>/ <Plug>(operator-search)if
-'''
-
-[[plugins]]
-repo = 'scrooloose/syntastic.git'
-
 # ==========================================================
 # filer
 # ==========================================================
-
-[[plugins]]
-repo = 'Shougo/unite.vim'
-hook_add = '''
-nnoremap <silent> fb :<C-u>Unite buffer<CR>
-'''
-
-[[plugins]]
-repo = 'Shougo/vimfiler.vim'
-depends = 'unite.vim'
-hook_add = '''
-call vimfiler#custom#profile('default', 'context', {
-     \ 'safe' : 0,
-     \ 'auto_expand' : 1,
-     \ 'parent' : 0,
-     \ })
-" default explore -> vimfiler
-let g:vimfiler_as_default_explorer = 1
-" buffer directory
-nnoremap <silent> fe :<C-u>VimFilerBufferDir -quit<CR>
-" Nerdtree like
-nnoremap <C-e> :<C-u>VimFilerBufferDir -split -winwidth=120 -toggle -no-quit<CR>
-" key mapping
-autocmd MyAutoCmd FileType vimfiler call s:vimfiler_my_settings()
-function! s:vimfiler_my_settings()
-  nnoremap <silent><buffer><expr> s vimfiler#do_switch_action('vsplit')
-  nnoremap <silent><buffer><expr> v vimfiler#do_switch_action('split')
-  nnoremap <silent><buffer><expr> t vimfiler#do_action('tabopen')
-endfunction
-" Textmate icons
-let g:vimfiler_tree_leaf_icon = ' '
-let g:vimfiler_tree_opened_icon = '▾'
-let g:vimfiler_tree_closed_icon = '▸'
-let g:vimfiler_file_icon = '-'
-let g:vimfiler_marked_file_icon = '*'
-'''
 
 [[plugins]]
 repo = 'ctrlpvim/ctrlp.vim'
@@ -126,18 +73,15 @@ let g:ctrlp_prompt_mappings     = {
 '''
 
 # ==========================================================
-# powerline
+# statusline
 # ==========================================================
-
-[[plugins]]
-repo = 'majutsushi/tagbar'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'
-depends = ['tagbar', 'vim-fugitive']
+depends = 'vim-fugitive'
 hook_add = '''
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1 " タブラインにもairlineを適用
@@ -158,35 +102,3 @@ depends = 'vim-airline'
 hook_add = '''
 let g:airline_theme='solarized'
 '''
-
-# ==========================================================
-# terminal
-# ==========================================================
-
-[[plugins]]
-repo = 'kassio/neoterm'
-if = "has('nvim')"
-hook_add = '''
-nnoremap <silent> ,rc :TREPLSendFile<cr>
-nnoremap <silent> ,rl :TREPLSendLine<cr>
-vnoremap <silent> ,rl :TREPLSendSelection<cr>
-nnoremap <silent> vt :Ttoggle<cr>
-nnoremap <silent> vs :terminal<cr>
-'''
-
-[[plugins]]
-repo = 'Shougo/vimshell'
-if = "!has('nvim')"
-hook_add = '''
-nnoremap <silent> vs :<C-u>VimShell<CR>
-let g:vimshell_prompt_expr = 'getcwd()." > "'
-let g:vimshell_prompt_pattern = '^\f\+ > '
-'''
-
-[[plugins]]
-repo = 'Shougo/vimproc.vim'
-if = "!has('nvim')"
-build = 'make'
-
-[[plugins]]
-repo = 'thinca/vim-quickrun'
