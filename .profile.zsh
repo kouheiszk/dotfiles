@@ -6,14 +6,24 @@
 [ -f ~/.zsh/history.zsh ] && source $HOME/.zsh/history.zsh
 
 # コンプリートの設定
+# 補完ファイルの検査と .zcompdump の作り直しは遅いので、1 日 1 回だけにする
 autoload -U compinit
-compinit
+() {
+  # 24 時間より古い .zcompdump があるときだけ作り直す (無ければ compinit -C が新しく作る)
+  local -a stale=( ${ZDOTDIR:-$HOME}/.zcompdump(N.mh+24) )
+  if (( $#stale )); then
+    compinit
+  else
+    compinit -C
+  fi
+}
 
 # Emacsモードで利用する
 bindkey -e
 
 # Ctrl-Dで閉じちゃうのをやめる
-stty eof undef
+# stty は p10k の instant prompt 中だと端末がないと怒られるので、zsh のオプションで止める
+setopt ignore_eof
 
 # mise (旧 asdf の置き換え)
 # 注: direnv の zsh フックは自分を precmd_functions の先頭に prepend するため、
