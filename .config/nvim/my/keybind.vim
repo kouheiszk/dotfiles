@@ -88,3 +88,9 @@ nmap <silent> <Esc><Esc> :call ToggleHighlighting()<CR>
 
 "" 検索時に/をエスケープ
 cnoremap <expr>/ getcmdtype() == '/' ? '\/' : '/'
+
+"" バッファ一覧とファイラ (標準の netrw を使う)
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3 " ツリー表示
+nnoremap fb :<C-u>ls<CR>:b<Space>
+nnoremap <silent> fe :<C-u>Explore<CR>
