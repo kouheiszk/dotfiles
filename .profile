@@ -7,29 +7,17 @@
 # zshの場合:
 # .zshrc -> .profile -> .profile.zsh -> .local_profile
 
-# brew
-if [ -f /opt/homebrew/bin/brew ]; then
+# brew (ログインシェルなら .zprofile で設定済みなので、brew の起動を省く)
+if [ -z "$HOMEBREW_PREFIX" ] && [ -f /opt/homebrew/bin/brew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# pyenv
-if [ -d "$HOME/.anyenv/envs/pyenv" ]; then
-  export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)" 2>&1 > /dev/null
-  eval "$(pyenv init --path)" 2>&1 > /dev/null
+# mise (旧 asdf の置き換え)
+# 対話シェルのフックは .profile.zsh / .profile.bash 側で張る。ここで shims を通すのは
+# make や エディタなど「フックが走らない非対話シェル」でもツールを解決させるため
+if [ -d "${MISE_DATA_DIR:-$HOME/.local/share/mise}/shims" ]; then
+  export PATH="${MISE_DATA_DIR:-$HOME/.local/share/mise}/shims:$PATH"
 fi
-
-# anyenv
-if [ -d "$HOME/.anyenv" ]; then
-    eval "$(anyenv init -)"
-fi
-
-# asdf
-if which asdf > /dev/null 2>&1; then
-  export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-fi
-
 
 # local
 export PATH=$HOME/.local/bin:$PATH
@@ -45,9 +33,12 @@ if [ -d "/Applications/Android Studio.app/Contents/jbr/Contents/Home" ]; then
 elif [ -d "$HOME/Applications/Android Studio.app/Contents/jbr/Contents/Home" ]; then
   export JAVA_HOME="$HOME/Applications/Android Studio.app/Contents/jbr/Contents/Home"
   export PATH=$JAVA_HOME/bin:$PATH
-elif java --version &>/dev/null; then
-  export JAVA_HOME=$(/usr/libexec/java_home)
+elif JAVA_HOME=$(/usr/libexec/java_home 2>/dev/null); then
+  # java --version で JVM を起動して確かめると遅いので、java_home の成否で判定する
+  export JAVA_HOME
   export PATH=$JAVA_HOME/bin:$PATH
+else
+  unset JAVA_HOME
 fi
 
 # flutter
@@ -121,28 +112,19 @@ function my_cd_gitroot() {
 
 alias gr='my_cd_gitroot'
 
-# ssh-addでキーを読み込んでおく
-case $(uname) in
-  "Darwin" )
-    if [ -d $HOME/.ssh ]; then
-      for private_key in $(ls $HOME/.ssh | grep id_rsa | grep -v .pub); do
-        ssh-add -K $HOME/.ssh/$private_key >/dev/null 2>&1
-      done
-    fi
-    ;;
-  * )
-    ;;
-esac
-
 if [ -f $HOME/.cargo/env ]; then
   . "$HOME/.cargo/env"
 fi
 
 # シェル固有の設定を読み込む
-case $SHELL in
-  "/bin/bash" ) [ -f "$HOME/.profile.bash" ] && source $HOME/.profile.bash ;;
-  "/bin/zsh" | "/usr/local/bin/zsh" ) [ -f "$HOME/.profile.zsh" ] && source $HOME/.profile.zsh ;;
-esac
+# $SHELL のパス一致で判定すると Homebrew の zsh (Apple Silicon なら
+# /opt/homebrew/bin/zsh) に chsh した途端どの枝にも入らなくなるので、
+# 実際に動いているシェルを $ZSH_VERSION / $BASH_VERSION で判定する
+if [ -n "$ZSH_VERSION" ]; then
+  [ -f "$HOME/.profile.zsh" ] && source $HOME/.profile.zsh
+elif [ -n "$BASH_VERSION" ]; then
+  [ -f "$HOME/.profile.bash" ] && source $HOME/.profile.bash
+fi
 
 # .local_profileを読み込む
 [ -f "$HOME/.local_profile" ] && source $HOME/.local_profile
