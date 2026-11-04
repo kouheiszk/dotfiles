@@ -85,3 +85,9 @@
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 [init]
 	defaultBranch = main
+
+;; 個人リポジトリだけ ssh へ書き換える。ghtkn に kouheiszk 向けの App が無く、
+;; https では認証が通らない。github.com 全体を書き換えると、ghtkn が担っている
+;; C-FO の https アクセスまで ssh に逃げて credential helper が呼ばれなくなる
+[url "ssh://git@github.com/kouheiszk/"]
+	insteadOf = https://github.com/kouheiszk/
