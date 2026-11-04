@@ -3,6 +3,13 @@ node = "lts"
 python = "latest"
 ruby = "latest"
 uv = "latest"
+yq = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node", "ruby"]
+# 設定ファイルを信頼するまで実行しない。mise.toml は task や env で任意のコマンドを
+# 実行できるので、clone してきたリポジトリの設定が勝手に走らないようにする
+paranoid = true
+# 公開直後のバージョンを掴まない。取り下げられたリリースや、公開後に差し替えられた
+# アーティファクトを踏むのを避ける
+minimum_release_age = "7d"
