@@ -32,7 +32,7 @@ fi
 
 
 # local
-export PATH=$PATH:$HOME/.local/bin
+export PATH=$HOME/.local/bin:$PATH
 
 # go
 export GOPATH=$HOME/workspace
@@ -41,6 +41,9 @@ export PATH=$PATH:$GOPATH/bin
 # java for android
 if [ -d "/Applications/Android Studio.app/Contents/jbr/Contents/Home" ]; then
   export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+  export PATH=$JAVA_HOME/bin:$PATH
+elif [ -d "$HOME/Applications/Android Studio.app/Contents/jbr/Contents/Home" ]; then
+  export JAVA_HOME="$HOME/Applications/Android Studio.app/Contents/jbr/Contents/Home"
   export PATH=$JAVA_HOME/bin:$PATH
 elif java --version &>/dev/null; then
   export JAVA_HOME=$(/usr/libexec/java_home)
@@ -131,7 +134,7 @@ case $(uname) in
     ;;
 esac
 
-if [ -d $HOME/.cargo ]; then
+if [ -f $HOME/.cargo/env ]; then
   . "$HOME/.cargo/env"
 fi
 
