@@ -23,3 +23,9 @@ kouhei_tmp.rb
 # Claude
 .claude/settings.local.json
 */.claude/settings.local.json
+
+# mise
+# mise.toml / .tool-versions はリポジトリが共有する宣言なので対象にしない。
+# local は手元だけの上書き用で、mise 自身がこの用途に分けている
+mise.local.toml
+.mise.local.toml
