@@ -1,8 +1,4 @@
-if [ -d /opt/homebrew/opt/fzf/ ]; then
-  FZF_PATH=/opt/homebrew/opt/fzf
-else
-  FZF_PATH=/usr/local/opt/fzf
-fi
+FZF_PATH="${HOMEBREW_PREFIX:-/opt/homebrew}/opt/fzf"
 
 # Setup fzf
 # ---------
