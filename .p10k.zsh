@@ -46,7 +46,6 @@
     command_execution_time  # duration of the last command
     background_jobs         # presence of background jobs
     direnv                  # direnv status (https://direnv.net/)
-    # mise                  # mise version manager (https://mise.jdx.dev)
     virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
     anaconda                # conda environment (https://conda.io/)
     pyenv                   # python environment (https://github.com/pyenv/pyenv)
@@ -562,89 +561,6 @@
   typeset -g POWERLEVEL9K_DIRENV_BACKGROUND=0
   # Custom icon.
   # typeset -g POWERLEVEL9K_DIRENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
-
-  ####################[ mise: mise version manager (https://mise.jdx.dev) ]#####################
-  # Powerlevel10k has no built-in mise segment, so define one here. Tools that come from the
-  # global config (~/.config/mise) are hidden.
-  function prompt_mise() {
-    local line
-    local -a fields
-    for line in "${(@f)$(command mise ls --current --offline 2>/dev/null)}"; do
-      [[ -n $line && $line != *" ~/.config/mise/"* ]] || continue
-      fields=(${=line})
-      p10k segment -s "${${fields[1]//[^[:alnum:]]/_}:u}" -t "${fields[1]//\%/%%} ${fields[2]//\%/%%}"
-    done
-  }
-
-  # Default mise color. Only used to display tools for which there is no color override (see below).
-  # Tip:  Override these parameters for ${TOOL} with POWERLEVEL9K_MISE_${TOOL}_FOREGROUND and
-  # POWERLEVEL9K_MISE_${TOOL}_BACKGROUND.
-  typeset -g POWERLEVEL9K_MISE_FOREGROUND=0
-  typeset -g POWERLEVEL9K_MISE_BACKGROUND=7
-
-  # Ruby version from mise.
-  typeset -g POWERLEVEL9K_MISE_RUBY_FOREGROUND=0
-  typeset -g POWERLEVEL9K_MISE_RUBY_BACKGROUND=1
-
-  # Python version from mise.
-  typeset -g POWERLEVEL9K_MISE_PYTHON_FOREGROUND=0
-  typeset -g POWERLEVEL9K_MISE_PYTHON_BACKGROUND=4
-
-  # Go version from mise.
-  typeset -g POWERLEVEL9K_MISE_GO_FOREGROUND=0
-  typeset -g POWERLEVEL9K_MISE_GO_BACKGROUND=4
-
-  # Node.js version from mise.
-  typeset -g POWERLEVEL9K_MISE_NODE_FOREGROUND=0
-  typeset -g POWERLEVEL9K_MISE_NODE_BACKGROUND=2
-
-  # Rust version from mise.
-  typeset -g POWERLEVEL9K_MISE_RUST_FOREGROUND=0
-  typeset -g POWERLEVEL9K_MISE_RUST_BACKGROUND=208
-
-  # .NET version from mise.
-  typeset -g POWERLEVEL9K_MISE_DOTNET_FOREGROUND=0
-  typeset -g POWERLEVEL9K_MISE_DOTNET_BACKGROUND=5
-
-  # Flutter version from mise.
-  typeset -g POWERLEVEL9K_MISE_FLUTTER_FOREGROUND=0
-  typeset -g POWERLEVEL9K_MISE_FLUTTER_BACKGROUND=4
-
-  # Lua version from mise.
-  typeset -g POWERLEVEL9K_MISE_LUA_FOREGROUND=0
-  typeset -g POWERLEVEL9K_MISE_LUA_BACKGROUND=4
-
-  # Java version from mise.
-  typeset -g POWERLEVEL9K_MISE_JAVA_FOREGROUND=1
-  typeset -g POWERLEVEL9K_MISE_JAVA_BACKGROUND=7
-
-  # Perl version from mise.
-  typeset -g POWERLEVEL9K_MISE_PERL_FOREGROUND=0
-  typeset -g POWERLEVEL9K_MISE_PERL_BACKGROUND=4
-
-  # Erlang version from mise.
-  typeset -g POWERLEVEL9K_MISE_ERLANG_FOREGROUND=0
-  typeset -g POWERLEVEL9K_MISE_ERLANG_BACKGROUND=1
-
-  # Elixir version from mise.
-  typeset -g POWERLEVEL9K_MISE_ELIXIR_FOREGROUND=0
-  typeset -g POWERLEVEL9K_MISE_ELIXIR_BACKGROUND=5
-
-  # Postgres version from mise.
-  typeset -g POWERLEVEL9K_MISE_POSTGRES_FOREGROUND=0
-  typeset -g POWERLEVEL9K_MISE_POSTGRES_BACKGROUND=6
-
-  # PHP version from mise.
-  typeset -g POWERLEVEL9K_MISE_PHP_FOREGROUND=0
-  typeset -g POWERLEVEL9K_MISE_PHP_BACKGROUND=5
-
-  # Haskell version from mise.
-  typeset -g POWERLEVEL9K_MISE_HASKELL_FOREGROUND=0
-  typeset -g POWERLEVEL9K_MISE_HASKELL_BACKGROUND=3
-
-  # Julia version from mise.
-  typeset -g POWERLEVEL9K_MISE_JULIA_FOREGROUND=0
-  typeset -g POWERLEVEL9K_MISE_JULIA_BACKGROUND=2
 
   ##########[ nordvpn: nordvpn connection status, linux only (https://nordvpn.com/) ]###########
   # NordVPN connection indicator color.
