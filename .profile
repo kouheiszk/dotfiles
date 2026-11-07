@@ -41,16 +41,6 @@ else
   unset JAVA_HOME
 fi
 
-# flutter
-if [ -d "$GOPATH/src/github.com/flutter/flutter" ]; then
-  export FLUTTER_PATH="$GOPATH/src/github.com/flutter/flutter"
-  export PATH=$FLUTTER_PATH/bin:$PATH
-fi
-
-if [ -d "/usr/local/opt/imagemagick@6" ]; then
-  export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
-fi
-
 if [ -d "$HOME/Library/Android" ]; then
   export ANDROID_HOME=$HOME/Library/Android/sdk
   export PATH=$HOME/Library/Android/sdk/platform-tools:$PATH
@@ -59,8 +49,8 @@ fi
 # Suppress +[__NSCFConstantString initialize] may have been in progress in another thread when fork() was called. error
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
-# editor
-export EDITOR=vim
+# editor (vim のエイリアスはエディタを呼ぶ側のプログラムには効かないので、直接 nvim を指す)
+export EDITOR=nvim
 
 if [ -d "$HOME/Library/Application Support/JetBrains/Toolbox/scripts" ]; then
   export PATH=$PATH:$HOME/Library/Application\ Support/JetBrains/Toolbox/scripts

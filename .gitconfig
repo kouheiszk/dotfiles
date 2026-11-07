@@ -6,26 +6,22 @@
 [core]
     excludesfile = ~/.gitignore_global
     attributesfile = ~/.gitattributes_global
-    editor = vim
+    editor = nvim
     pager = nkf -w | LESSCHARSET=utf-8 less
     precomposeunicode = true
     quotepath = false
     ignorecase = false
 
 [merge]
-    tool = vimdiff
+    tool = nvimdiff
     renamelimit = 3000
     ff = true
-
-[merge "mergepbx"]
-    name = Xcode project files merger
-    driver = mergepbx %O %A %B
 
 [color]
     ui = true
 
 [diff]
-    tool = vimdiff
+    tool = nvimdiff
     algorithm = histogram
 
 [difftool]
@@ -41,7 +37,6 @@
     di   = diff --color
     dic  = diff --color --cached
     ft   = fetch
-    wh   = whatchanged
     stat = log --stat --summary
     ht   = log --pretty=format:\"%C(yellow)%h%Creset %ad | %s%C(green)%d%Creset %C(cyan)[%an]%Creset\" --graph --date=short
     htd  = log --pretty=format:\"%C(yellow)%h%Creset %ad | %s%C(green)%d%Creset %C(cyan)[%an]%Creset\" --graph --date=local
@@ -60,10 +55,6 @@
 [include]
     path = ~/.local_gitconfig
 
-[filter "media"]
-	clean = git-media-clean %f
-  smudge = git-media-smudge %f
-
 [ghq]
   root = ~/workspace/src
 
@@ -76,13 +67,6 @@
 [github]
 	user = kouheiszk
 
-[secrets]
-	providers = git secrets --aws-provider
-	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
-	patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
-	patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
-	allowed = AKIAIOSFODNN7EXAMPLE
-	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 [init]
 	defaultBranch = main
 
