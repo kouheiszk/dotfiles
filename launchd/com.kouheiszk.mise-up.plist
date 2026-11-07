@@ -8,7 +8,7 @@
   <array>
     <string>/bin/sh</string>
     <string>-c</string>
-    <string>{ /opt/homebrew/bin/brew upgrade mise; cd "$HOME" &amp;&amp; /opt/homebrew/bin/mise up --yes; } &gt;&gt; "$HOME/Library/Logs/mise-up.log" 2&gt;&amp;1</string>
+    <string>{ /opt/homebrew/bin/brew update &amp;&amp; /opt/homebrew/bin/brew upgrade --formula; cd "$HOME" &amp;&amp; /opt/homebrew/bin/mise up --yes; } &gt;&gt; "$HOME/Library/Logs/mise-up.log" 2&gt;&amp;1</string>
   </array>
   <key>EnvironmentVariables</key>
   <dict>
