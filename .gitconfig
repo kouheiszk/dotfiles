@@ -7,7 +7,7 @@
     excludesfile = ~/.gitignore_global
     attributesfile = ~/.gitattributes_global
     editor = nvim
-    pager = nkf -w | LESSCHARSET=utf-8 less
+    pager = LESSCHARSET=utf-8 less
     precomposeunicode = true
     quotepath = false
     ignorecase = false
@@ -63,6 +63,13 @@
 
 [push]
 	default = current
+	autoSetupRemote = true
+
+[fetch]
+	prune = true
+
+[rerere]
+	enabled = true
 
 [github]
 	user = kouheiszk
