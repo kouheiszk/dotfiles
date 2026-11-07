@@ -36,7 +36,7 @@ create_symbolic_link_of_dotfiles() {
       ".." ) continue ;;
       ".DS_Store" ) continue ;;
       "*.elc" ) continue ;;
-      ".git" | ".gitignore" | ".gitmodules" | ".module" | ".config" ) continue ;;
+      ".git" | ".gitignore" | ".gitmodules" | ".module" | ".config" | ".idea" ) continue ;;
       * ) link "$HOME/.dotfiles/${dotfile}" "$HOME/${dotfile}" ;;
     esac
   done

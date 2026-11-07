@@ -1,5 +1,10 @@
 #!/usr/bin/env zsh
 
+# Emacsモードで利用する
+# EDITOR に vi を含むと zsh は vi のキーマップで始まる。プラグインのキー割り当てが
+# vi 側に入って消えないよう、読み込む前に切り替える
+bindkey -e
+
 # プラグインや設定の読み込み
 [ -f ~/.zsh/zinit.zsh ] && source $HOME/.zsh/zinit.zsh
 [ -f ~/.zsh/fzf.zsh ] && source $HOME/.zsh/fzf.zsh
@@ -17,9 +22,6 @@ autoload -U compinit
     compinit -C
   fi
 }
-
-# Emacsモードで利用する
-bindkey -e
 
 # Ctrl-Dで閉じちゃうのをやめる
 # stty は p10k の instant prompt 中だと端末がないと怒られるので、zsh のオプションで止める
