@@ -10,4 +10,5 @@ npm-debug.log
 /.config/*
 !/.config/nvim
 !/.config/mise
+/.config/mise/conf.d/
 !/.config/karabiner/karabiner.json
