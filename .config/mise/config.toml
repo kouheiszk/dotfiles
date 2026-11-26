@@ -7,10 +7,27 @@ uv = "latest"
 yq = "latest"
 
 [settings]
+not_found_system_fallback = false
+swift.gpg_verify = true
+node.gpg_verify = true
+github.slsa = true
+github.github_attestations = true
+aqua.slsa = true
+aqua.minisign = true
+aqua.cosign = true
+aqua.github_attestations = true
+provenance_api_failures_fatal = true
+python.github_attestations = true
+ruby.github_attestations = true
+locked_verify_provenance = true
+slsa = true
+github_attestations = true
+gpg_verify = true
 idiomatic_version_file_enable_tools = ["node", "ruby"]
 # 設定ファイルを信頼するまで実行しない。mise.toml は task や env で任意のコマンドを
-# 実行できるので、clone してきたリポジトリの設定が勝手に走らないようにする
+# 実行できるので、clone してきたリポジトリの設定が勝手に走らないようにする。
+# 例外にするパスは git 管理外の conf.d/local.toml で指定する
 paranoid = true
 # 公開直後のバージョンを掴まない。取り下げられたリリースや、公開後に差し替えられた
 # アーティファクトを踏むのを避ける
-minimum_release_age = "7d"
+minimum_release_age = "3d"
